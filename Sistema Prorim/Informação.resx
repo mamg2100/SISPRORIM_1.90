@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="richTextBox1.Text" xml:space="preserve">
+    <value>Implementações SISPRORIM versão 1.90 - 15/07/2018.
+
+Embora as alterações somente devam ser sentidas com a utilização do sistema na prática do dia-a-dia, acreditamos que o 
+o conhecimento prévio do que foi alterado contribuirá para melhor compreensão da proposta, por isso aconselhamos a
+leitura do que segue abaixo.
+
+Nenhum Sistema de Informação é estático ou acabado, não está totalmente pronto ao ser disponibilizada sua versão
+corrente. Este Sistema não foge à regra e vem sofrendo constantes atualizações desde sua criação, se adaptando às 
+necessidades dos usuários e sobrevivendo à mudança de políticas e gestão da empresa. Novas demandas causam no-
+vas reavaliações e a necessidade de novas funcionalidades.
+
+Para manter um canal de comunicação entre desenvolvedores e usuários e para que essas necessidades sejam dispo-
+nibilizadas a todos com o seu respectivo registro e acompanhamento além de  permitir que  as alterações sejam pron-
+tamente atendidas, acrescentamos formulário com sugestões de novas funcionalidades e ajustes no sistema  pelos 
+próprios usuários que são aqueles que diariamente se utilizam do Software. 
+
+Para acesso vá em 'Notas' - na tela de abertura do sistema - e acesse pelo botão 'Sugestões' ou através do menu 
+Cadastro-&gt;Sugestões.
+
+Através deste formulário os usuários poderão sugerir modificações no Software e poderão acompanhar
+sua implementação ou feedback com a possibilidade ou não da implementação.  Essa iniciativa proverá
+o desenvolvedor com informações necessárias para implementação além de permitir que todos os usuários
+possam acompanhar o que já foi sugerido e o andamento de suas próprias solicitações. O mais importante
+deste formulário é que sugestões não serão perdidas como já aconteceu  anteriormente por não existir canal 
+de registro e consultas de sugestões similar.
+
+Portanto se utilizem desse recurso para que suas sugestões de melhoria sejam implementadas.
+
+Resumo do que foi codificado na versão 1.90 disponibilizada em 15/07/2018.
+
+1. Adicionado novo código ao FORMULÁRIO DE LOGIN analisando individualmente primeiro se usuário digitado existe 
+no bando de dados e posteriormente se existe a senha. Essa melhoria permitiu informar qual credencial está errada;
+
+2. Desativado o redimensionamento do FORMULÁRIO DE LOGIN;
+
+3. Dados passados ao Formúlário Principal de abertura do sistema através de variáveis, permitindo que fossem eliminadas
+Caixas de Textos nos FORMULÁRIO DE LOGIN e TELA INICIAL DO SISTEMA;
+
+4. Criado novo FORMULÁRIO DE CONSULTA independente do FORMULÁRIO DE CONSULTAS DE REQUISIÇÕES. Para ir 
+ao FORMULÁRIO DE PESQUISA, antes era preciso abrir a tela de CADASTRO DE REQUISIÇÕES e clicar no botão 'filtros'. 
+Agora esse acesso foi individualizado e pode ser feito diretamente através da tela principal do sistema;
+
+5. Otimizada a pesquisa de dados no FORMULÁRIO DE CONSULTA de requisições (PESQUISA);
+
+6. Otimizado a forma de escolha das colunas a serem mostradas no Grid. Na versão atual se escolhem as colunas a
+serem mostradas e somente após a ação aciona-se o método de pesquisa; Isso melhorou o desempenho na exibição
+dos dados;
+
+7. Acrescentado período com data inicial e final para as consultas diversas (FORMULÁRIO DE CONSULTA);
+
+8. Acrescentados botões na tela inicial do sistema para acesso direto aos itens mais utilizados. Demais acessos 
+permanecem no menu do sistema;
+
+9. Otimizadas as consultas ao formulário que obtem resposta da Planilha de Despesas possibilitando consultas à AF, 
+Notas Fiscais por número e agora também por nome do fornecedor;
+
+10.Remodelado FORMULÁRIO DE USUSÁRIOS. O Administrador tem acesso a todos os usuários cadastrando
+credenciais com ou sem a sua presença, além da exclusão e alteração de dados . Cada usuário poderá - na sua 
+conta - atualizar seus próprios dados incluindo alteração da senha cadastrada pelo administrador; Antes qualquer
+alteração de dados do usuário era somente feita pelo administrador do sistema;
+
+11. Mesma lógica na utilização dos botões de inclusão, alteração e exclusão de dados foi extendida aos formulários
+de Gerenciamento de Despesas, Fornecedores, Departamentos/Unidades/Setores;
+
+12. Eliminado o Botão de Refresh do FORMULÁRIO DE REQUISIÇÕES. Processo de refresh - utilizado para repopular os 
+objetos ComboBox - foi automatizado;
+
+13. Criação do FORMULÁRIO DE SUGESTÕES DE MELHORIA (FSM) onde cada usuário pode cadastrar sugestões de melho-
+rias no sistema que julgar necessárias além de acompanhar a sugestão feita pelos demais. É um canal de comunicação e
+registro para que as sugestões não se percam com o tempo.</value>
+  </data>
+</root>
