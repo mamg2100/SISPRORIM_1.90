@@ -107,13 +107,6 @@
             this.radioButtonRRP = new System.Windows.Forms.RadioButton();
             this.monthCalendar = new System.Windows.Forms.MonthCalendar();
             this.button2 = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.checkBoxPrefeito = new System.Windows.Forms.CheckBox();
             this.checkBoxOrdenador1 = new System.Windows.Forms.CheckBox();
             this.checkBoxContab = new System.Windows.Forms.CheckBox();
@@ -146,8 +139,12 @@
             this.lblCodigoFornecedor = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.label18 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox9.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -168,7 +165,7 @@
             this.lblUnidadeGestora.AutoSize = true;
             this.lblUnidadeGestora.BackColor = System.Drawing.Color.Transparent;
             this.lblUnidadeGestora.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUnidadeGestora.ForeColor = System.Drawing.Color.Black;
+            this.lblUnidadeGestora.ForeColor = System.Drawing.Color.White;
             this.lblUnidadeGestora.Location = new System.Drawing.Point(238, 87);
             this.lblUnidadeGestora.Name = "lblUnidadeGestora";
             this.lblUnidadeGestora.Size = new System.Drawing.Size(113, 14);
@@ -178,6 +175,7 @@
             // 
             // btnVeiculos
             // 
+            this.btnVeiculos.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVeiculos.Image = ((System.Drawing.Image)(resources.GetObject("btnVeiculos.Image")));
             this.btnVeiculos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnVeiculos.Location = new System.Drawing.Point(529, 258);
@@ -193,7 +191,7 @@
             this.lblUnidade.AutoSize = true;
             this.lblUnidade.BackColor = System.Drawing.Color.Transparent;
             this.lblUnidade.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUnidade.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblUnidade.ForeColor = System.Drawing.Color.White;
             this.lblUnidade.Location = new System.Drawing.Point(342, 40);
             this.lblUnidade.Name = "lblUnidade";
             this.lblUnidade.Size = new System.Drawing.Size(174, 14);
@@ -205,6 +203,7 @@
             this.lblDescricao.AutoSize = true;
             this.lblDescricao.BackColor = System.Drawing.Color.Transparent;
             this.lblDescricao.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescricao.ForeColor = System.Drawing.Color.White;
             this.lblDescricao.Location = new System.Drawing.Point(79, 130);
             this.lblDescricao.Name = "lblDescricao";
             this.lblDescricao.Size = new System.Drawing.Size(67, 14);
@@ -216,10 +215,10 @@
             this.Label2.AutoSize = true;
             this.Label2.BackColor = System.Drawing.Color.Transparent;
             this.Label2.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Label2.ForeColor = System.Drawing.Color.White;
             this.Label2.Location = new System.Drawing.Point(360, 200);
             this.Label2.Name = "Label2";
-            this.Label2.Size = new System.Drawing.Size(108, 14);
+            this.Label2.Size = new System.Drawing.Size(109, 14);
             this.Label2.TabIndex = 20;
             this.Label2.Text = "Valor Estimado*";
             // 
@@ -266,7 +265,7 @@
             this.Label3.AutoSize = true;
             this.Label3.BackColor = System.Drawing.Color.Transparent;
             this.Label3.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Label3.ForeColor = System.Drawing.Color.White;
             this.Label3.Location = new System.Drawing.Point(254, 200);
             this.Label3.Name = "Label3";
             this.Label3.Size = new System.Drawing.Size(38, 14);
@@ -290,6 +289,7 @@
             this.Label7.AutoSize = true;
             this.Label7.BackColor = System.Drawing.Color.Transparent;
             this.Label7.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label7.ForeColor = System.Drawing.Color.White;
             this.Label7.Location = new System.Drawing.Point(147, 201);
             this.Label7.Name = "Label7";
             this.Label7.Size = new System.Drawing.Size(83, 14);
@@ -301,6 +301,7 @@
             this.Label12.AutoSize = true;
             this.Label12.BackColor = System.Drawing.Color.Transparent;
             this.Label12.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label12.ForeColor = System.Drawing.Color.White;
             this.Label12.Location = new System.Drawing.Point(493, 325);
             this.Label12.Name = "Label12";
             this.Label12.Size = new System.Drawing.Size(99, 14);
@@ -312,7 +313,7 @@
             this.Label14.AutoSize = true;
             this.Label14.BackColor = System.Drawing.Color.Transparent;
             this.Label14.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label14.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Label14.ForeColor = System.Drawing.Color.White;
             this.Label14.Location = new System.Drawing.Point(151, 324);
             this.Label14.Name = "Label14";
             this.Label14.Size = new System.Drawing.Size(55, 14);
@@ -324,6 +325,7 @@
             this.Label15.AutoSize = true;
             this.Label15.BackColor = System.Drawing.Color.Transparent;
             this.Label15.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label15.ForeColor = System.Drawing.Color.Transparent;
             this.Label15.Location = new System.Drawing.Point(151, 396);
             this.Label15.Name = "Label15";
             this.Label15.Size = new System.Drawing.Size(73, 14);
@@ -357,9 +359,10 @@
             this.Label1.AutoSize = true;
             this.Label1.BackColor = System.Drawing.Color.Transparent;
             this.Label1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label1.ForeColor = System.Drawing.Color.White;
             this.Label1.Location = new System.Drawing.Point(495, 200);
             this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(69, 14);
+            this.Label1.Size = new System.Drawing.Size(70, 14);
             this.Label1.TabIndex = 50;
             this.Label1.Text = "Valor Real";
             // 
@@ -368,6 +371,7 @@
             this.lblIDCodigo.AutoSize = true;
             this.lblIDCodigo.BackColor = System.Drawing.Color.Transparent;
             this.lblIDCodigo.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIDCodigo.ForeColor = System.Drawing.Color.White;
             this.lblIDCodigo.Location = new System.Drawing.Point(57, 40);
             this.lblIDCodigo.Name = "lblIDCodigo";
             this.lblIDCodigo.Size = new System.Drawing.Size(21, 14);
@@ -378,6 +382,7 @@
             // 
             this.lblCod.AutoSize = true;
             this.lblCod.BackColor = System.Drawing.Color.Transparent;
+            this.lblCod.ForeColor = System.Drawing.Color.White;
             this.lblCod.Location = new System.Drawing.Point(109, 177);
             this.lblCod.Name = "lblCod";
             this.lblCod.Size = new System.Drawing.Size(33, 13);
@@ -390,7 +395,7 @@
             this.Label17.AutoSize = true;
             this.Label17.BackColor = System.Drawing.Color.Transparent;
             this.Label17.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label17.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Label17.ForeColor = System.Drawing.Color.White;
             this.Label17.Location = new System.Drawing.Point(148, 40);
             this.Label17.Name = "Label17";
             this.Label17.Size = new System.Drawing.Size(47, 14);
@@ -422,6 +427,7 @@
             // 
             // btnCadastrante
             // 
+            this.btnCadastrante.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCadastrante.Image = ((System.Drawing.Image)(resources.GetObject("btnCadastrante.Image")));
             this.btnCadastrante.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCadastrante.Location = new System.Drawing.Point(633, 333);
@@ -490,6 +496,7 @@
             this.lblCodDespesa.AutoSize = true;
             this.lblCodDespesa.BackColor = System.Drawing.Color.Transparent;
             this.lblCodDespesa.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCodDespesa.ForeColor = System.Drawing.Color.Transparent;
             this.lblCodDespesa.Location = new System.Drawing.Point(151, 500);
             this.lblCodDespesa.Name = "lblCodDespesa";
             this.lblCodDespesa.Size = new System.Drawing.Size(62, 14);
@@ -515,6 +522,7 @@
             this.lblPrograma.AutoSize = true;
             this.lblPrograma.BackColor = System.Drawing.Color.Transparent;
             this.lblPrograma.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrograma.ForeColor = System.Drawing.Color.Transparent;
             this.lblPrograma.Location = new System.Drawing.Point(322, 500);
             this.lblPrograma.Name = "lblPrograma";
             this.lblPrograma.Size = new System.Drawing.Size(68, 14);
@@ -568,6 +576,7 @@
             this.lblAcao.AutoSize = true;
             this.lblAcao.BackColor = System.Drawing.Color.Transparent;
             this.lblAcao.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAcao.ForeColor = System.Drawing.Color.Transparent;
             this.lblAcao.Location = new System.Drawing.Point(410, 500);
             this.lblAcao.Name = "lblAcao";
             this.lblAcao.Size = new System.Drawing.Size(133, 14);
@@ -579,6 +588,7 @@
             this.lblReduzida.AutoSize = true;
             this.lblReduzida.BackColor = System.Drawing.Color.Transparent;
             this.lblReduzida.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblReduzida.ForeColor = System.Drawing.Color.Transparent;
             this.lblReduzida.Location = new System.Drawing.Point(234, 500);
             this.lblReduzida.Name = "lblReduzida";
             this.lblReduzida.Size = new System.Drawing.Size(65, 14);
@@ -587,6 +597,7 @@
             // 
             // btn_Despesa
             // 
+            this.btn_Despesa.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Despesa.Image = ((System.Drawing.Image)(resources.GetObject("btn_Despesa.Image")));
             this.btn_Despesa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_Despesa.Location = new System.Drawing.Point(633, 209);
@@ -632,6 +643,7 @@
             this.label37.AutoSize = true;
             this.label37.BackColor = System.Drawing.Color.Transparent;
             this.label37.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label37.ForeColor = System.Drawing.Color.White;
             this.label37.Location = new System.Drawing.Point(147, 246);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(94, 14);
@@ -673,6 +685,7 @@
             // btnEmpenho
             // 
             this.btnEmpenho.Enabled = false;
+            this.btnEmpenho.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEmpenho.Image = ((System.Drawing.Image)(resources.GetObject("btnEmpenho.Image")));
             this.btnEmpenho.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnEmpenho.Location = new System.Drawing.Point(633, 257);
@@ -688,7 +701,7 @@
             this.lblPlaca.AutoSize = true;
             this.lblPlaca.BackColor = System.Drawing.Color.Transparent;
             this.lblPlaca.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPlaca.ForeColor = System.Drawing.Color.Black;
+            this.lblPlaca.ForeColor = System.Drawing.Color.White;
             this.lblPlaca.Location = new System.Drawing.Point(147, 87);
             this.lblPlaca.Name = "lblPlaca";
             this.lblPlaca.Size = new System.Drawing.Size(40, 14);
@@ -701,7 +714,7 @@
             this.lblMarca.AutoSize = true;
             this.lblMarca.BackColor = System.Drawing.Color.Transparent;
             this.lblMarca.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMarca.ForeColor = System.Drawing.Color.Black;
+            this.lblMarca.ForeColor = System.Drawing.Color.White;
             this.lblMarca.Location = new System.Drawing.Point(423, 87);
             this.lblMarca.Name = "lblMarca";
             this.lblMarca.Size = new System.Drawing.Size(44, 14);
@@ -724,7 +737,7 @@
             this.lblModelo.AutoSize = true;
             this.lblModelo.BackColor = System.Drawing.Color.Transparent;
             this.lblModelo.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblModelo.ForeColor = System.Drawing.Color.Black;
+            this.lblModelo.ForeColor = System.Drawing.Color.White;
             this.lblModelo.Location = new System.Drawing.Point(506, 87);
             this.lblModelo.Name = "lblModelo";
             this.lblModelo.Size = new System.Drawing.Size(52, 14);
@@ -747,7 +760,7 @@
             this.lblAnoVeiculo.AutoSize = true;
             this.lblAnoVeiculo.BackColor = System.Drawing.Color.Transparent;
             this.lblAnoVeiculo.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAnoVeiculo.ForeColor = System.Drawing.Color.Black;
+            this.lblAnoVeiculo.ForeColor = System.Drawing.Color.White;
             this.lblAnoVeiculo.Location = new System.Drawing.Point(706, 87);
             this.lblAnoVeiculo.Name = "lblAnoVeiculo";
             this.lblAnoVeiculo.Size = new System.Drawing.Size(31, 14);
@@ -769,6 +782,7 @@
             // 
             this.groupBox9.BackColor = System.Drawing.Color.Transparent;
             this.groupBox9.Controls.Add(this.radioButtonVeiculo);
+            this.groupBox9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.groupBox9.Location = new System.Drawing.Point(747, 35);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(105, 56);
@@ -780,8 +794,8 @@
             // 
             this.radioButtonVeiculo.AutoSize = true;
             this.radioButtonVeiculo.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.radioButtonVeiculo.ForeColor = System.Drawing.Color.Blue;
-            this.radioButtonVeiculo.Location = new System.Drawing.Point(13, 17);
+            this.radioButtonVeiculo.ForeColor = System.Drawing.Color.White;
+            this.radioButtonVeiculo.Location = new System.Drawing.Point(14, 20);
             this.radioButtonVeiculo.Name = "radioButtonVeiculo";
             this.radioButtonVeiculo.Size = new System.Drawing.Size(78, 23);
             this.radioButtonVeiculo.TabIndex = 174;
@@ -877,7 +891,7 @@
             this.Label13.AutoSize = true;
             this.Label13.BackColor = System.Drawing.Color.Transparent;
             this.Label13.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label13.ForeColor = System.Drawing.Color.Black;
+            this.Label13.ForeColor = System.Drawing.Color.Transparent;
             this.Label13.Location = new System.Drawing.Point(151, 564);
             this.Label13.Name = "Label13";
             this.Label13.Size = new System.Drawing.Size(82, 14);
@@ -886,6 +900,7 @@
             // 
             // btnFornecedorVinculado
             // 
+            this.btnFornecedorVinculado.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFornecedorVinculado.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFornecedorVinculado.Location = new System.Drawing.Point(515, 570);
             this.btnFornecedorVinculado.Name = "btnFornecedorVinculado";
@@ -897,6 +912,7 @@
             // 
             // btnFornecedor
             // 
+            this.btnFornecedor.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFornecedor.Image = ((System.Drawing.Image)(resources.GetObject("btnFornecedor.Image")));
             this.btnFornecedor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFornecedor.Location = new System.Drawing.Point(412, 570);
@@ -923,7 +939,7 @@
             this.Label4.AutoSize = true;
             this.Label4.BackColor = System.Drawing.Color.Transparent;
             this.Label4.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Label4.ForeColor = System.Drawing.Color.White;
             this.Label4.Location = new System.Drawing.Point(207, 40);
             this.Label4.Name = "Label4";
             this.Label4.Size = new System.Drawing.Size(77, 14);
@@ -932,6 +948,7 @@
             // 
             // btnNotaFiscal
             // 
+            this.btnNotaFiscal.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNotaFiscal.Image = ((System.Drawing.Image)(resources.GetObject("btnNotaFiscal.Image")));
             this.btnNotaFiscal.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnNotaFiscal.Location = new System.Drawing.Point(633, 570);
@@ -1040,7 +1057,7 @@
             // 
             // monthCalendar
             // 
-            this.monthCalendar.Location = new System.Drawing.Point(747, 248);
+            this.monthCalendar.Location = new System.Drawing.Point(712, 252);
             this.monthCalendar.Name = "monthCalendar";
             this.monthCalendar.TabIndex = 139;
             this.monthCalendar.Visible = false;
@@ -1060,117 +1077,11 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
-            this.panel1.Controls.Add(this.label11);
-            this.panel1.Controls.Add(this.label10);
-            this.panel1.Controls.Add(this.label9);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Location = new System.Drawing.Point(51, 401);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(606, 137);
-            this.panel1.TabIndex = 255;
-            this.panel1.Visible = false;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.Red;
-            this.label11.Image = global::Sistema_Prorim.Properties.Resources.Calendario23;
-            this.label11.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label11.Location = new System.Drawing.Point(510, 108);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(23, 16);
-            this.label11.TabIndex = 243;
-            this.label11.Text = "   ";
-            this.label11.Visible = false;
-            this.label11.Click += new System.EventHandler(this.label11_Click);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.Red;
-            this.label10.Image = global::Sistema_Prorim.Properties.Resources.Calendario23;
-            this.label10.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label10.Location = new System.Drawing.Point(421, 7);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(23, 16);
-            this.label10.TabIndex = 235;
-            this.label10.Text = "   ";
-            this.label10.Visible = false;
-            this.label10.Click += new System.EventHandler(this.label10_Click);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.Red;
-            this.label9.Image = global::Sistema_Prorim.Properties.Resources.Calendario23;
-            this.label9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label9.Location = new System.Drawing.Point(349, 108);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(23, 16);
-            this.label9.TabIndex = 242;
-            this.label9.Text = "   ";
-            this.label9.Visible = false;
-            this.label9.Click += new System.EventHandler(this.label9_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Red;
-            this.label6.Image = global::Sistema_Prorim.Properties.Resources.Calendario23;
-            this.label6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label6.Location = new System.Drawing.Point(268, 109);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(23, 16);
-            this.label6.TabIndex = 240;
-            this.label6.Text = "   ";
-            this.label6.Visible = false;
-            this.label6.Click += new System.EventHandler(this.label6_Click);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.Red;
-            this.label8.Image = global::Sistema_Prorim.Properties.Resources.Calendario23;
-            this.label8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label8.Location = new System.Drawing.Point(268, 8);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(23, 16);
-            this.label8.TabIndex = 241;
-            this.label8.Text = "   ";
-            this.label8.Visible = false;
-            this.label8.Click += new System.EventHandler(this.label8_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Red;
-            this.label5.Image = global::Sistema_Prorim.Properties.Resources.Calendario23;
-            this.label5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label5.Location = new System.Drawing.Point(186, 91);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(23, 16);
-            this.label5.TabIndex = 236;
-            this.label5.Text = "   ";
-            this.label5.Visible = false;
-            this.label5.Click += new System.EventHandler(this.label5_Click);
-            // 
             // checkBoxPrefeito
             // 
             this.checkBoxPrefeito.AutoSize = true;
             this.checkBoxPrefeito.ForeColor = System.Drawing.Color.Black;
-            this.checkBoxPrefeito.Location = new System.Drawing.Point(1155, 248);
+            this.checkBoxPrefeito.Location = new System.Drawing.Point(1131, 248);
             this.checkBoxPrefeito.Name = "checkBoxPrefeito";
             this.checkBoxPrefeito.Size = new System.Drawing.Size(15, 14);
             this.checkBoxPrefeito.TabIndex = 20;
@@ -1192,7 +1103,7 @@
             // 
             this.checkBoxContab.AutoSize = true;
             this.checkBoxContab.ForeColor = System.Drawing.Color.Black;
-            this.checkBoxContab.Location = new System.Drawing.Point(1155, 94);
+            this.checkBoxContab.Location = new System.Drawing.Point(1129, 94);
             this.checkBoxContab.Name = "checkBoxContab";
             this.checkBoxContab.Size = new System.Drawing.Size(15, 14);
             this.checkBoxContab.TabIndex = 13;
@@ -1214,7 +1125,7 @@
             // 
             this.checkBoxOrdenador2.AutoSize = true;
             this.checkBoxOrdenador2.ForeColor = System.Drawing.Color.Black;
-            this.checkBoxOrdenador2.Location = new System.Drawing.Point(237, 357);
+            this.checkBoxOrdenador2.Location = new System.Drawing.Point(242, 357);
             this.checkBoxOrdenador2.Name = "checkBoxOrdenador2";
             this.checkBoxOrdenador2.Size = new System.Drawing.Size(15, 14);
             this.checkBoxOrdenador2.TabIndex = 16;
@@ -1236,7 +1147,7 @@
             // 
             this.checkBoxDIPE.AutoSize = true;
             this.checkBoxDIPE.ForeColor = System.Drawing.Color.Black;
-            this.checkBoxDIPE.Location = new System.Drawing.Point(237, 510);
+            this.checkBoxDIPE.Location = new System.Drawing.Point(241, 510);
             this.checkBoxDIPE.Name = "checkBoxDIPE";
             this.checkBoxDIPE.Size = new System.Drawing.Size(15, 14);
             this.checkBoxDIPE.TabIndex = 18;
@@ -1249,7 +1160,7 @@
             this.lblDataContabilidade.BackColor = System.Drawing.Color.Transparent;
             this.lblDataContabilidade.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDataContabilidade.ForeColor = System.Drawing.Color.Black;
-            this.lblDataContabilidade.Location = new System.Drawing.Point(950, 95);
+            this.lblDataContabilidade.Location = new System.Drawing.Point(917, 95);
             this.lblDataContabilidade.Name = "lblDataContabilidade";
             this.lblDataContabilidade.Size = new System.Drawing.Size(0, 14);
             this.lblDataContabilidade.TabIndex = 2;
@@ -1271,7 +1182,7 @@
             this.lblDataCompras2.BackColor = System.Drawing.Color.Transparent;
             this.lblDataCompras2.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDataCompras2.ForeColor = System.Drawing.Color.Black;
-            this.lblDataCompras2.Location = new System.Drawing.Point(171, 433);
+            this.lblDataCompras2.Location = new System.Drawing.Point(206, 433);
             this.lblDataCompras2.Name = "lblDataCompras2";
             this.lblDataCompras2.Size = new System.Drawing.Size(0, 14);
             this.lblDataCompras2.TabIndex = 6;
@@ -1304,7 +1215,7 @@
             this.lblDataOrdenador2.BackColor = System.Drawing.Color.Transparent;
             this.lblDataOrdenador2.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDataOrdenador2.ForeColor = System.Drawing.Color.Black;
-            this.lblDataOrdenador2.Location = new System.Drawing.Point(954, 400);
+            this.lblDataOrdenador2.Location = new System.Drawing.Point(919, 400);
             this.lblDataOrdenador2.Name = "lblDataOrdenador2";
             this.lblDataOrdenador2.Size = new System.Drawing.Size(0, 14);
             this.lblDataOrdenador2.TabIndex = 1;
@@ -1358,7 +1269,7 @@
             this.lblDataPrefeito.BackColor = System.Drawing.Color.Transparent;
             this.lblDataPrefeito.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDataPrefeito.ForeColor = System.Drawing.Color.Black;
-            this.lblDataPrefeito.Location = new System.Drawing.Point(36, 205);
+            this.lblDataPrefeito.Location = new System.Drawing.Point(27, 205);
             this.lblDataPrefeito.Name = "lblDataPrefeito";
             this.lblDataPrefeito.Size = new System.Drawing.Size(0, 14);
             this.lblDataPrefeito.TabIndex = 20;
@@ -1368,19 +1279,18 @@
             this.lblCodUnidade.AutoSize = true;
             this.lblCodUnidade.BackColor = System.Drawing.Color.Transparent;
             this.lblCodUnidade.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodUnidade.ForeColor = System.Drawing.Color.Black;
+            this.lblCodUnidade.ForeColor = System.Drawing.Color.White;
             this.lblCodUnidade.Location = new System.Drawing.Point(518, 40);
             this.lblCodUnidade.Name = "lblCodUnidade";
-            this.lblCodUnidade.Size = new System.Drawing.Size(51, 14);
+            this.lblCodUnidade.Size = new System.Drawing.Size(0, 14);
             this.lblCodUnidade.TabIndex = 259;
-            this.lblCodUnidade.Text = "Codigo";
             // 
             // lblCodigo
             // 
             this.lblCodigo.AutoSize = true;
             this.lblCodigo.BackColor = System.Drawing.Color.Transparent;
             this.lblCodigo.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodigo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblCodigo.ForeColor = System.Drawing.Color.White;
             this.lblCodigo.Location = new System.Drawing.Point(57, 63);
             this.lblCodigo.Name = "lblCodigo";
             this.lblCodigo.Size = new System.Drawing.Size(0, 14);
@@ -1402,7 +1312,7 @@
             this.lblCodUsuario.AutoSize = true;
             this.lblCodUsuario.BackColor = System.Drawing.Color.Transparent;
             this.lblCodUsuario.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodUsuario.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblCodUsuario.ForeColor = System.Drawing.Color.Transparent;
             this.lblCodUsuario.Location = new System.Drawing.Point(207, 324);
             this.lblCodUsuario.Name = "lblCodUsuario";
             this.lblCodUsuario.Size = new System.Drawing.Size(0, 14);
@@ -1413,10 +1323,10 @@
             this.lblCodVeiculo.AutoSize = true;
             this.lblCodVeiculo.BackColor = System.Drawing.Color.Transparent;
             this.lblCodVeiculo.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodVeiculo.ForeColor = System.Drawing.Color.Black;
-            this.lblCodVeiculo.Location = new System.Drawing.Point(345, 87);
+            this.lblCodVeiculo.ForeColor = System.Drawing.Color.Transparent;
+            this.lblCodVeiculo.Location = new System.Drawing.Point(354, 87);
             this.lblCodVeiculo.Name = "lblCodVeiculo";
-            this.lblCodVeiculo.Size = new System.Drawing.Size(54, 14);
+            this.lblCodVeiculo.Size = new System.Drawing.Size(55, 14);
             this.lblCodVeiculo.TabIndex = 263;
             this.lblCodVeiculo.Text = "Cod.Vei";
             this.lblCodVeiculo.Visible = false;
@@ -1494,6 +1404,7 @@
             // 
             // button3
             // 
+            this.button3.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
             this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button3.Location = new System.Drawing.Point(633, 502);
@@ -1513,6 +1424,76 @@
             this.label18.TabIndex = 267;
             this.label18.Text = "label18";
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.Red;
+            this.label11.Image = global::Sistema_Prorim.Properties.Resources.Calendario23;
+            this.label11.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label11.Location = new System.Drawing.Point(757, 539);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(23, 16);
+            this.label11.TabIndex = 272;
+            this.label11.Text = "   ";
+            this.label11.Visible = false;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Red;
+            this.label10.Image = global::Sistema_Prorim.Properties.Resources.Calendario23;
+            this.label10.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label10.Location = new System.Drawing.Point(809, 458);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(23, 16);
+            this.label10.TabIndex = 268;
+            this.label10.Text = "   ";
+            this.label10.Visible = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Red;
+            this.label6.Image = global::Sistema_Prorim.Properties.Resources.Calendario23;
+            this.label6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label6.Location = new System.Drawing.Point(809, 498);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(23, 16);
+            this.label6.TabIndex = 270;
+            this.label6.Text = "   ";
+            this.label6.Visible = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.Red;
+            this.label8.Image = global::Sistema_Prorim.Properties.Resources.Calendario23;
+            this.label8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label8.Location = new System.Drawing.Point(757, 458);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(23, 16);
+            this.label8.TabIndex = 271;
+            this.label8.Text = "   ";
+            this.label8.Visible = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Red;
+            this.label5.Image = global::Sistema_Prorim.Properties.Resources.Calendario23;
+            this.label5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label5.Location = new System.Drawing.Point(757, 498);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(23, 16);
+            this.label5.TabIndex = 269;
+            this.label5.Text = "   ";
+            this.label5.Visible = false;
+            // 
             // Requisicao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1520,6 +1501,11 @@
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.monthCalendar);
@@ -1544,7 +1530,6 @@
             this.Controls.Add(this.lblDataContabilidade);
             this.Controls.Add(this.lblCodUsuario);
             this.Controls.Add(this.lblCodigoDespesa);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblCodigo);
             this.Controls.Add(this.lblCodUnidade);
             this.Controls.Add(this.lblDataCompras1);
@@ -1628,8 +1613,6 @@
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Requisicao_KeyPress);
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -1719,16 +1702,9 @@
         private System.Windows.Forms.RadioButton radioButtonRIM;
         private System.Windows.Forms.MonthCalendar monthCalendar;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.CheckBox checkBoxPrefeito;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.CheckBox checkBoxOrdenador1;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.CheckBox checkBoxContab;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.CheckBox checkBoxCompras1;
         private System.Windows.Forms.CheckBox checkBoxOrdenador2;
         private System.Windows.Forms.CheckBox checkBoxCompras2;
@@ -1758,6 +1734,11 @@
         private System.Windows.Forms.Label lblDataPrefeito;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label5;
 
     }
 }
