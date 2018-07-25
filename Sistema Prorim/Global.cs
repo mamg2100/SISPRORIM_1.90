@@ -191,6 +191,14 @@ namespace Sistema_prorim
                 set { m_DataOrdenador1 = value; }
             }
 
+            private static string m_DataPrefeito = "";
+
+            public static string DataPrefeito // variável que recebe valor sequencial de uma RI
+            {
+                get { return m_DataPrefeito; }
+                set { m_DataPrefeito = value; }
+            }
+
             private static string m_DataCompras1 = "";
 
             public static string DataCompras1 // variável que recebe valor sequencial de uma RI

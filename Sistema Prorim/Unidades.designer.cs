@@ -38,9 +38,14 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.txtEndereço = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnOK = new System.Windows.Forms.Button();
+            this.btnAlterar = new System.Windows.Forms.Button();
+            this.btnIncluir = new System.Windows.Forms.Button();
+            this.btnExcluir = new System.Windows.Forms.Button();
+            this.btnSair = new System.Windows.Forms.Button();
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
             this.label19 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtCep = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.cmbUF = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -65,6 +70,9 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtFone1 = new System.Windows.Forms.TextBox();
             this.txtResp = new System.Windows.Forms.TextBox();
+            this.shapeContainer2 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
+            this.lineShape3 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.lineShape2 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.rbPorCodigo = new System.Windows.Forms.RadioButton();
             this.txtCheckIdentificação = new System.Windows.Forms.TextBox();
             this.rbPorNome = new System.Windows.Forms.RadioButton();
@@ -73,25 +81,17 @@
             this.label7 = new System.Windows.Forms.Label();
             this.rbPorContato = new System.Windows.Forms.RadioButton();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssMensagem = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.btnOK = new System.Windows.Forms.Button();
-            this.btnAlterar = new System.Windows.Forms.Button();
-            this.btnIncluir = new System.Windows.Forms.Button();
-            this.btnExcluir = new System.Windows.Forms.Button();
-            this.btnSair = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
-            this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.lineShape2 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.shapeContainer2 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
-            this.lineShape3 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.lineShape4 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.lineShape5 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.lineShape4 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -158,13 +158,12 @@
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenHorizontal;
-            this.dataGridView1.Enabled = false;
             this.dataGridView1.Location = new System.Drawing.Point(22, 109);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(831, 171);
             this.dataGridView1.TabIndex = 106;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
+            this.dataGridView1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseDoubleClick);
             // 
             // txtEndereço
             // 
@@ -174,7 +173,7 @@
             this.txtEndereço.Name = "txtEndereço";
             this.txtEndereço.Size = new System.Drawing.Size(291, 22);
             this.txtEndereço.TabIndex = 5;
-            this.txtEndereço.TextChanged += new System.EventHandler(this.txtEndereço_TextChanged);
+            
             this.txtEndereço.Enter += new System.EventHandler(this.txtEndereço_Enter);
             this.txtEndereço.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEndereço_KeyPress);
             this.txtEndereço.Leave += new System.EventHandler(this.txtEndereço_Leave);
@@ -191,7 +190,7 @@
             this.groupBox1.Controls.Add(this.btnSair);
             this.groupBox1.Controls.Add(this.linkLabel3);
             this.groupBox1.Controls.Add(this.label19);
-            this.groupBox1.Controls.Add(this.textBox4);
+            this.groupBox1.Controls.Add(this.txtCep);
             this.groupBox1.Controls.Add(this.label18);
             this.groupBox1.Controls.Add(this.cmbUF);
             this.groupBox1.Controls.Add(this.label17);
@@ -225,7 +224,74 @@
             this.groupBox1.Size = new System.Drawing.Size(831, 235);
             this.groupBox1.TabIndex = 107;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            
+            // 
+            // btnOK
+            // 
+            this.btnOK.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnOK.Font = new System.Drawing.Font("Verdana", 9F);
+            this.btnOK.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnOK.Location = new System.Drawing.Point(555, 183);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(95, 40);
+            this.btnOK.TabIndex = 263;
+            this.btnOK.Text = "&OK";
+            this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Visible = false;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+            // 
+            // btnAlterar
+            // 
+            this.btnAlterar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnAlterar.Font = new System.Drawing.Font("Verdana", 9F);
+            this.btnAlterar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnAlterar.Location = new System.Drawing.Point(555, 87);
+            this.btnAlterar.Name = "btnAlterar";
+            this.btnAlterar.Size = new System.Drawing.Size(95, 40);
+            this.btnAlterar.TabIndex = 262;
+            this.btnAlterar.Text = "&Alterar";
+            this.toolTip1.SetToolTip(this.btnAlterar, "Clique duas vezes na planilha sobre a linha a ser alterada");
+            this.btnAlterar.UseVisualStyleBackColor = true;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
+            // 
+            // btnIncluir
+            // 
+            this.btnIncluir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnIncluir.Font = new System.Drawing.Font("Verdana", 9F);
+            this.btnIncluir.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnIncluir.Location = new System.Drawing.Point(555, 135);
+            this.btnIncluir.Name = "btnIncluir";
+            this.btnIncluir.Size = new System.Drawing.Size(95, 40);
+            this.btnIncluir.TabIndex = 261;
+            this.btnIncluir.Text = "&Incluir";
+            this.btnIncluir.UseVisualStyleBackColor = true;
+            this.btnIncluir.Click += new System.EventHandler(this.btnIncluir_Click);
+            // 
+            // btnExcluir
+            // 
+            this.btnExcluir.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExcluir.BackgroundImage")));
+            this.btnExcluir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnExcluir.Font = new System.Drawing.Font("Verdana", 9F);
+            this.btnExcluir.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnExcluir.Location = new System.Drawing.Point(555, 39);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(95, 40);
+            this.btnExcluir.TabIndex = 260;
+            this.btnExcluir.Text = "      &Excluir";
+            this.toolTip1.SetToolTip(this.btnExcluir, "Clique duas vezes na planilha sobre a linha a ser alterada");
+            this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
+            // 
+            // btnSair
+            // 
+            this.btnSair.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSair.Location = new System.Drawing.Point(707, 183);
+            this.btnSair.Name = "btnSair";
+            this.btnSair.Size = new System.Drawing.Size(95, 40);
+            this.btnSair.TabIndex = 259;
+            this.btnSair.Text = "&Sair";
+            this.btnSair.UseVisualStyleBackColor = true;
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click_1);
             // 
             // linkLabel3
             // 
@@ -249,20 +315,19 @@
             this.label19.Size = new System.Drawing.Size(40, 14);
             this.label19.TabIndex = 109;
             this.label19.Text = "C.E.P";
-            this.label19.Click += new System.EventHandler(this.label19_Click);
             // 
-            // textBox4
+            // txtCep
             // 
-            this.textBox4.Enabled = false;
-            this.textBox4.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(436, 89);
-            this.textBox4.MaxLength = 10;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(71, 22);
-            this.textBox4.TabIndex = 11;
-            this.textBox4.Text = "11.600-000";
-            this.textBox4.Enter += new System.EventHandler(this.textBox4_Enter);
-            this.textBox4.Leave += new System.EventHandler(this.textBox4_Leave);
+            this.txtCep.Enabled = false;
+            this.txtCep.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCep.Location = new System.Drawing.Point(436, 89);
+            this.txtCep.MaxLength = 10;
+            this.txtCep.Name = "txtCep";
+            this.txtCep.Size = new System.Drawing.Size(71, 22);
+            this.txtCep.TabIndex = 11;
+            this.txtCep.Text = "11.600-000";
+            this.txtCep.Enter += new System.EventHandler(this.textBox4_Enter);
+            this.txtCep.Leave += new System.EventHandler(this.textBox4_Leave);
             // 
             // label18
             // 
@@ -308,9 +373,9 @@
             "SE",
             "SP",
             "TO"});
-            this.cmbUF.Location = new System.Drawing.Point(468, 144);
+            this.cmbUF.Location = new System.Drawing.Point(456, 144);
             this.cmbUF.Name = "cmbUF";
-            this.cmbUF.Size = new System.Drawing.Size(38, 22);
+            this.cmbUF.Size = new System.Drawing.Size(54, 22);
             this.cmbUF.TabIndex = 10;
             this.cmbUF.SelectedIndexChanged += new System.EventHandler(this.cmbUF_SelectedIndexChanged);
             this.cmbUF.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbUF_KeyPress);
@@ -319,23 +384,23 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(326, 128);
+            this.label17.Location = new System.Drawing.Point(311, 128);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(51, 14);
             this.label17.TabIndex = 105;
             this.label17.Text = "Cidade";
-            this.label17.Click += new System.EventHandler(this.label17_Click);
+            
             // 
             // txtCidade
             // 
             this.txtCidade.Enabled = false;
             this.txtCidade.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCidade.Location = new System.Drawing.Point(323, 144);
+            this.txtCidade.Location = new System.Drawing.Point(312, 144);
             this.txtCidade.Name = "txtCidade";
             this.txtCidade.Size = new System.Drawing.Size(140, 22);
             this.txtCidade.TabIndex = 9;
             this.txtCidade.Text = "São Sebastião";
-            this.txtCidade.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
+            
             this.txtCidade.Enter += new System.EventHandler(this.txtCidade_Enter);
             this.txtCidade.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCidade_KeyPress);
             this.txtCidade.Leave += new System.EventHandler(this.txtCidade_Leave);
@@ -349,7 +414,7 @@
             this.label15.Size = new System.Drawing.Size(44, 14);
             this.label15.TabIndex = 103;
             this.label15.Text = "Bairro";
-            this.label15.Click += new System.EventHandler(this.label15_Click);
+            
             // 
             // txtBairro
             // 
@@ -357,9 +422,8 @@
             this.txtBairro.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBairro.Location = new System.Drawing.Point(14, 144);
             this.txtBairro.Name = "txtBairro";
-            this.txtBairro.Size = new System.Drawing.Size(303, 22);
+            this.txtBairro.Size = new System.Drawing.Size(295, 22);
             this.txtBairro.TabIndex = 7;
-            this.txtBairro.TextChanged += new System.EventHandler(this.txtBairro_TextChanged);
             this.txtBairro.Enter += new System.EventHandler(this.txtBairro_Enter);
             this.txtBairro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBairro_KeyPress);
             this.txtBairro.Leave += new System.EventHandler(this.txtBairro_Leave);
@@ -373,7 +437,6 @@
             this.label14.Size = new System.Drawing.Size(23, 14);
             this.label14.TabIndex = 101;
             this.label14.Text = "Nº";
-            this.label14.Click += new System.EventHandler(this.label14_Click);
             // 
             // txtNumero
             // 
@@ -448,7 +511,6 @@
             this.txtFoneContato.Name = "txtFoneContato";
             this.txtFoneContato.Size = new System.Drawing.Size(100, 22);
             this.txtFoneContato.TabIndex = 15;
-            this.txtFoneContato.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             this.txtFoneContato.Enter += new System.EventHandler(this.txtFoneContato_Enter);
             this.txtFoneContato.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFoneContato_KeyPress);
             this.txtFoneContato.Leave += new System.EventHandler(this.txtFoneContato_Leave);
@@ -472,7 +534,6 @@
             this.txtSetor.Name = "txtSetor";
             this.txtSetor.Size = new System.Drawing.Size(425, 22);
             this.txtSetor.TabIndex = 3;
-            this.txtSetor.TextChanged += new System.EventHandler(this.txtSetor_TextChanged);
             this.txtSetor.Enter += new System.EventHandler(this.txtSetor_Enter);
             this.txtSetor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSetor_KeyPress);
             this.txtSetor.Leave += new System.EventHandler(this.txtSetor_Leave);
@@ -516,7 +577,7 @@
             this.label4.Size = new System.Drawing.Size(72, 14);
             this.label4.TabIndex = 72;
             this.label4.Text = "Telefone 2";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+            
             // 
             // label5
             // 
@@ -527,7 +588,7 @@
             this.label5.Size = new System.Drawing.Size(143, 14);
             this.label5.TabIndex = 73;
             this.label5.Text = "Responsável/Contato";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
+            
             // 
             // textBox3
             // 
@@ -535,11 +596,11 @@
             this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox3.Enabled = false;
             this.textBox3.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(21, 50);
+            this.textBox3.Location = new System.Drawing.Point(21, 39);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(55, 15);
             this.textBox3.TabIndex = 87;
-            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            
             // 
             // txtFone2
             // 
@@ -550,7 +611,7 @@
             this.txtFone2.Name = "txtFone2";
             this.txtFone2.Size = new System.Drawing.Size(100, 22);
             this.txtFone2.TabIndex = 13;
-            this.txtFone2.TextChanged += new System.EventHandler(this.txtFone2_TextChanged);
+            
             this.txtFone2.Enter += new System.EventHandler(this.txtFone2_Enter);
             this.txtFone2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFone2_KeyPress);
             this.txtFone2.Leave += new System.EventHandler(this.txtFone2_Leave);
@@ -564,7 +625,7 @@
             this.label8.Size = new System.Drawing.Size(51, 14);
             this.label8.TabIndex = 86;
             this.label8.Text = "Código";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
+            
             // 
             // txtFone1
             // 
@@ -576,7 +637,7 @@
             this.txtFone1.Size = new System.Drawing.Size(100, 22);
             this.txtFone1.TabIndex = 12;
             this.txtFone1.Text = "12 3887 3254";
-            this.txtFone1.TextChanged += new System.EventHandler(this.txtFone1_TextChanged);
+            
             this.txtFone1.Enter += new System.EventHandler(this.txtFone1_Enter);
             this.txtFone1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFone1_KeyPress);
             this.txtFone1.Leave += new System.EventHandler(this.txtFone1_Leave);
@@ -589,10 +650,39 @@
             this.txtResp.Name = "txtResp";
             this.txtResp.Size = new System.Drawing.Size(185, 22);
             this.txtResp.TabIndex = 14;
-            this.txtResp.TextChanged += new System.EventHandler(this.txtResp_TextChanged);
             this.txtResp.Enter += new System.EventHandler(this.txtResp_Enter);
             this.txtResp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtResp_KeyPress);
             this.txtResp.Leave += new System.EventHandler(this.txtResp_Leave);
+            // 
+            // shapeContainer2
+            // 
+            this.shapeContainer2.Location = new System.Drawing.Point(3, 16);
+            this.shapeContainer2.Margin = new System.Windows.Forms.Padding(0);
+            this.shapeContainer2.Name = "shapeContainer2";
+            this.shapeContainer2.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
+            this.lineShape3,
+            this.lineShape2});
+            this.shapeContainer2.Size = new System.Drawing.Size(825, 216);
+            this.shapeContainer2.TabIndex = 264;
+            this.shapeContainer2.TabStop = false;
+            // 
+            // lineShape3
+            // 
+            this.lineShape3.BorderColor = System.Drawing.SystemColors.AppWorkspace;
+            this.lineShape3.Name = "lineShape3";
+            this.lineShape3.X1 = 668;
+            this.lineShape3.X2 = 668;
+            this.lineShape3.Y1 = -9;
+            this.lineShape3.Y2 = 211;
+            // 
+            // lineShape2
+            // 
+            this.lineShape2.BorderColor = System.Drawing.SystemColors.AppWorkspace;
+            this.lineShape2.Name = "lineShape2";
+            this.lineShape2.X1 = 532;
+            this.lineShape2.X2 = 532;
+            this.lineShape2.Y1 = -8;
+            this.lineShape2.Y2 = 212;
             // 
             // rbPorCodigo
             // 
@@ -643,7 +733,7 @@
             this.groupBox2.Size = new System.Drawing.Size(387, 80);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            
             // 
             // txtCheckCodigo
             // 
@@ -652,7 +742,6 @@
             this.txtCheckCodigo.Name = "txtCheckCodigo";
             this.txtCheckCodigo.Size = new System.Drawing.Size(64, 21);
             this.txtCheckCodigo.TabIndex = 1;
-            this.txtCheckCodigo.TextChanged += new System.EventHandler(this.txtCheckCodigo_TextChanged);
             this.txtCheckCodigo.Enter += new System.EventHandler(this.txtCheckCodigo_Enter);
             this.txtCheckCodigo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCheckCodigo_KeyPress);
             this.txtCheckCodigo.Leave += new System.EventHandler(this.txtCheckCodigo_Leave);
@@ -697,6 +786,18 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Enter += new System.EventHandler(this.groupBox4_Enter);
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Gainsboro;
+            this.label11.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.Black;
+            this.label11.Location = new System.Drawing.Point(56, 7);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(246, 25);
+            this.label11.TabIndex = 174;
+            this.label11.Text = "Critério de Ordenação";
+            // 
             // statusStrip1
             // 
             this.statusStrip1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -734,80 +835,6 @@
             this.tssMensagem.Name = "tssMensagem";
             this.tssMensagem.Size = new System.Drawing.Size(0, 17);
             // 
-            // btnOK
-            // 
-            this.btnOK.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnOK.Font = new System.Drawing.Font("Verdana", 9F);
-            this.btnOK.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnOK.Location = new System.Drawing.Point(555, 183);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(95, 40);
-            this.btnOK.TabIndex = 263;
-            this.btnOK.Text = "&OK";
-            this.btnOK.UseVisualStyleBackColor = true;
-            this.btnOK.Visible = false;
-            // 
-            // btnAlterar
-            // 
-            this.btnAlterar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnAlterar.Font = new System.Drawing.Font("Verdana", 9F);
-            this.btnAlterar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnAlterar.Location = new System.Drawing.Point(555, 87);
-            this.btnAlterar.Name = "btnAlterar";
-            this.btnAlterar.Size = new System.Drawing.Size(95, 40);
-            this.btnAlterar.TabIndex = 262;
-            this.btnAlterar.Text = "&Alterar";
-            this.toolTip1.SetToolTip(this.btnAlterar, "Clique duas vezes na planilha sobre a linha a ser alterada");
-            this.btnAlterar.UseVisualStyleBackColor = true;
-            // 
-            // btnIncluir
-            // 
-            this.btnIncluir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnIncluir.Font = new System.Drawing.Font("Verdana", 9F);
-            this.btnIncluir.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnIncluir.Location = new System.Drawing.Point(555, 135);
-            this.btnIncluir.Name = "btnIncluir";
-            this.btnIncluir.Size = new System.Drawing.Size(95, 40);
-            this.btnIncluir.TabIndex = 261;
-            this.btnIncluir.Text = "&Incluir";
-            this.btnIncluir.UseVisualStyleBackColor = true;
-            // 
-            // btnExcluir
-            // 
-            this.btnExcluir.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExcluir.BackgroundImage")));
-            this.btnExcluir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnExcluir.Font = new System.Drawing.Font("Verdana", 9F);
-            this.btnExcluir.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnExcluir.Location = new System.Drawing.Point(555, 39);
-            this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(95, 40);
-            this.btnExcluir.TabIndex = 260;
-            this.btnExcluir.Text = "      &Excluir";
-            this.toolTip1.SetToolTip(this.btnExcluir, "Clique duas vezes na planilha sobre a linha a ser alterada");
-            this.btnExcluir.UseVisualStyleBackColor = true;
-            // 
-            // btnSair
-            // 
-            this.btnSair.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSair.Location = new System.Drawing.Point(707, 183);
-            this.btnSair.Name = "btnSair";
-            this.btnSair.Size = new System.Drawing.Size(95, 40);
-            this.btnSair.TabIndex = 259;
-            this.btnSair.Text = "&Sair";
-            this.btnSair.UseVisualStyleBackColor = true;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.Color.Gainsboro;
-            this.label11.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(56, 7);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(246, 25);
-            this.label11.TabIndex = 174;
-            this.label11.Text = "Critério de Ordenação";
-            // 
             // shapeContainer1
             // 
             this.shapeContainer1.Location = new System.Drawing.Point(0, 0);
@@ -821,62 +848,32 @@
             this.shapeContainer1.TabIndex = 174;
             this.shapeContainer1.TabStop = false;
             // 
-            // lineShape1
+            // lineShape5
             // 
-            this.lineShape1.BorderColor = System.Drawing.SystemColors.ButtonFace;
-            this.lineShape1.Name = "lineShape1";
-            this.lineShape1.X1 = 421;
-            this.lineShape1.X2 = 421;
-            this.lineShape1.Y1 = 8;
-            this.lineShape1.Y2 = 90;
-            // 
-            // lineShape2
-            // 
-            this.lineShape2.BorderColor = System.Drawing.SystemColors.ButtonFace;
-            this.lineShape2.Name = "lineShape2";
-            this.lineShape2.X1 = 532;
-            this.lineShape2.X2 = 532;
-            this.lineShape2.Y1 = -8;
-            this.lineShape2.Y2 = 212;
-            // 
-            // shapeContainer2
-            // 
-            this.shapeContainer2.Location = new System.Drawing.Point(3, 16);
-            this.shapeContainer2.Margin = new System.Windows.Forms.Padding(0);
-            this.shapeContainer2.Name = "shapeContainer2";
-            this.shapeContainer2.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
-            this.lineShape3,
-            this.lineShape2});
-            this.shapeContainer2.Size = new System.Drawing.Size(825, 216);
-            this.shapeContainer2.TabIndex = 264;
-            this.shapeContainer2.TabStop = false;
-            // 
-            // lineShape3
-            // 
-            this.lineShape3.BorderColor = System.Drawing.SystemColors.ButtonFace;
-            this.lineShape3.Name = "lineShape3";
-            this.lineShape3.X1 = 668;
-            this.lineShape3.X2 = 668;
-            this.lineShape3.Y1 = -9;
-            this.lineShape3.Y2 = 211;
+            this.lineShape5.BorderColor = System.Drawing.SystemColors.AppWorkspace;
+            this.lineShape5.Name = "lineShape5";
+            this.lineShape5.X1 = 30;
+            this.lineShape5.X2 = 845;
+            this.lineShape5.Y1 = 99;
+            this.lineShape5.Y2 = 99;
             // 
             // lineShape4
             // 
-            this.lineShape4.BorderColor = System.Drawing.SystemColors.ButtonFace;
+            this.lineShape4.BorderColor = System.Drawing.SystemColors.AppWorkspace;
             this.lineShape4.Name = "lineShape4";
             this.lineShape4.X1 = 27;
             this.lineShape4.X2 = 842;
             this.lineShape4.Y1 = 301;
             this.lineShape4.Y2 = 301;
             // 
-            // lineShape5
+            // lineShape1
             // 
-            this.lineShape5.BorderColor = System.Drawing.SystemColors.ButtonFace;
-            this.lineShape5.Name = "lineShape5";
-            this.lineShape5.X1 = 30;
-            this.lineShape5.X2 = 845;
-            this.lineShape5.Y1 = 101;
-            this.lineShape5.Y2 = 101;
+            this.lineShape1.BorderColor = System.Drawing.SystemColors.AppWorkspace;
+            this.lineShape1.Name = "lineShape1";
+            this.lineShape1.X1 = 421;
+            this.lineShape1.X2 = 421;
+            this.lineShape1.Y1 = 8;
+            this.lineShape1.Y2 = 90;
             // 
             // Unidades
             // 
@@ -960,7 +957,7 @@
         private System.Windows.Forms.ComboBox cmbUF;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtCep;
         private System.Windows.Forms.LinkLabel linkLabel3;
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnAlterar;

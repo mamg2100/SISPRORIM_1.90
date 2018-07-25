@@ -292,10 +292,11 @@ namespace Sistema_Prorim
                    
                     dataGridView1.Columns[14].HeaderText = "Contabilidade";
                     dataGridView1.Columns[15].HeaderText = "Ordenador";
-                    dataGridView1.Columns[16].HeaderText = "Compras 1ª";
-                    dataGridView1.Columns[17].HeaderText = "Ord.Empenho";
-                    dataGridView1.Columns[18].HeaderText = "Compras 2ª";
-                    dataGridView1.Columns[19].HeaderText = "Dipe";
+                    dataGridView1.Columns[16].HeaderText = "Prefeito";
+                    dataGridView1.Columns[17].HeaderText = "Compras 1ª";
+                    dataGridView1.Columns[18].HeaderText = "Ord.Empenho";
+                    dataGridView1.Columns[19].HeaderText = "Compras 2ª";
+                    dataGridView1.Columns[20].HeaderText = "Dipe";
 
                     if (chkTramite.Checked == true)
                     {
@@ -305,6 +306,8 @@ namespace Sistema_Prorim
                         dataGridView1.Columns[17].Visible = true;
                         dataGridView1.Columns[18].Visible = true;
                         dataGridView1.Columns[19].Visible = true;
+                        dataGridView1.Columns[20].Visible = true;
+
                     }
                     else
                     {
@@ -314,37 +317,38 @@ namespace Sistema_Prorim
                         dataGridView1.Columns[17].Visible = false;
                         dataGridView1.Columns[18].Visible = false;
                         dataGridView1.Columns[19].Visible = false;
+                        dataGridView1.Columns[20].Visible = true;
                     }
                     
-                    dataGridView1.Columns[20].HeaderText = "Cadastrante";
-                    dataGridView1.Columns[21].HeaderText = "Data Cadastro";
+                    dataGridView1.Columns[21].HeaderText = "Cadastrante";
+                    dataGridView1.Columns[22].HeaderText = "Data Cadastro";
                     
                     if (chkCadastrante.Checked == true) {
-                        dataGridView1.Columns[20].Visible = true;
                         dataGridView1.Columns[21].Visible = true;
+                        dataGridView1.Columns[22].Visible = true;
                     }else{
-                        dataGridView1.Columns[20].Visible = false;
                         dataGridView1.Columns[21].Visible = false;
+                        dataGridView1.Columns[22].Visible = false;
                     }
 
-                    dataGridView1.Columns[22].HeaderText = "Observações";
+                    dataGridView1.Columns[23].HeaderText = "Observações";
                     if (chkObs.Checked == true)
                     {
 
-                        dataGridView1.Columns[22].Visible = true;
+                        dataGridView1.Columns[23].Visible = true;
                     }
                     else {
-                        dataGridView1.Columns[22].Visible = false;
+                        dataGridView1.Columns[23].Visible = false;
                     }
                     
-                    dataGridView1.Columns[23].HeaderText = "Atendida";
-                    dataGridView1.Columns[23].Visible = false;
-                    dataGridView1.Columns[24].HeaderText = "Concluída";
+                    dataGridView1.Columns[24].HeaderText = "Atendida";
                     dataGridView1.Columns[24].Visible = false;
-                    dataGridView1.Columns[25].HeaderText = "Usuário";
+                    dataGridView1.Columns[25].HeaderText = "Concluída";
                     dataGridView1.Columns[25].Visible = false;
-                    dataGridView1.Columns[26].HeaderText = "Unidade";
+                    dataGridView1.Columns[26].HeaderText = "Usuário";
                     dataGridView1.Columns[26].Visible = false;
+                    dataGridView1.Columns[27].HeaderText = "Unidade";
+                    dataGridView1.Columns[27].Visible = false;
                     
                     mConn.Close();
                     calculaQuantidadeRegistros();
@@ -396,7 +400,6 @@ namespace Sistema_Prorim
                 }
 
                 mostrarResultados();
-
             }
             else
             {
@@ -1316,15 +1319,17 @@ namespace Sistema_Prorim
 
             Sistema_prorim.Global.DadosRim.DataContabilidade = dataGridView1[14, dataGridView1.CurrentCellAddress.Y].Value.ToString();
             Sistema_prorim.Global.DadosRim.DataOrdenador1 = dataGridView1[15, dataGridView1.CurrentCellAddress.Y].Value.ToString();
-            Sistema_prorim.Global.DadosRim.DataCompras1 = dataGridView1[16, dataGridView1.CurrentCellAddress.Y].Value.ToString();
-            Sistema_prorim.Global.DadosRim.DataOrdenador2 = dataGridView1[17, dataGridView1.CurrentCellAddress.Y].Value.ToString();
-            Sistema_prorim.Global.DadosRim.DataCompras2 = dataGridView1[18, dataGridView1.CurrentCellAddress.Y].Value.ToString();
-            Sistema_prorim.Global.DadosRim.DataDipe = dataGridView1[19, dataGridView1.CurrentCellAddress.Y].Value.ToString();
 
-            Sistema_prorim.Global.DadosRim.cadastradoPor = dataGridView1[20, dataGridView1.CurrentCellAddress.Y].Value.ToString();
-            Sistema_prorim.Global.DadosRim.dtCadastro = dataGridView1[21, dataGridView1.CurrentCellAddress.Y].Value.ToString();
+            Sistema_prorim.Global.DadosRim.DataPrefeito = dataGridView1[16, dataGridView1.CurrentCellAddress.Y].Value.ToString();
+            Sistema_prorim.Global.DadosRim.DataCompras1 = dataGridView1[17, dataGridView1.CurrentCellAddress.Y].Value.ToString();
+            Sistema_prorim.Global.DadosRim.DataOrdenador2 = dataGridView1[18, dataGridView1.CurrentCellAddress.Y].Value.ToString();
+            Sistema_prorim.Global.DadosRim.DataCompras2 = dataGridView1[19, dataGridView1.CurrentCellAddress.Y].Value.ToString();
+            Sistema_prorim.Global.DadosRim.DataDipe = dataGridView1[20, dataGridView1.CurrentCellAddress.Y].Value.ToString();
 
-            Sistema_prorim.Global.DadosRim.Obs = dataGridView1[22, dataGridView1.CurrentCellAddress.Y].Value.ToString();
+            Sistema_prorim.Global.DadosRim.cadastradoPor = dataGridView1[21, dataGridView1.CurrentCellAddress.Y].Value.ToString();
+            Sistema_prorim.Global.DadosRim.dtCadastro = dataGridView1[22, dataGridView1.CurrentCellAddress.Y].Value.ToString();
+
+            Sistema_prorim.Global.DadosRim.Obs = dataGridView1[23, dataGridView1.CurrentCellAddress.Y].Value.ToString();
 
             Requisicao rim = new Requisicao();
             rim.Show();
@@ -1371,10 +1376,12 @@ namespace Sistema_Prorim
 
         private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
+            /*
             if (e.RowIndex % 2 ==0)
             {
                 e.CellStyle.BackColor = Color.LightBlue;
             }
+            */
         }                                     
        
     }

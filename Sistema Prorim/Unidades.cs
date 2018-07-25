@@ -18,23 +18,17 @@ namespace Sistema_prorim
         private MySqlDataAdapter mAdapter;
         private DataSet mDataSet;
         public String temp;
+        int flagInclusao = 1; // 0 - para alteração de dados  1- para inclusão de dados  2 - para exclusão de dados  
        
-        string tipousuario;
-        int flagInclusao = 1;
-        int tentativa = 1;
-
-
         public Unidades()
         {
-            //Global.Logon.ipservidor = "192.168.5.88";
             InitializeComponent();
         }
 
         private void Unidades_Load(object sender, EventArgs e)
         {
-            rbPorNome.Checked = true;
             mostrarResultados();
-            //DesabilitaTextBox();
+            
         }
 
         private void mostrarResultados()
@@ -44,14 +38,17 @@ namespace Sistema_prorim
             mConn.Open();
 
             //cria um adapter utilizando a instrução SQL para acessar a tabela 
-            if (rbPorCodigo.Checked == true)
-                // ordena a tabela de acordo com o critério estabelecido
-                mAdapter = new MySqlDataAdapter("SELECT * FROM unidade ORDER BY Cod_unidade", mConn);
+            // ordena a tabela de acordo com o critério estabelecido
+            if (rbPorCodigo.Checked == true)                
+                mAdapter = new MySqlDataAdapter("SELECT * FROM unidade ORDER BY Cod_unidade DESC", mConn);
             else
                 if (rbPorNome.Checked == true)
                     mAdapter = new MySqlDataAdapter("SELECT * FROM unidade ORDER BY Nome_unidade", mConn);
                 else
-                    mAdapter = new MySqlDataAdapter("SELECT * FROM unidade ORDER by Resp_unidade", mConn);
+                      if (rbPorContato.Checked==true)
+                        mAdapter = new MySqlDataAdapter("SELECT * FROM unidade ORDER by Resp_unidade", mConn);
+                      else                      
+                        mAdapter = new MySqlDataAdapter("SELECT * FROM unidade ORDER by Cod_unidade DESC", mConn);
 
             //preenche o dataset através do adapter
             mAdapter.Fill(mDataSet, "unidade");
@@ -75,7 +72,7 @@ namespace Sistema_prorim
             dataGridView1.Columns[11].HeaderText = "Fone/Contato";
 
             calculaQuantidadeRegistros();
-            dataGridView1.Enabled = false;
+            //dataGridView1.Enabled = false;
            
         }
 
@@ -92,8 +89,8 @@ namespace Sistema_prorim
 
         private void Excluir(int codigo)
         {
+            btnOK.Visible = true;
             {
-                {
                     //conexao
                     mConn = new MySqlConnection("Persist Security Info=False;server=" + Global.Logon.ipservidor + ";database=prorim;uid=root;password=");
                     mConn.Open();
@@ -110,48 +107,30 @@ namespace Sistema_prorim
                         {
                             throw new Exception("Não foi possível excluir a unidade " + codigo);
                         }
-                    }
-                    /*catch (MySqlException ex)
-                    {
-                        throw new Exception("Servidor SQL Erro:" + ex.Number);
-                    }*/
+                    }                    
                     catch
                     {
-                        MessageBox.Show("[erro] Delete FROM prorim.unidade Where Cod_unidade=" + codigo, "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("[Erro] Delete FROM prorim.unidade Where Cod_unidade=" + codigo, "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     }
                     finally
                     {
+                        MessageBox.Show("Unidade de código [ " + codigo +" ] excluída com sucesso.", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        DesabilitaTextBox();
+                        limparCampos();
                         mConn.Close();
                         mostrarResultados();
                     }
-
-                    //LimpaCampos();
-                    //UncheckedRadioButtons();
-                    //HabilitaRadionButtons();
-                    //DesabilitaTextBox();
+                    
                 }
-            }
+            
         }
         
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             textBox3.Text = dataGridView1[0, dataGridView1.CurrentCellAddress.Y].Value.ToString();
-            txtSetor.Text = dataGridView1[1, dataGridView1.CurrentCellAddress.Y].Value.ToString();
-            cmbTipo.Text = dataGridView1[2, dataGridView1.CurrentCellAddress.Y].Value.ToString();
-            txtEndereço.Text = dataGridView1[3, dataGridView1.CurrentCellAddress.Y].Value.ToString();
-            txtNumero.Text = dataGridView1[4, dataGridView1.CurrentCellAddress.Y].Value.ToString();
-            txtBairro.Text = dataGridView1[5, dataGridView1.CurrentCellAddress.Y].Value.ToString();
-            txtCidade.Text = dataGridView1[6, dataGridView1.CurrentCellAddress.Y].Value.ToString();
-            cmbUF.Text = dataGridView1[7, dataGridView1.CurrentCellAddress.Y].Value.ToString();
-            txtFone1.Text = dataGridView1[8, dataGridView1.CurrentCellAddress.Y].Value.ToString();
-            txtFone2.Text = dataGridView1[9, dataGridView1.CurrentCellAddress.Y].Value.ToString();
-            txtResp.Text = dataGridView1[10, dataGridView1.CurrentCellAddress.Y].Value.ToString();
-            txtFoneContato.Text = dataGridView1[11, dataGridView1.CurrentCellAddress.Y].Value.ToString();
-            dataGridView1.Enabled = false;
-            // para alterar os dados, deve-se habilitar os textBox
-            HabilitaTextBox();
+            
         }
 
         private void HabilitaTextBox()
@@ -173,7 +152,6 @@ namespace Sistema_prorim
 
         private void txtCheckCodigo_KeyPress(object sender, KeyPressEventArgs e)
         {
-
             if (e.KeyChar == 13) //Se for Enter executa a validação
             {
                 if (txtCheckCodigo.Text != "")
@@ -182,12 +160,7 @@ namespace Sistema_prorim
                     codigo = Convert.ToInt32(temp);
                     PesquisaPorCodigo(codigo);
                     txtCheckCodigo.Text = "";
-                }
-                else
-                {
-
-                }
-
+                }               
             }
 
         }
@@ -248,11 +221,7 @@ namespace Sistema_prorim
 
         }
 
-        private void bt_visualizar_Click(object sender, EventArgs e)
-        {
-            mostrarResultados();
-        }       
-        
+             
         private void Alterar(int codigo)
         {
                         //conexao
@@ -298,14 +267,13 @@ namespace Sistema_prorim
                         finally
                         {
                             mConn.Close();
-                            LimpaCampos();
-                            DesabilitaTextBox();
-                            
+                            limparCampos();
+                            DesabilitaTextBox();                            
                             mostrarResultados();                           
                     }            
         }
 
-               private void DesabilitaTextBox()
+        private void DesabilitaTextBox()
         {          
             textBox3.Enabled = false;
             txtSetor.Enabled = false;
@@ -322,7 +290,7 @@ namespace Sistema_prorim
             
         }
 
-        private void LimpaCampos()
+        private void limparCampos()
         {
             textBox3.Text = "";
             txtSetor.Text = "";
@@ -333,10 +301,8 @@ namespace Sistema_prorim
             cmbTipo.Text = "";
             txtNumero.Text = "";
             txtBairro.Text = "";
-            //txtCidade.Text = "";
             cmbUF.Text = "";
             txtFoneContato.Text = "";
-
         }
 
         private void Gravar()
@@ -372,8 +338,9 @@ namespace Sistema_prorim
 
                 // Método criado para que quando o registo é gravado, automaticamente a dataGridView efetue um "Refresh"
 
-                LimpaCampos();
+                limparCampos();
                 DesabilitaTextBox();
+                uncheckedrb();
                 caixaAlta();
             }
 
@@ -494,97 +461,7 @@ namespace Sistema_prorim
                 txtResp.Focus();
             }
         
-        }
-
-        private void txtSetor_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtCheckCodigo_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtFone2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnAtualizar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtResp_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label15_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label17_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtFone1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        }       
 
         private void cmbTipo_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -707,17 +584,7 @@ namespace Sistema_prorim
             txtCidade.BackColor = Color.White;
         }
 
-        private void txtEndereço_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtBairro_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+       private void button1_Click(object sender, EventArgs e)
         {
             if (dataGridView1.Enabled == true)
                 dataGridView1.Enabled = false;
@@ -725,24 +592,14 @@ namespace Sistema_prorim
                 dataGridView1.Enabled = true;
         }
 
-        private void label14_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label19_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtNumero_Leave(object sender, EventArgs e)
+       private void txtNumero_Leave(object sender, EventArgs e)
         {
             txtNumero.BackColor = Color.White;
         }
 
         private void textBox4_Leave(object sender, EventArgs e)
         {
-            textBox4.BackColor = Color.White;
+            txtCep.BackColor = Color.White;
         }
 
         private void txtFone1_Leave(object sender, EventArgs e)
@@ -807,7 +664,7 @@ namespace Sistema_prorim
 
         private void textBox4_Enter(object sender, EventArgs e)
         {
-            textBox4.BackColor = Color.Yellow;
+            txtCep.BackColor = Color.Yellow;
         }
 
         private void txtFone1_Enter(object sender, EventArgs e)
@@ -833,6 +690,148 @@ namespace Sistema_prorim
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start("http://www.buscacep.correios.com.br/");
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Enabled = true;
+            uncheckedrb();
+            btnIncluir.Enabled = false;
+            btnAlterar.Enabled = false;
+            btnExcluir.Enabled = false;            
+            btnOK.Visible = true;
+            rbPorCodigo.Checked = false;
+            rbPorContato.Checked = false;
+            rbPorNome.Checked = false;
+            flagInclusao = 2;
+        }
+
+        private void btnAlterar_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Enabled = true;
+            uncheckedrb();
+            btnIncluir.Enabled = false;
+            btnAlterar.Enabled = false;
+            btnExcluir.Enabled = false;
+            btnOK.Visible = true;
+            rbPorCodigo.Checked = false;
+            rbPorContato.Checked = false;
+            rbPorNome.Checked = false;
+            flagInclusao = 0;
+        }
+
+        private void uncheckedrb()
+        {
+            if (rbPorCodigo.Checked == true || rbPorContato.Checked == true || rbPorNome.Checked == true)
+            {
+                rbPorCodigo.Checked = false;
+                rbPorContato.Checked = false;
+                rbPorNome.Checked = false;
+            }
+        }
+
+        private void btnIncluir_Click(object sender, EventArgs e)
+        {
+            flagInclusao = 1;
+            btnIncluir.Enabled = false;
+            btnAlterar.Enabled = false;
+            btnExcluir.Enabled = false;
+            btnOK.Visible = true;
+            HabilitaTextBox();
+            txtSetor.Focus();
+        }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+            // Campos obrigatórios na inclusão.
+            // Nome, Login, Senha e Tipo de Usuário. Esse último se - não marcado - ficará como usuário tipo comum.
+            // Portanto a verificação será dos campos três iniciais
+
+            if (txtSetor.Text == "")
+            {
+                if (flagInclusao == 1)
+                {
+                    MessageBox.Show("Campo não pode ficar vazio. Entre pelo menos com a identificação da Unidade para incluir.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    txtSetor.Focus();
+                }
+                else 
+                {
+                    if (flagInclusao == 0)
+                    {
+                        MessageBox.Show("Campo não pode ficar vazio. Clique na planilha na linha correspondente à Unidade cujos dados devam ser alterados.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                        
+                    }
+                    else
+                    {
+                        MessageBox.Show("Campo não pode ficar vazio. Clique na planilha na linha correspondente à Unidade cujos dados devam ser excluídos.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    }       
+                                          
+                }
+            }
+            else
+            {
+              // O botão OK serve tanto para inclusão quanto para alteração de dados dos usuários
+              // Foi criada um variável flag para informar o que estamos fazendo. Inclusão ou alteração.
+                btnOK.Visible = true;
+                if (flagInclusao == 1)
+              {
+                 Gravar();
+                 btnIncluir.Enabled = true;
+                 btnAlterar.Enabled = true;
+                 btnExcluir.Enabled = true;
+                 btnOK.Visible = false;
+              }
+                else
+              {  // essa linha só serve para casos de alteração de dados e exclusão
+                 codigo = Convert.ToInt32(textBox3.Text);
+                   if (flagInclusao == 0){
+                       Alterar(codigo);
+                       btnIncluir.Enabled = true;
+                       btnAlterar.Enabled = true;
+                       btnExcluir.Enabled = true;
+                       btnOK.Visible = false;
+                   }else{
+                       Excluir(codigo);
+                       btnIncluir.Enabled = true;
+                       btnAlterar.Enabled = true;
+                       btnExcluir.Enabled = true;
+                       btnOK.Visible = false;
+                   }
+              }
+            }             
+        }
+
+        private void btnSair_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void dataGridView1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            textBox3.Text = dataGridView1[0, dataGridView1.CurrentCellAddress.Y].Value.ToString();
+            txtSetor.Text = dataGridView1[1, dataGridView1.CurrentCellAddress.Y].Value.ToString();
+            cmbTipo.Text = dataGridView1[2, dataGridView1.CurrentCellAddress.Y].Value.ToString();
+            txtEndereço.Text = dataGridView1[3, dataGridView1.CurrentCellAddress.Y].Value.ToString();
+            txtNumero.Text = dataGridView1[4, dataGridView1.CurrentCellAddress.Y].Value.ToString();
+            txtBairro.Text = dataGridView1[5, dataGridView1.CurrentCellAddress.Y].Value.ToString();
+            txtCidade.Text = dataGridView1[6, dataGridView1.CurrentCellAddress.Y].Value.ToString();
+            cmbUF.Text = dataGridView1[7, dataGridView1.CurrentCellAddress.Y].Value.ToString();
+            txtFone1.Text = dataGridView1[8, dataGridView1.CurrentCellAddress.Y].Value.ToString();
+            txtFone2.Text = dataGridView1[9, dataGridView1.CurrentCellAddress.Y].Value.ToString();
+            txtResp.Text = dataGridView1[10, dataGridView1.CurrentCellAddress.Y].Value.ToString();
+            txtFoneContato.Text = dataGridView1[11, dataGridView1.CurrentCellAddress.Y].Value.ToString();
+
+            // para alterar os dados, deve-se habilitar os textBox
+
+            btnOK.Visible = true;
+
+            if (flagInclusao == 0 || flagInclusao==1)
+            {
+                HabilitaTextBox();
+            }
+            else {
+                DesabilitaTextBox();
+            }
         }
     }
 }

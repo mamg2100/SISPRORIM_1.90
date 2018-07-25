@@ -187,6 +187,13 @@ objetos ComboBox - foi automatizado;
 
 13. Criação do FORMULÁRIO DE SUGESTÕES DE MELHORIA (FSM) onde cada usuário pode cadastrar sugestões de melho-
 rias no sistema que julgar necessárias além de acompanhar a sugestão feita pelos demais. É um canal de comunicação e
-registro para que as sugestões não se percam com o tempo.</value>
+registro para que as sugestões não se percam com o tempo.
+
+14. A partir dessa versão não será mais permitido  um usuário cadastraar requisição em nome de outro usuário, portanto
+não será mais necessário informar qual o cadastrante da requisção pois o sisteme admite que o cadastrante é o usuário
+logado.
+
+15. Acrescentado no Banco de Dados coluna na tabela de Requisições referente à data de envio da RI para o Prefeito para
+assinatura e alterada a forma como se visualizam os trâmites das requisições.</value>
   </data>
 </root>

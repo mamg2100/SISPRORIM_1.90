@@ -19,6 +19,7 @@ namespace Sistema_prorim
         private string stConsulta;
         public MySqlConnection Cmn = new MySqlConnection();
         public string tiporim;
+        private int flagInclusao;
 
 
         public rim_tem_despesa()
@@ -28,15 +29,15 @@ namespace Sistema_prorim
 
         private void rim_tem_despesa_Load(object sender, EventArgs e)
         {            
-            rbNovo.Checked = true;
+                                   
+            //Código para recuoerar o fornecedor já vinculado à RI. Escolhido na RI.
+                       
+            txtCodDespesa.Text =  Sistema_prorim.Global.despesa.coddespesas;
+            txtCodRim.Text = Sistema_prorim.Global.DadosRim.cetil;
+            txtDespesa.Text = Sistema_prorim.Global.despesa.despesas;
+            txtCodigoSeqRI.Text = Sistema_prorim.Global.RI.codcetil;
 
-            bt_Gravar.Focus();
-            bt_Cancelar.Enabled = true;
-            txtCodDespesa.Text = Global.despesa.coddespesas;
-            txtCodRim.Text = Global.NotaFiscal.codigoRI;
-            txtDespesa.Text = Global.despesa.despesas;
-            txtCodigoSeqRI.Text = Global.RI.codcetil;
-            
+                 
             // Essa variável recebe valor do total do empenho ao gravar cada um, somando-os.
             // Valor que será transferido para o valor real na requisição. Deve ser criado flag para
             // forçar o usuário a gravar novamente a RI quando houver alteração no empenho para persistir
@@ -54,88 +55,53 @@ namespace Sistema_prorim
             }
             
             statusStrip1.Text = "você pode 'incluir', 'atualizar' ou 'excluir' despesas, empenhos e autorizações relacionados à requisição especificada.";
-            txtCodigo.Text = txtCodRim.Text;
-            txtCodRim.Enabled = false;
             mostrarResultados();
-            HabilitaRadionButtons();          
+                     
         }
 
         private void mostrarResultados()
         {
-        
+            //txtCodRim.Text = Global.DadosRim.cetil;                
+
             mDataSet = new DataSet();
             mConn = new MySqlConnection("Persist Security Info=False;server=" + Global.Logon.ipservidor + ";database=prorim;uid=root;password=");
             mConn.Open();
 
-            //cria um adapter utilizando a instrução SQL para acessar a tabela
-            mAdapter = new MySqlDataAdapter("SELECT * FROM rim_has_dotacao WHERE Cetil= '" + txtCodRim.Text + "'ORDER BY Cod_rim", mConn);
+                //cria um adapter utilizando a instrução SQL para acessar a tabela
+            mAdapter = new MySqlDataAdapter("SELECT * FROM rim_has_dotacao WHERE Cetil='" + Global.DadosRim.cetil + "' ORDER BY Cod_rim", mConn);
 
-            //preenche o dataset através do adapter
-            mAdapter.Fill(mDataSet, "rim_has_dotacao");
+                //preenche o dataset através do adapter
+                mAdapter.Fill(mDataSet, "rim_has_dotacao");
 
-            //atribui o resultado à propriedade DataSource do dataGridView
-            dataGridView1.DataSource = mDataSet;
-            dataGridView1.DataMember = "rim_has_dotacao";
+                //atribui o resultado à propriedade DataSource do dataGridView
+                dataGridView1.DataSource = mDataSet;
+                dataGridView1.DataMember = "rim_has_dotacao";
 
-            //Renomeia as colunas
-            dataGridView1.Columns[0].HeaderText = "Código";
-            dataGridView1.Columns[0].Visible = false;
-            dataGridView1.Columns[1].HeaderText = "ID RIM";
-            dataGridView1.Columns[1].Visible = false;
-            dataGridView1.Columns[2].HeaderText = "ID Despesa";
-            dataGridView1.Columns[2].Visible = false;
-            dataGridView1.Columns[3].HeaderText = "Cetil";
-            dataGridView1.Columns[4].HeaderText = "Empenho";
-            dataGridView1.Columns[5].HeaderText = "Data Empenho";
-            dataGridView1.Columns[6].HeaderText = "Valor Empenho";
-            dataGridView1.Columns[7].HeaderText = "Autorização";
-            dataGridView1.Columns[8].HeaderText = "Data AF";
-            dataGridView1.Columns[9].HeaderText = "Valor AF";
-            dataGridView1.Columns[10].HeaderText = "Fornecedor";
-            dataGridView1.Columns[11].HeaderText = "Tipo";
-            dataGridView1.Columns[11].Visible = false;
-            dataGridView1.Columns[12].HeaderText = "DT EMP SQL";
-            dataGridView1.Columns[12].Visible = false;
-            dataGridView1.Columns[13].Visible = false;
-
-                        
-            calculaRegistros();
-
-          //--------- apresentando o valor acumulado sempre que atualizar -----------
-           
-            somaEmpenhos();
-            somaAF();
-
-            /*
-            Double acumulado = 0;
-            Double acumuladoAF = 0;
-
-            try
-            {
-                foreach (DataGridViewRow col in dataGridView1.Rows)
-                { 
-                    acumulado = acumulado + Convert.ToDouble(col.Cells[6].Value);
-                    acumuladoAF = acumuladoAF + Convert.ToDouble(col.Cells[9].Value);
-                }
-
-                txtAcumulado.Text = acumulado.ToString("C");
-                txtAcumulado.Text = txtAcumulado.Text.Replace("R$","");
-
-                txtAcumuladoAF.Text = acumuladoAF.ToString("C");
-                txtAcumuladoAF.Text = txtAcumuladoAF.Text.Replace("R$", "");
+                //Renomeia as colunas
+                dataGridView1.Columns[0].HeaderText = "Código";
+                //dataGridView1.Columns[0].Visible = false;
+                dataGridView1.Columns[1].HeaderText = "Cod RI";
+                //dataGridView1.Columns[1].Visible = false;
+                dataGridView1.Columns[2].HeaderText = "Cod Despesa";
+                //dataGridView1.Columns[2].Visible = false;
+                dataGridView1.Columns[3].HeaderText = "Cetil";
+                dataGridView1.Columns[4].HeaderText = "Empenho";
+                dataGridView1.Columns[5].HeaderText = "Data Empenho";
+                dataGridView1.Columns[6].HeaderText = "Valor Empenho";
+                dataGridView1.Columns[7].HeaderText = "Autorização";
+                dataGridView1.Columns[8].HeaderText = "Data AF";
+                dataGridView1.Columns[9].HeaderText = "Valor AF";
+                dataGridView1.Columns[10].HeaderText = "Fornecedor";
+                dataGridView1.Columns[11].HeaderText = "Tipo";
+                //dataGridView1.Columns[11].Visible = false;
+                dataGridView1.Columns[12].HeaderText = "DT EMP SQL";
+                //dataGridView1.Columns[12].Visible = false;
+                dataGridView1.Columns[13].HeaderText = "Ano RI";
+                //dataGridView1.Columns[13].Visible = false;
                 
-            }
-            catch
-            {
-                txtAcumulado.Text = "0.00";
-                txtAcumuladoAF.Text = "0.00";
-            }
-
-            //------------------------------------------------------------------------------
-            */
-
-            calculaRegistros();
-
+                calcularRegistros();
+                somaEmpenhos();
+                somaAF();
         }
 
         private void somaAF()
@@ -185,7 +151,7 @@ namespace Sistema_prorim
 
         }
 
-        private void calculaRegistros()
+        private void calcularRegistros()
         {
             int registro;
             registro = dataGridView1.RowCount;
@@ -195,65 +161,7 @@ namespace Sistema_prorim
                 label9.Text = registro + " registros";
 
         }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void bt_Gravar_Click(object sender, EventArgs e)
-        {
-            groupBox1.Height = 71;
-            Global.despesa.flag_valor_real = "1";
-            Global.despesa.empenhoTotal = txtAcumulado.Text;
-            
-            if (rbNovo.Checked == true)
-            
-            {
-                if (txtCodRim.Text == "")
-                {
-                   // txtCodRim.Enabled = true;
-                   // txtCodRim.Focus();
-                   toolStripStatusLabel4.Text = "confirme os dados capturados.";
-
-                }
-                else
-                {
-                    Gravar();
-                    bt_Gravar.Enabled = false;
-                }
-            }
-            else
-            {
-
-                try
-                {
-                    // int codigo1 = Convert.ToInt32(txtCodRim.Text);
-                    // int codigo2 = Convert.ToInt32(txtCodDespesa.Text);
-
-                    if (rbAlterar.Checked == true)
-                    {
-                        //int codigo0 = Convert.ToInt32(txtCodigohasDotacao);
-                        int codigo1 = Convert.ToInt32(txtCodigo.Text);
-                        //int codigo2 = Convert.ToInt32(txtCodDespesa.Text);
-                        Alterar(codigo1);
-                    }
-                    else
-                    {
-                        //int codigo0 = Convert.ToInt32(txtCodigohasDotacao);
-                        int codigo1 = Convert.ToInt32(txtCodigo.Text);
-                        //int codigo2 = Convert.ToInt32(txtCodDespesa.Text);
-                        Excluir(codigo1);
-                    }
-                }
-                catch 
-                {
-                    MessageBox.Show("Erro:Código da despesa (parâmetro) não definido. Verifique.", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                }
-            }
-        }
-
+                
         private void Excluir(int codigo1)
         {
             {
@@ -262,47 +170,38 @@ namespace Sistema_prorim
                 mConn.Open();
                 try
                 {
-                    //mConn.ConnectionString = Dados.StringDeConexao;
                     //command
                     MySqlCommand cmd = new MySqlCommand();
                     cmd.Connection = mConn;
-                    //cmd.CommandText = "delete from rim_has_dotacao where Codigo=" + codigo0 + "AND" + "Cod_rim=" + codigo1 + " AND " 
-                    //+ "Cod_despesa=" + codigo2;
-                    //mConn.Open();
-                    cmd.CommandText = "delete from rim_has_dotacao where Codigo=" + codigo1;
-
+                    cmd.CommandText = "Delete from rim_has_dotacao where Codigo=" + codigo1;
 
                     int resultado = cmd.ExecuteNonQuery();
                     if (resultado != 1)
                     {
-                        throw new Exception("Não foi possível excluir a Despesa" + codigo1);
+                        throw new Exception("Não foi possível excluir a linha da tabela de vinculo da despesa com a RI de Codigo Sequencial nº " + codigo1);
                     }
-
-                    //MessageBox.Show("delete from rim_has_dotacao where Codigo=" + codigo0 + "AND" + "Cod_rim=" + codigo1 + " AND " 
-                    //+ "Cod_despesa=" + codigo2, "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    MessageBox.Show("delete from rim_has_dotacao where Codigo=" + codigo1, "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
                 }
-                catch 
+                catch (Exception ex)
                 {
-                    //MessageBox.Show("Falha na conexão com o Banco de Dados [delete]. Erro:" + ex.Number, "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    // MessageBox.Show("delete from rim_has_dotacao where Codigo=" + codigo0 + "AND" + "Cod_rim=" + codigo1 + " AND "
-                    // + "Cod_despesa=" + codigo2, "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    MessageBox.Show("Não foi possível excluir a Despesa [" + codigo1 + "]", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                
+                    MessageBox.Show("Não foi possível excluir a linha da tabela de vinculo da despesa com a RI de Codigo Sequencial nº [" + codigo1 + "] " + "| Delete from rim_has_dotacao where Codigo=" + codigo1 + ex.Message);
                 }
 
-                //mostrarResultados();
-                mConn.Close();
-                
-                UncheckedRadioButtons();
-                mostrarResultados();
+                finally
+                {
+                    MessageBox.Show("Vínculo da despesa com a RI excluída com sucesso.", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
+                    limparCampos();
+                    mConn.Close();
+                    mostrarResultados();
+                    DesabilitaTextBox();
+                }
             }
            
         }
 
         private void Alterar(int codigo1)
         {
-
             // Não podemos deixar o cmbFornecedor em branco daí o controle a condição abaixo
 
             if (cmbFornecedor.Text != "")
@@ -385,7 +284,7 @@ namespace Sistema_prorim
             if (txtCodDespesa.Text == "")           
                         
             {
-                MessageBox.Show("Despesa não encontrada.", "Erro na gravação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Despesa não encontrada.", "Erro na Vinculação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 this.Close();
             }
             else
@@ -411,14 +310,14 @@ namespace Sistema_prorim
                     command.ExecuteNonQuery();
                 
                     mostrarResultados();
-                    calculaRegistros();
+                    calcularRegistros();
                     
                     //Mensagem de Sucesso
                     MessageBox.Show("Gravado com Sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                         
                     // Método criado para que quando o registo é gravado, automaticamente a dataGridView efetue um "Refresh"
 
-                    LimpaCampos();
+                    limparCampos();
                     DesabilitaTextBox();
                     this.Close();
                 }
@@ -429,10 +328,9 @@ namespace Sistema_prorim
 
                 }
 
-                Global.despesa.coddespesas = "";
-                Global.despesa.despesas = "";
-                Global.NotaFiscal.codigoRI = "";
-                Global.RI.cetil = "";
+                // LIMPANDO VARIÁVEIS.
+                LimparVariáveis();
+
                 // Variável que recebe o valor acumulado em txtAcumulado ref. total empenho gravado.
                        
             }
@@ -440,27 +338,21 @@ namespace Sistema_prorim
             Global.despesa.empenhoTotal = txtAcumulado.Text;
         }
 
-        private void UncheckedRadioButtons()
+        private void LimparVariáveis()
         {
-            rbAlterar.Checked = false;
-            rbExclui.Checked = false;
-            rbNovo.Checked = false;
-
+            Global.despesa.coddespesas = "";
+            Global.despesa.despesas = "";
+            Global.NotaFiscal.codigoRI = "";
+            Global.RI.cetil = "";
+            Global.despesa.empenhoTotal = "";                
         }
-
-        private void HabilitaRadionButtons()
-        {
-            rbAlterar.Enabled = true;
-            rbExclui.Enabled = true;
-            rbNovo.Enabled = true;
-        }
-
+        
         private void DesabilitaTextBox()
         {
 
         }
 
-        private void LimpaCampos()
+        private void limparCampos()
         {
             txtCodDespesa.Text = "";
             txtDespesa.Text = "";
@@ -474,37 +366,7 @@ namespace Sistema_prorim
 
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            bt_Gravar.Enabled = false;
-            UncheckedRadioButtons();
-            LimpaCampos();
-            DesabilitaTextBox();
-            HabilitaRadionButtons();
-        }
-
-        private void rbNovo_CheckedChanged(object sender, EventArgs e)
-        {
-            tssMensagem.Text = "módulo inclusão ativado";
-            txtCodDespesa.Enabled = false;
-            //txtCodRim.Enabled = true;
-            txtDespesa.Enabled = false;
-            txtCodigo.Enabled = false;
-            //HabilitaTextBox();
-            DesabilitaRadioButtons();
-            bt_Gravar.Enabled = true;
-            // btnExcluir.Enabled = false;
-            tssMensagem.Text = "módulo inclusão ativado";
-            
-        }
-
-        private void DesabilitaRadioButtons()
-        {
-            rbAlterar.Enabled = false;
-            rbExclui.Enabled = false;
-            rbNovo.Enabled = false;
-        }
-
+       
         private void HabilitaTextBox()
         {
             txtDespesa.Enabled = true;
@@ -544,82 +406,13 @@ namespace Sistema_prorim
             // uma despesa.
 
         }
-
-        private void rbAlterar_CheckedChanged(object sender, EventArgs e)
-        {
-
-            if (rbAlterar.Checked == true)
-            {                
-                tssMensagem.Text = "módulo atualização ativado";
-                rbExclui.Enabled = false;
-                rbNovo.Enabled = false;
-
-                MessageBox.Show("Duplo clique na planilha para escolher os dados para alteração", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                //groupBox1.Height = 148;
-                dataGridView1.Visible = true;
-                dataGridView1.Enabled = true;
-                dataGridView1.Focus();
-                
-                /* Codigo transferido para duplo clique no data grid, pois é obrigatorio a escolha da despesa para atualização dos dados
-                txtEmpenho.Visible = true;
-                txtDataEmpenho.Visible = true;
-                txtValorEmpenho.Visible = true;
-                
-                lblEmpenho.Visible = true;
-                lblDataEmpenho.Visible = true;
-                lblValorEmpenho.Visible = true;
-                
-                lblAF.Visible = true;
-                lblDataAF.Visible = true;
-                lblValorAF.Visible = true;                
-                
-                textBox1.Visible = true;
-                textBox6.Visible = true;
-                txtValorEmpenho.Enabled = true;
-                txtDataAutorizacao.Visible=true;
-                txtValorAutorizacao.Visible = true;
-                txtAutorizacao.Visible = true;
-                txtValorAutorizacao.Enabled = true;
-                */
-            }
-            else
-            {
-
-            }
-
-        }
-         
-        private void rbExclui_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rbExclui.Checked == true)
-            {
-                tssMensagem.Text = "módulo exclusão ativado ativado";
-
-                MessageBox.Show("Confira os dados ou duplo clique na planilha para escolhê-los e depois botão [Confirmar]", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                //rbAlterar.Checked = false;
-                //LimpaCampos();
-                //HabilitaTextBox();
-                DesabilitaRadioButtons();
-                bt_Gravar.Enabled = true;
-                dataGridView1.Enabled = true;
-                //btnAtualizar.Enabled = false;
-                //btnExcluir.Enabled = false;
-            }
-            else
-            {
-
-            }
-        }
-
+                 
         private void dataGridView1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            bt_Gravar.Enabled = true;
-            //btnAtualizar.Enabled = false;
-
+            //bt_Gravar.Enabled = true;
+           
             //-----------------codigo transferido do rbAtualizar
-
+            /*
             txtEmpenho.Visible = true;
             txtDataEmpenho.Visible = true;
             txtValorEmpenho.Visible = true;
@@ -648,7 +441,7 @@ namespace Sistema_prorim
             //---------------------------------
                         
             groupBox1.Height = 222;
-            txtCodigo.Text = dataGridView1[0, dataGridView1.CurrentCellAddress.Y].Value.ToString();
+            txtCodigo.Text = dataGridView1[0, dataGridView1.CurrentCellAddress.Y].Value.ToString().Trim();
             txtCodRim.Text = dataGridView1[1, dataGridView1.CurrentCellAddress.Y].Value.ToString();
             txtCodDespesa.Text = dataGridView1[2, dataGridView1.CurrentCellAddress.Y].Value.ToString();
             txtCodigohasDotacao.Text = dataGridView1[3,dataGridView1.CurrentCellAddress.Y].Value.ToString();
@@ -659,6 +452,7 @@ namespace Sistema_prorim
             txtDataAutorizacao.Text = dataGridView1[8, dataGridView1.CurrentCellAddress.Y].Value.ToString();
             txtValorAutorizacao.Text = dataGridView1[9, dataGridView1.CurrentCellAddress.Y].Value.ToString();
 
+            
             if (txtEmpenho.Text == "")
             {
                 txtEmpenho.Focus();
@@ -667,14 +461,14 @@ namespace Sistema_prorim
             {
                 txtAutorizacao.Focus();
             }
-
+            
             try
             {
                 stConection = "Persist Security Info=False;server=" + Global.Logon.ipservidor + ";database=prorim;uid=root;password=";
                 Cmn.ConnectionString = stConection;
                 Cmn.Open();
 
-                stConsulta = "SELECT Despesa FROM dotacao WHERE Cod_Despesa='" + txtCodDespesa.Text + "'";
+                stConsulta = "SELECT Despesa FROM dotacao WHERE Cod_Despesa=" + Convert.ToInt32(txtCodDespesa.Text);
 
                 MySqlCommand myCmd = new MySqlCommand();
                 myCmd.Connection = Cmn;
@@ -691,13 +485,14 @@ namespace Sistema_prorim
                 }
 
             }
-            catch
+            catch(Exception ex)
             {
                 MessageBox.Show("Não foi possível fazer conexão.", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                MessageBox.Show("SELECT Despesa FROM dotacao WHERE Cod_Despesa='" + txtCodDespesa.Text + "'"+ex.Message,"Atenção",MessageBoxButtons.OK,MessageBoxIcon.Warning);
             }
 
             Cmn.Close();
+            
 
             //Populando cmbFornecedor somente com os fornecedores já vinculados à Requisição
             //tabela pesquisa_fornecedor (pelo nome) é uma VIEW
@@ -716,35 +511,64 @@ namespace Sistema_prorim
             {
                 throw erro;
             }
+            
+            */
 
-            //
-        }
+            txtCodigo.Text = dataGridView1[0, dataGridView1.CurrentCellAddress.Y].Value.ToString();
+            txtCodigoSeqRI.Text = dataGridView1[1, dataGridView1.CurrentCellAddress.Y].Value.ToString();
+            txtCodigoSeqDespesa.Text = dataGridView1[2, dataGridView1.CurrentCellAddress.Y].Value.ToString();
+            txtCodDespesa.Text = dataGridView1[2, dataGridView1.CurrentCellAddress.Y].Value.ToString();
+            txtCodRim.Text = dataGridView1[3, dataGridView1.CurrentCellAddress.Y].Value.ToString();
 
-       
+            // Vamos abrir conexão com a tabela de Dotacao para ver qual despesa tem codigo txtCodigo.
+            stConection = "Persist Security Info=False;server=" + Global.Logon.ipservidor + ";database=prorim;uid=root;password=";
+            Cmn.ConnectionString = stConection;
+            Cmn.Open();
+            try
+            {               
+                stConsulta = "SELECT Despesa FROM dotacao WHERE Cod_Despesa=" + Convert.ToInt32(txtCodDespesa.Text);
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
+                MySqlCommand myCmd = new MySqlCommand();
+                myCmd.Connection = Cmn;
+                myCmd.CommandText = stConsulta;
+                MySqlDataReader myReader = myCmd.ExecuteReader();
 
-        }
+                if (myReader.HasRows)
+                {
+                    while (myReader.Read())
+                    {
+                        myReader.Read();
+                        txtDespesa.Text = myReader["Despesa"] + Environment.NewLine;
+                    }
+                }
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Não foi possível fazer conexão.", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("SELECT Despesa FROM dotacao WHERE Cod_Despesa='" + txtCodDespesa.Text + "'"+ex.Message,"Atenção",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+            }
+
+            Cmn.Close();            
+                        
+            txtEmpenho.Text = dataGridView1[4, dataGridView1.CurrentCellAddress.Y].Value.ToString();
+            txtDataEmpenho.Text = dataGridView1[5, dataGridView1.CurrentCellAddress.Y].Value.ToString();
+            txtValorEmpenho.Text = dataGridView1[6, dataGridView1.CurrentCellAddress.Y].Value.ToString();
+            txtAutorizacao.Text = dataGridView1[7, dataGridView1.CurrentCellAddress.Y].Value.ToString();
+            txtDataAutorizacao.Text = dataGridView1[8, dataGridView1.CurrentCellAddress.Y].Value.ToString();
+            txtValorAutorizacao.Text = dataGridView1[9, dataGridView1.CurrentCellAddress.Y].Value.ToString();
             
 
+        }
+        
         private void rim_tem_despesa_FormClosing(object sender, FormClosingEventArgs e)
         {
 
         }
 
-        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
-        {
-
-        }
-
-        private void txtDataEmpenho_TextChanged(object sender, EventArgs e)
-        {
-          
-        }
-
         private void txtEmpenho_TextChanged(object sender, EventArgs e)
         {
+            /*
             if (txtCodDespesa.Text == "")
             {
                 MessageBox.Show("Você deve escolher algum item na planilha", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -754,21 +578,7 @@ namespace Sistema_prorim
             else
             {
             }
-        }
-
-        private void txtValorEmpenho_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtCodDespesa_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtDespesa_TextChanged(object sender, EventArgs e)
-        {
-
+             * */
         }
 
         private void txtValorEmpenho_KeyPress(object sender, KeyPressEventArgs e)
@@ -914,56 +724,113 @@ namespace Sistema_prorim
             txtValorAutorizacao.BackColor = Color.Yellow;
         }
 
-        private void label2_Click(object sender, EventArgs e)
+                
+        private void btnExcluir_Click(object sender, EventArgs e)
         {
-
+            dataGridView1.Enabled = true;
+            btnIncluir.Enabled = false;
+            btnAlterar.Enabled = false;
+            btnExcluir.Enabled = false;
+            btnOK.Visible = true;
+            //flagInclusao=1 (inserir) / flagInclusao=0 (alterar) / flagInclusao=2 (Excluir)
+            flagInclusao = 2;
+            limparCampos();
         }
 
-        private void textBox4_TextChanged(object sender, EventArgs e)
+        private void btnIncluir_Click(object sender, EventArgs e)
         {
+            flagInclusao = 1;
+            btnAlterar.Enabled = false;
+            btnExcluir.Enabled = false;
+            btnOK.Visible = false;
 
+            if (txtCodDespesa.Text == "")
+            {
+                MessageBox.Show("Campos não podem estar vazios. Volte no formulário da requisição e escolha uma despesa válida para vinculá-la.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            }else{
+                Gravar();                
+            }
         }
 
-        private void txtCodigo_TextChanged(object sender, EventArgs e)
+        private void btnOK_Click(object sender, EventArgs e)
         {
+            // Campos obrigatórios na inclusão.
+            // Nome, Login, Senha e Tipo de Usuário. Esse último se - não marcado - ficará como usuário tipo comum.
+            // Portanto a verificação será dos campos três iniciais
 
+            if (txtCodDespesa.Text == "")
+            {
+                //if (flagInclusao == 1)
+                //{
+                //    MessageBox.Show("Campos não podem estar vazios. Volte no formulário da requisição e escolha uma despesa válida para vinculá-la.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                //}
+                //else
+                //{
+                    if (flagInclusao == 0)
+                    {
+                        MessageBox.Show("Campos não podem estar vazios. Escolha na planilha a linha correspondente cujos dados devam ser alterados.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Campos não podem estar vazios. Escolha na planilha a linha correspondente cujos dados devam ser excluídos.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    }
+
+                //}
+            }
+            else
+            {
+                // O botão OK serve tanto para inclusão quanto para alteração e exclusão de dados da tabela em questão
+                // Foi criada um variável flag para informar o que estamos fazendo. Inclusão, alteração ou exclusão de dados.
+                /*
+                //btnOK.Visible = true;
+                //if (flagInclusao == 1)
+                //{
+                    Gravar();
+                    btnIncluir.Enabled = true;
+                    btnAlterar.Enabled = true;
+                    btnExcluir.Enabled = true;
+                    btnOK.Visible = false;
+                //}
+                //else
+                //{  // essa linha só serve para casos de alteração de dados e exclusão                    
+                  
+                 */
+                if (flagInclusao == 0)
+                    {
+                        Alterar(Convert.ToInt32(txtCodigo.Text));
+                        btnIncluir.Enabled = true;
+                        btnAlterar.Enabled = true;
+                        btnExcluir.Enabled = true;
+                        btnOK.Visible = false;
+                    }
+                    else
+                    {
+                        Excluir(Convert.ToInt32(txtCodigo.Text));
+                        btnIncluir.Enabled = true;
+                        btnAlterar.Enabled = true;
+                        btnExcluir.Enabled = true;
+                        btnOK.Visible = false;
+                    }
+                //}
+            }
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void btnAlterar_Click(object sender, EventArgs e)
         {
-
+            panel1.Visible = true;
+            groupBox1.Visible = true;
+            dataGridView1.Enabled=true;
+            btnIncluir.Enabled = false;
+            btnAlterar.Enabled = false;
+            btnExcluir.Enabled = false;
+            btnOK.Visible = true;
+            flagInclusao = 0;
         }
 
-        private void label5_Click(object sender, EventArgs e)
+        private void btnSair_Click_1(object sender, EventArgs e)
         {
-
+            this.Close();
         }
-
-        private void lblCodRI_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtCodigoSeqRI_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        
-        private void bt_Cancelar_Click(object sender, EventArgs e)
-        {
-            rbAlterar.Enabled = true;
-            rbExclui.Enabled = true;
-            rbNovo.Enabled = true;
-            rbAlterar.Checked = true;
-            rbExclui.Checked= true;
-            rbNovo.Checked = true;
-
-        }
+              
     }
 }
