@@ -121,8 +121,7 @@
             this.menuStrip1.Size = new System.Drawing.Size(1354, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
-            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
-            // 
+           // 
             // requisiçõesToolStripMenuItem
             // 
             this.requisiçõesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -135,8 +134,7 @@
             this.requisiçõesToolStripMenuItem.Size = new System.Drawing.Size(86, 20);
             this.requisiçõesToolStripMenuItem.Tag = "Cadastro de Requisições";
             this.requisiçõesToolStripMenuItem.Text = "&Requisições";
-            this.requisiçõesToolStripMenuItem.Click += new System.EventHandler(this.requisiçõesToolStripMenuItem_Click);
-            // 
+             // 
             // rIMToolStripMenuItem
             // 
             this.rIMToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("rIMToolStripMenuItem.Image")));
@@ -236,7 +234,6 @@
             this.exportarToolStripMenuItem1.Name = "exportarToolStripMenuItem1";
             this.exportarToolStripMenuItem1.Size = new System.Drawing.Size(157, 22);
             this.exportarToolStripMenuItem1.Text = "Exportar &Excel";
-            this.exportarToolStripMenuItem1.Click += new System.EventHandler(this.exportarToolStripMenuItem1_Click);
             // 
             // exportarPDFToolStripMenuItem
             // 
@@ -255,7 +252,6 @@
             this.calculadoraToolStripMenuItem.Name = "calculadoraToolStripMenuItem";
             this.calculadoraToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
             this.calculadoraToolStripMenuItem.Text = "&Utilitários";
-            this.calculadoraToolStripMenuItem.Click += new System.EventHandler(this.calculadoraToolStripMenuItem_Click);
             // 
             // backUPToolStripMenuItem
             // 
@@ -271,7 +267,6 @@
             this.restoreToolStripMenuItem.Name = "restoreToolStripMenuItem";
             this.restoreToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.restoreToolStripMenuItem.Text = "&Restore";
-            this.restoreToolStripMenuItem.Click += new System.EventHandler(this.restoreToolStripMenuItem_Click);
             // 
             // toolStripMenuItem3
             // 
@@ -290,7 +285,6 @@
             this.acessoToolStripMenuItem.Name = "acessoToolStripMenuItem";
             this.acessoToolStripMenuItem.Size = new System.Drawing.Size(101, 20);
             this.acessoToolStripMenuItem.Text = "Co&nfigurações";
-            this.acessoToolStripMenuItem.Click += new System.EventHandler(this.acessoToolStripMenuItem_Click);
             // 
             // iPToolStripMenuItem
             // 
@@ -359,7 +353,6 @@
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             this.toolStrip1.Visible = false;
-            this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
             // 
             // toolStripSeparator3
             // 
@@ -544,7 +537,6 @@
             this.statusStrip1.Size = new System.Drawing.Size(1354, 5);
             this.statusStrip1.TabIndex = 9;
             this.statusStrip1.Text = "statusStrip1";
-            this.statusStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.statusStrip1_ItemClicked_1);
             // 
             // toolStripStatusLabel1
             // 
@@ -666,7 +658,6 @@
             this.toolTip1.SetToolTip(this.button4, "Requisições de Veículos");
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Visible = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             this.button4.MouseEnter += new System.EventHandler(this.button4_MouseEnter);
             this.button4.MouseLeave += new System.EventHandler(this.button4_MouseLeave);
             // 

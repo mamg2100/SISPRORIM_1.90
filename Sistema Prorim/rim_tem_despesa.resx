@@ -145,7 +145,7 @@
   <data name="btnExcluir.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        xAAADsQBlSsOGwAACWJJREFUWEetVwlQFGcW7hk5REGBkjXWauGBcYtI1Ajk0piEGIhBonggXnifIPEg
+        wwAADsMBx2+oZAAACWJJREFUWEetVwlQFGcW7hk5REGBkjXWauGBcYtI1Ajk0piEGIhBonggXnifIPEg
         eK6geICKiqhREVHxYgVcJY5cM8zR03MoDCCgIpQaK0mZ1YoHEgPy9nvtsDFVqa24m1f1Fd1/9/++7x3/
         60F4VVslCF47e/cOzomIWFgQE7OmIDZ2bU5kZPSuN98MXe3i8lf7a3+ubREEjxPBwXG6hIQrtqystjs6
         Hd0VRfrWYKA7ej3dxn1DcTGVHzlCxYmJdccmTkxM6t///xezVBBcsoOCEqWtWx81qlR08/x5qs/Pp5tA
@@ -189,37 +189,37 @@
 </value>
   </data>
   <metadata name="lineShape1.Bounds" type="System.Drawing.Rectangle, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>32, 447, 648, 0</value>
+    <value>11, 447, 648, 0</value>
   </metadata>
   <metadata name="lineShape1.Location" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>32, 447</value>
+    <value>11, 447</value>
   </metadata>
   <metadata name="lineShape1.Size" type="System.Drawing.Size, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>648, 0</value>
   </metadata>
   <metadata name="lineShape4.Bounds" type="System.Drawing.Rectangle, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>32, 262, 649, 0</value>
+    <value>11, 250, 649, 0</value>
   </metadata>
   <metadata name="lineShape4.Location" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>32, 262</value>
+    <value>11, 250</value>
   </metadata>
   <metadata name="lineShape4.Size" type="System.Drawing.Size, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>649, 0</value>
   </metadata>
   <metadata name="lineShape1.Bounds" type="System.Drawing.Rectangle, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>32, 447, 648, 0</value>
+    <value>11, 447, 648, 0</value>
   </metadata>
   <metadata name="lineShape1.Location" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>32, 447</value>
+    <value>11, 447</value>
   </metadata>
   <metadata name="lineShape1.Size" type="System.Drawing.Size, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>648, 0</value>
   </metadata>
   <metadata name="lineShape4.Bounds" type="System.Drawing.Rectangle, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>32, 262, 649, 0</value>
+    <value>11, 250, 649, 0</value>
   </metadata>
   <metadata name="lineShape4.Location" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>32, 262</value>
+    <value>11, 250</value>
   </metadata>
   <metadata name="lineShape4.Size" type="System.Drawing.Size, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>649, 0</value>

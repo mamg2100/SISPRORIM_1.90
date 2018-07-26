@@ -35,7 +35,7 @@ namespace Sistema_prorim
 
         private void analisarTipoUsuario()
         {
-            if (Sistema_prorim.Global.Logon.tipousuario.Trim() == "admin")
+            if (Sistema_prorim.Global.Logon.tipousuario.Trim() == "Master")
             {
                 btnExcluir.Visible = true;
                 btnExcluir.Enabled = true;
@@ -58,7 +58,7 @@ namespace Sistema_prorim
             mConn = new MySqlConnection("Persist Security Info=False;server=" + Global.Logon.ipservidor + ";database=prorim;uid=root;password=");
             mConn.Open();
 
-            if (Sistema_prorim.Global.Logon.tipousuario.Trim()== "admin")
+            if (Sistema_prorim.Global.Logon.tipousuario.Trim()== "Master")
             {
                 //cria um adapter utilizando a instrução SQL para acessar a tabela 
                 //if (rbPorCodigo.Checked == true)
@@ -107,7 +107,7 @@ namespace Sistema_prorim
                 dataGridView1.Columns[4].HeaderText = "Setor";
                 dataGridView1.Columns[5].HeaderText = "e-mail";
                 dataGridView1.Columns[6].HeaderText = "Tipo";
-                //dataGridView1.Columns[6].Visible = false;
+                dataGridView1.Columns[6].Visible = false;
                 //MySqlCommand cmd = new MySqlCommand();
                 //cmd.Connection = mConn;
                 //cmd.CommandText = "SELECT Nome_fornecedor from fornecedor where Cod_fornecedor = " + 1;
@@ -441,9 +441,9 @@ namespace Sistema_prorim
             mConn.Open();
             
             if (chkComum.Checked == true)
-                tipousuario = "comun";
+                tipousuario = "Comum";
             else
-                tipousuario = "admin";
+                tipousuario = "Master";
 
             try
             {

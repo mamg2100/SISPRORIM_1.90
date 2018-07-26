@@ -25,12 +25,6 @@ namespace Sistema_Prorim
         private DataSet mDataSet;
         public String TipoRIM;
         String temp;
-        String temp_1;
-        //int codunidade = 0;
-        //int codigo;
-        int estadocodigo = 1;
-        int estadoident = 1;
-        int estado = 0;
         public string stConection;
         public string stConsulta;
         public MySqlConnection Cmn = new MySqlConnection();
@@ -68,20 +62,11 @@ namespace Sistema_Prorim
                 txtDataFinal.Text = "31/12/" + txtAnoValido.Text;
                 dtpDataInicial.Text = txtDataInicial.Text;
                 dtpDataFinal.Text = txtDataFinal.Text;
-            }
-            else
-            {
-
-            }
+            }         
 
             txtCheckCetil.Focus();
-
-            dataGridView1.Visible = true;
-            
-            //label3.Visible = false;
-
+            dataGridView1.Visible = true;            
             groupBox3.Visible = true;
-
 
             // POPULANDO ComboBox
             try
@@ -151,7 +136,7 @@ namespace Sistema_Prorim
                         Convert.ToDateTime(txtDataInicial.Text).ToString("yyyy-MM-dd")
                         + "' AND '"
                         + Convert.ToDateTime(txtDataFinal.Text).ToString("yyyy-MM-dd") + "')"
-                        + "AND Tipo_RIM='RRP' ORDER BY Cetil", mConn);
+                        + "AND Tipo_RIM='RRP' ORDER BY Cetil DESC LIMIT 25", mConn);
                     }
                     else
                     {
@@ -161,7 +146,7 @@ namespace Sistema_Prorim
                                 Convert.ToDateTime(txtDataInicial.Text).ToString("yyyy-MM-dd")
                                 + "' AND '"
                                 + Convert.ToDateTime(txtDataFinal.Text).ToString("yyyy-MM-dd") + "')"
-                                + "AND Tipo_RIM='RIM' ORDER BY Cetil", mConn);
+                                + "AND Tipo_RIM='RIM' ORDER BY Cetil DESC LIMIT 25", mConn);
                         }
                         else
                         {
@@ -169,7 +154,7 @@ namespace Sistema_Prorim
                             Convert.ToDateTime(txtDataInicial.Text).ToString("yyyy-MM-dd")
                             + "' AND '"
                             + Convert.ToDateTime(txtDataFinal.Text).ToString("yyyy-MM-dd") + "')"
-                            + "ORDER BY Cetil", mConn);
+                            + "ORDER BY Cetil DESC LIMIT 25", mConn);
                         }
                     }
 
@@ -210,7 +195,6 @@ namespace Sistema_Prorim
                     {
                         dataGridView1.Columns[2].Visible = false;
                     }
-
                     
                     dataGridView1.Columns[3].HeaderText = "D.O";
                     if (chkDotacao.Checked == true)
@@ -352,12 +336,11 @@ namespace Sistema_Prorim
                     
                     mConn.Close();
                     calculaQuantidadeRegistros();
-                }
-                     
+                }                     
                 catch (Exception ex)
                 {
                     MessageBox.Show(mAdapter + "Erro: " + ex.Message);       
-                }                 
+                }                
                 
                                 
         }    
@@ -400,39 +383,11 @@ namespace Sistema_Prorim
                 }
 
                 mostrarResultados();
-            }
-            else
-            {
-
-            }
+            }         
 
         }
 
-        private void btnCalendario_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dtpDataFinal_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label40_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dtpDataInicial_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void chkValorReal_CheckedChanged(object sender, EventArgs e)
-        {
-            //mostrarResultados();
-        }
-
+        
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox1.Checked == true)
@@ -523,65 +478,7 @@ namespace Sistema_Prorim
             }
         }
 
-        private void chkTramite_CheckedChanged(object sender, EventArgs e)
-        {
-            //mostrarResultados();
-        }
-
-        private void chkCodigoSeq_CheckedChanged(object sender, EventArgs e)
-        {
-            //mostrarResultados();
-        }
-
-        private void chkUnidade_CheckedChanged(object sender, EventArgs e)
-        {
-            //mostrarResultados();
-        }
-
-        private void chkDescricao_CheckedChanged(object sender, EventArgs e)
-        {
-            //mostrarResultados();
-        }
-
-        private void chkDotacao_CheckedChanged(object sender, EventArgs e)
-        {
-            //mostrarResultados();
-        }
-
-        private void chkCetil_CheckedChanged(object sender, EventArgs e)
-        {
-            //mostrarResultados();
-        }
-
-        private void chkVlEstimado_CheckedChanged(object sender, EventArgs e)
-        {
-            //mostrarResultados();
-        }
-
-        private void chkProc_CheckedChanged(object sender, EventArgs e)
-        {
-            //mostrarResultados();
-        }
-
-        private void chkProcessoContabil_CheckedChanged(object sender, EventArgs e)
-        {
-            //mostrarResultados();
-        }
-
-        private void chkObs_CheckedChanged(object sender, EventArgs e)
-        {
-            //mostrarResultados();
-        }
-
-        private void chkCadastrante_CheckedChanged(object sender, EventArgs e)
-        {
-            //mostrarResultados();
-        }
-
-        private void chkDataCadastro_CheckedChanged(object sender, EventArgs e)
-        {
-           //mostrarResultados();
-        }
+       
         
         public string TipoRim { get; set; }
 
@@ -598,16 +495,10 @@ namespace Sistema_Prorim
                     PesquisaPorCodigo(codigoultimari);
                     LimparCampos();
 
-                }
-                else
-                {
-                }
+                }               
 
             }
-            else
-            {
-                // MessageBox.Show("Tecle 'ENTER'");
-            }
+            
         }
 
         private void LimparCampos()
@@ -617,14 +508,12 @@ namespace Sistema_Prorim
             txtCheckDescricao.Text = "";
             txtCheckAF.Text = "";
             txtCheckCetil.Text = "";
-            //txtCheckDataCetil.Text = "";
             txtCheckProcesso.Text = "";
             txtCheckProcessoContabil.Text = "";
             txtCheckDespPrincipal.Text = "";
             txtCheckDespPrincipal.Text = "";
             txtCheckDesdobrada.Text = "";
             txtCheckEmpenho.Text = "";
-            //txtCheckCodigoAplicacao.Text = "";
             txtCheckAF.Text = "";
         }        
 
@@ -785,8 +674,6 @@ namespace Sistema_Prorim
 
             if (chkPlanilhaDespesas.Checked == false)
             {
-                //mostraChecks();
-
                 //cria um adapter utilizando a instrução SQL para acessar a tabela 
 
                 if (txtDataInicial.Text == "" || txtDataFinal.Text == "")
@@ -1119,9 +1006,7 @@ namespace Sistema_Prorim
             }
 
             mConn.Close();
-            calculaQuantidadeRegistros();
-
-            
+            calculaQuantidadeRegistros();            
         }
 
         private void txtCheckDesdobrada_KeyPress(object sender, KeyPressEventArgs e)
@@ -1194,8 +1079,6 @@ namespace Sistema_Prorim
 
             mConn.Close();
             calculaQuantidadeRegistros();
-
-
         }
 
         private void txtCheckDespPrincipal_KeyPress(object sender, KeyPressEventArgs e)
@@ -1243,11 +1126,6 @@ namespace Sistema_Prorim
             calculaQuantidadeRegistros();
         }
 
-        private void txtDataInicial_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void cmbUnidade_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13) //Se for Enter executa a validação
@@ -1292,20 +1170,11 @@ namespace Sistema_Prorim
             Sistema_prorim.Global.InclusaoRI.flagIncluirRim = 0;
 
             Sistema_prorim.Global.DadosRim.codigo = dataGridView1[0, dataGridView1.CurrentCellAddress.Y].Value.ToString();
-            //Global.RI.codcetil = txtCodigo.Text;
+            
             Sistema_prorim.Global.DadosRim.escolhaUnid = dataGridView1[1, dataGridView1.CurrentCellAddress.Y].Value.ToString();
             Sistema_prorim.Global.DadosRim.descricao = dataGridView1[2, dataGridView1.CurrentCellAddress.Y].Value.ToString();
             Sistema_prorim.Global.DadosRim.DO = dataGridView1[3, dataGridView1.CurrentCellAddress.Y].Value.ToString();
             Sistema_prorim.Global.Logon.tipoRequisicao = dataGridView1[4, dataGridView1.CurrentCellAddress.Y].Value.ToString();
-
-            if (dataGridView1[4, dataGridView1.CurrentCellAddress.Y].Value.ToString() == "RIM")
-            {
-                //radioButtonRIM.Checked = true;
-            }
-            else
-            {
-                //radioButtonRRP.Checked = true;
-            }
 
             Sistema_prorim.Global.DadosRim.cetil = dataGridView1[5, dataGridView1.CurrentCellAddress.Y].Value.ToString();
             Sistema_prorim.Global.DadosRim.dataCetil = dataGridView1[6, dataGridView1.CurrentCellAddress.Y].Value.ToString();
@@ -1343,11 +1212,7 @@ namespace Sistema_Prorim
             mostrarResultados();
         }
 
-        private void txtAnoValido_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void btnRIM_Click(object sender, EventArgs e)
         {
             
@@ -1374,14 +1239,9 @@ namespace Sistema_Prorim
             rim.ShowDialog();
         }
 
-        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        private void btnSair_Click(object sender, EventArgs e)
         {
-            /*
-            if (e.RowIndex % 2 ==0)
-            {
-                e.CellStyle.BackColor = Color.LightBlue;
-            }
-            */
+            this.Close();
         }                                     
        
     }

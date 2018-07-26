@@ -37,11 +37,6 @@ namespace Sistema_prorim
                    
         }   
 
-        private void requisiçõesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void rIMToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Global.Logon.tipoRequisicao = "1";
@@ -55,17 +50,7 @@ namespace Sistema_prorim
         {
             Fornecedor fornecedor = new Fornecedor();
             fornecedor.ShowDialog();
-        }
-
-        private void pesquisaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //Pesquisa pesq = new Pesquisa();
-            //pesq.ShowDialog();
-        }
-
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-        }
+        }      
 
         private void unidadesToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -76,13 +61,7 @@ namespace Sistema_prorim
         private void sairToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-
-
-        private void importarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
+        }     
 
         private void rRPToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -92,11 +71,7 @@ namespace Sistema_prorim
             rim.ShowDialog();
         }
                      
-        private void calculadoraToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
-        }
-
+     
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("calc");
@@ -120,8 +95,7 @@ namespace Sistema_prorim
         {
             Global.Logon.tipoRequisicao = "1";
             Global.Veiculos.veiculo = "1";
-            //RIM rim = new RIM();
-            //rim.ShowDialog();
+          
             Requisicao rim = new Requisicao();
             rim.ShowDialog();
 
@@ -160,21 +134,6 @@ namespace Sistema_prorim
             navegarRIM.ShowDialog();
         }
 
-        private void setorToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void sobreToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void acessoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void toolStripButton6_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("calc");
@@ -187,26 +146,7 @@ namespace Sistema_prorim
             config.ShowDialog();
         }
 
-        private void toolStripStatusLabel1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_Click(object sender, EventArgs e)
-        {
-          
-        }
-
+       
         private void Principal_Shown(object sender, EventArgs e)
         {
             
@@ -226,9 +166,11 @@ namespace Sistema_prorim
 
             if (Global.Logon.usuario != "")
             {
-                toolStripStatusLabel4.Text = "  " + (Global.Logon.usuario).ToUpper() + " | " + DateTime.Now.ToString("dd/MM/yy");
-
-                if (Global.Logon.tipousuario.Trim() == "admin")
+                toolStripStatusLabel4.Text = "Usuário Logado: " + (Global.Logon.usuario).ToUpper() + " | " + DateTime.Now.ToString("dd/MM/yy") +
+                " | " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Name.ToString() + " | vrs "
+                + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() + " | Servidor: " + Global.Logon.ipservidor;
+                
+                if (Global.Logon.tipousuario.Trim() == "Master")
                 {
                     habilitaUsuarioMaster();
                 }
@@ -266,7 +208,6 @@ namespace Sistema_prorim
             usuáriosToolStripMenuItem.Enabled = false;
                 
         }
-
         private void habilitaUsuarioMaster()
         {
             requisiçõesToolStripMenuItem.Enabled = true;
@@ -288,19 +229,8 @@ namespace Sistema_prorim
 
             button5.Enabled = true;
             button7.Enabled = true;
-
-
         }
-
-        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void restoreToolStripMenuItem_Click(object sender, EventArgs e)
-        {
            
-        }
 
         private void despesaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -311,8 +241,7 @@ namespace Sistema_prorim
         private void toolStripButton9_Click(object sender, EventArgs e)
         {
             Dotacao despesas = new Dotacao();
-            despesas.Show();
-        
+            despesas.Show();        
         }
 
         private void iPToolStripMenuItem_Click(object sender, EventArgs e)
@@ -333,22 +262,7 @@ namespace Sistema_prorim
             }
            
         }
-
-        private void statusStrip1_ItemClicked_1(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void Principal_GotFocus(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void exportarToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-
-        }
-
+   
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
             Global.Logon.tipoRequisicao = "1";
@@ -401,26 +315,12 @@ namespace Sistema_prorim
             Application.Exit();
         }
 
-        private void textBox1_TextChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
+     
         private void toolStripButton2_Click_1(object sender, EventArgs e)
         {
             Veiculos_Filtros v = new Veiculos_Filtros();
             v.Show();
-        }
-
-        private void consultasToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void despesasVinculadasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
+        }    
 
         private void toolStripButton14_Click(object sender, EventArgs e)
         {
@@ -429,22 +329,12 @@ namespace Sistema_prorim
             RIM rim = new RIM();
             rim.ShowDialog();
 
-        }
-
-        private void fornecedorVinculadosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
+        }      
 
         private void veiculosVinculadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Veiculos_Filtros v = new Veiculos_Filtros();
             v.Show();
-        }
-
-        private void aboutSISprorimToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void planilhaDeDespesasToolStripMenuItem_Click(object sender, EventArgs e)
@@ -483,15 +373,7 @@ namespace Sistema_prorim
             Sistema_prorim.Global.Logon.tipoRequisicao = "RRP";
             Requisicao rim = new Requisicao();
             rim.Show();
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            //Global.Logon.tipoRequisicao = "1";
-            //Global.Veiculos.veiculo = "2";
-            //RIM rim = new RIM();
-            //rim.ShowDialog();
-        }
+        }        
 
         private void notasFicaisToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -613,15 +495,11 @@ namespace Sistema_prorim
         private void button8_MouseEnter(object sender, EventArgs e)
         {
             button8.Text = "";
-            //button8.BackgroundImage = Sistema_Prorim.Properties.Resources.
-
-
-         }
+        }
 
         private void button8_MouseLeave(object sender, EventArgs e)
         {
             button8.Text = "";
-
         }
 
         private void button11_Click(object sender, EventArgs e)
@@ -639,9 +517,7 @@ namespace Sistema_prorim
         private void button10_Click(object sender, EventArgs e)
         {
             PlanilhaDespesa pd = new PlanilhaDespesa();
-            pd.Show();
-            //NotaFiscal nf = new NotaFiscal();
-            //nf.Show();
+            pd.Show();            
         }
 
         private void button9_Click(object sender, EventArgs e)

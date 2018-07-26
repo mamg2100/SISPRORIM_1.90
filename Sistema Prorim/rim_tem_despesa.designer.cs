@@ -59,7 +59,6 @@
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.lineShape3 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.lblCodRI = new System.Windows.Forms.Label();
-            this.txtCodigo = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label9 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -79,7 +78,6 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.txtAcumuladoAF = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtCodigoSeqDespesa = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtCodigoSeqRI = new System.Windows.Forms.TextBox();
@@ -89,6 +87,8 @@
             this.btnOK = new System.Windows.Forms.Button();
             this.btnIncluir = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
+            this.txtCodigoSeqDespesa = new System.Windows.Forms.TextBox();
+            this.txtCodigo = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -105,9 +105,9 @@
             this.groupBox1.Controls.Add(this.lblCodDespesa);
             this.groupBox1.Controls.Add(this.lblDepesa);
             this.groupBox1.Controls.Add(this.shapeContainer1);
-            this.groupBox1.Location = new System.Drawing.Point(9, 270);
+            this.groupBox1.Location = new System.Drawing.Point(21, 261);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(693, 175);
+            this.groupBox1.Size = new System.Drawing.Size(628, 171);
             this.groupBox1.TabIndex = 74;
             this.groupBox1.TabStop = false;
             // 
@@ -131,11 +131,10 @@
             this.panel1.Controls.Add(this.lblAF);
             this.panel1.Controls.Add(this.txtAutorizacao);
             this.panel1.Controls.Add(this.txtDataAutorizacao);
-            this.panel1.Location = new System.Drawing.Point(223, 9);
+            this.panel1.Location = new System.Drawing.Point(162, 15);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(432, 137);
             this.panel1.TabIndex = 171;
-            this.panel1.Visible = false;
             // 
             // label10
             // 
@@ -246,7 +245,7 @@
             this.lblValorAF.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblValorAF.Location = new System.Drawing.Point(246, 98);
             this.lblValorAF.Name = "lblValorAF";
-            this.lblValorAF.Size = new System.Drawing.Size(58, 13);
+            this.lblValorAF.Size = new System.Drawing.Size(59, 13);
             this.lblValorAF.TabIndex = 151;
             this.lblValorAF.Text = "Valor A.F";
             this.lblValorAF.Visible = false;
@@ -306,7 +305,7 @@
             this.lblValorEmpenho.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblValorEmpenho.Location = new System.Drawing.Point(246, 51);
             this.lblValorEmpenho.Name = "lblValorEmpenho";
-            this.lblValorEmpenho.Size = new System.Drawing.Size(93, 13);
+            this.lblValorEmpenho.Size = new System.Drawing.Size(94, 13);
             this.lblValorEmpenho.TabIndex = 78;
             this.lblValorEmpenho.Text = "Valor Empenho";
             // 
@@ -350,7 +349,7 @@
             this.txtDespesa.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtDespesa.Enabled = false;
             this.txtDespesa.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDespesa.Location = new System.Drawing.Point(56, 76);
+            this.txtDespesa.Location = new System.Drawing.Point(33, 80);
             this.txtDespesa.Multiline = true;
             this.txtDespesa.Name = "txtDespesa";
             this.txtDespesa.Size = new System.Drawing.Size(100, 21);
@@ -360,7 +359,7 @@
             // 
             this.lblRI.AutoSize = true;
             this.lblRI.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRI.Location = new System.Drawing.Point(56, 106);
+            this.lblRI.Location = new System.Drawing.Point(33, 110);
             this.lblRI.Name = "lblRI";
             this.lblRI.Size = new System.Drawing.Size(33, 13);
             this.lblRI.TabIndex = 69;
@@ -372,7 +371,7 @@
             this.txtCodRim.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCodRim.Enabled = false;
             this.txtCodRim.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodRim.Location = new System.Drawing.Point(56, 121);
+            this.txtCodRim.Location = new System.Drawing.Point(33, 125);
             this.txtCodRim.Multiline = true;
             this.txtCodRim.Name = "txtCodRim";
             this.txtCodRim.Size = new System.Drawing.Size(100, 21);
@@ -384,7 +383,7 @@
             this.txtCodDespesa.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCodDespesa.Enabled = false;
             this.txtCodDespesa.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodDespesa.Location = new System.Drawing.Point(56, 29);
+            this.txtCodDespesa.Location = new System.Drawing.Point(33, 33);
             this.txtCodDespesa.Multiline = true;
             this.txtCodDespesa.Name = "txtCodDespesa";
             this.txtCodDespesa.Size = new System.Drawing.Size(100, 21);
@@ -394,7 +393,7 @@
             // 
             this.lblCodDespesa.AutoSize = true;
             this.lblCodDespesa.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodDespesa.Location = new System.Drawing.Point(56, 14);
+            this.lblCodDespesa.Location = new System.Drawing.Point(33, 18);
             this.lblCodDespesa.Name = "lblCodDespesa";
             this.lblCodDespesa.Size = new System.Drawing.Size(83, 13);
             this.lblCodDespesa.TabIndex = 47;
@@ -404,7 +403,7 @@
             // 
             this.lblDepesa.AutoSize = true;
             this.lblDepesa.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDepesa.Location = new System.Drawing.Point(56, 61);
+            this.lblDepesa.Location = new System.Drawing.Point(33, 65);
             this.lblDepesa.Name = "lblDepesa";
             this.lblDepesa.Size = new System.Drawing.Size(56, 13);
             this.lblDepesa.TabIndex = 34;
@@ -417,7 +416,7 @@
             this.shapeContainer1.Name = "shapeContainer1";
             this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.lineShape3});
-            this.shapeContainer1.Size = new System.Drawing.Size(687, 155);
+            this.shapeContainer1.Size = new System.Drawing.Size(622, 151);
             this.shapeContainer1.TabIndex = 170;
             this.shapeContainer1.TabStop = false;
             // 
@@ -434,25 +433,11 @@
             // 
             this.lblCodRI.AutoSize = true;
             this.lblCodRI.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodRI.Location = new System.Drawing.Point(686, 138);
+            this.lblCodRI.Location = new System.Drawing.Point(688, 19);
             this.lblCodRI.Name = "lblCodRI";
             this.lblCodRI.Size = new System.Drawing.Size(62, 13);
             this.lblCodRI.TabIndex = 72;
             this.lblCodRI.Text = "txtCodigo";
-            // 
-            // txtCodigo
-            // 
-            this.txtCodigo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCodigo.BackColor = System.Drawing.Color.Gainsboro;
-            this.txtCodigo.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtCodigo.Enabled = false;
-            this.txtCodigo.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodigo.Location = new System.Drawing.Point(686, 154);
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(0, 14);
-            this.txtCodigo.TabIndex = 71;
             // 
             // dataGridView1
             // 
@@ -473,24 +458,23 @@
             // 
             // label9
             // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label9.Location = new System.Drawing.Point(14, 177);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(41, 13);
+            this.label9.Size = new System.Drawing.Size(0, 13);
             this.label9.TabIndex = 75;
-            this.label9.Text = "label9";
             this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // textBox2
             // 
             this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(118, 209);
+            this.textBox2.Location = new System.Drawing.Point(139, 209);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(24, 21);
             this.textBox2.TabIndex = 147;
@@ -501,9 +485,9 @@
             this.label1.AutoSize = true;
             this.label1.Enabled = false;
             this.label1.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(16, 213);
+            this.label1.Location = new System.Drawing.Point(37, 213);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(99, 13);
+            this.label1.Size = new System.Drawing.Size(100, 13);
             this.label1.TabIndex = 146;
             this.label1.Text = "Valor Empenhos";
             // 
@@ -511,7 +495,7 @@
             // 
             this.txtAcumulado.Enabled = false;
             this.txtAcumulado.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAcumulado.Location = new System.Drawing.Point(144, 209);
+            this.txtAcumulado.Location = new System.Drawing.Point(165, 209);
             this.txtAcumulado.Name = "txtAcumulado";
             this.txtAcumulado.Size = new System.Drawing.Size(165, 21);
             this.txtAcumulado.TabIndex = 145;
@@ -540,7 +524,7 @@
             this.statusStrip1.Location = new System.Drawing.Point(0, 462);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 16, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(810, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(829, 22);
             this.statusStrip1.TabIndex = 166;
             this.statusStrip1.Text = "statusStrip1";
             this.statusStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.tssMensagem_ItemClicked);
@@ -593,7 +577,7 @@
             this.btnAlterar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnAlterar.Font = new System.Drawing.Font("Verdana", 9F);
             this.btnAlterar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnAlterar.Location = new System.Drawing.Point(701, 312);
+            this.btnAlterar.Location = new System.Drawing.Point(699, 309);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(95, 40);
             this.btnAlterar.TabIndex = 267;
@@ -608,7 +592,7 @@
             this.btnExcluir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnExcluir.Font = new System.Drawing.Font("Verdana", 9F);
             this.btnExcluir.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnExcluir.Location = new System.Drawing.Point(701, 264);
+            this.btnExcluir.Location = new System.Drawing.Point(699, 261);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(95, 40);
             this.btnExcluir.TabIndex = 265;
@@ -621,7 +605,7 @@
             // 
             this.textBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.textBox3.Enabled = false;
-            this.textBox3.Location = new System.Drawing.Point(479, 209);
+            this.textBox3.Location = new System.Drawing.Point(466, 209);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(24, 21);
             this.textBox3.TabIndex = 169;
@@ -631,7 +615,7 @@
             // 
             this.txtAcumuladoAF.Enabled = false;
             this.txtAcumuladoAF.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAcumuladoAF.Location = new System.Drawing.Point(506, 209);
+            this.txtAcumuladoAF.Location = new System.Drawing.Point(493, 209);
             this.txtAcumuladoAF.Name = "txtAcumuladoAF";
             this.txtAcumuladoAF.Size = new System.Drawing.Size(165, 21);
             this.txtAcumuladoAF.TabIndex = 167;
@@ -641,31 +625,20 @@
             this.label5.AutoSize = true;
             this.label5.Enabled = false;
             this.label5.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(353, 213);
+            this.label5.Location = new System.Drawing.Point(340, 213);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(125, 13);
+            this.label5.Size = new System.Drawing.Size(126, 13);
             this.label5.TabIndex = 168;
             this.label5.Text = "Valor Acumulado A.F";
             // 
-            // txtCodigoSeqDespesa
-            // 
-            this.txtCodigoSeqDespesa.BackColor = System.Drawing.Color.Gainsboro;
-            this.txtCodigoSeqDespesa.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtCodigoSeqDespesa.Enabled = false;
-            this.txtCodigoSeqDespesa.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodigoSeqDespesa.Location = new System.Drawing.Point(686, 237);
-            this.txtCodigoSeqDespesa.Name = "txtCodigoSeqDespesa";
-            this.txtCodigoSeqDespesa.Size = new System.Drawing.Size(50, 14);
-            this.txtCodigoSeqDespesa.TabIndex = 170;
-            // 
             // label2
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(686, 220);
+            this.label2.Location = new System.Drawing.Point(688, 101);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(118, 13);
             this.label2.TabIndex = 171;
@@ -673,12 +646,12 @@
             // 
             // label3
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(686, 179);
+            this.label3.Location = new System.Drawing.Point(688, 60);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(94, 13);
             this.label3.TabIndex = 172;
@@ -690,10 +663,11 @@
             this.txtCodigoSeqRI.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCodigoSeqRI.Enabled = false;
             this.txtCodigoSeqRI.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodigoSeqRI.Location = new System.Drawing.Point(686, 196);
+            this.txtCodigoSeqRI.Location = new System.Drawing.Point(700, 77);
             this.txtCodigoSeqRI.Name = "txtCodigoSeqRI";
             this.txtCodigoSeqRI.Size = new System.Drawing.Size(58, 14);
             this.txtCodigoSeqRI.TabIndex = 173;
+            this.txtCodigoSeqRI.Text = "7160";
             // 
             // shapeContainer2
             // 
@@ -703,7 +677,7 @@
             this.shapeContainer2.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.lineShape1,
             this.lineShape4});
-            this.shapeContainer2.Size = new System.Drawing.Size(810, 484);
+            this.shapeContainer2.Size = new System.Drawing.Size(829, 484);
             this.shapeContainer2.TabIndex = 174;
             this.shapeContainer2.TabStop = false;
             // 
@@ -711,8 +685,8 @@
             // 
             this.lineShape1.BorderColor = System.Drawing.SystemColors.AppWorkspace;
             this.lineShape1.Name = "lineShape1";
-            this.lineShape1.X1 = 32;
-            this.lineShape1.X2 = 680;
+            this.lineShape1.X1 = 11;
+            this.lineShape1.X2 = 659;
             this.lineShape1.Y1 = 447;
             this.lineShape1.Y2 = 447;
             // 
@@ -720,17 +694,17 @@
             // 
             this.lineShape4.BorderColor = System.Drawing.SystemColors.AppWorkspace;
             this.lineShape4.Name = "lineShape4";
-            this.lineShape4.X1 = 32;
-            this.lineShape4.X2 = 681;
-            this.lineShape4.Y1 = 262;
-            this.lineShape4.Y2 = 262;
+            this.lineShape4.X1 = 11;
+            this.lineShape4.X2 = 660;
+            this.lineShape4.Y1 = 250;
+            this.lineShape4.Y2 = 250;
             // 
             // btnOK
             // 
             this.btnOK.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnOK.Font = new System.Drawing.Font("Verdana", 9F);
             this.btnOK.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnOK.Location = new System.Drawing.Point(701, 361);
+            this.btnOK.Location = new System.Drawing.Point(699, 358);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(95, 40);
             this.btnOK.TabIndex = 268;
@@ -744,7 +718,7 @@
             this.btnIncluir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnIncluir.Font = new System.Drawing.Font("Verdana", 9F);
             this.btnIncluir.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnIncluir.Location = new System.Drawing.Point(701, 361);
+            this.btnIncluir.Location = new System.Drawing.Point(699, 358);
             this.btnIncluir.Name = "btnIncluir";
             this.btnIncluir.Size = new System.Drawing.Size(95, 40);
             this.btnIncluir.TabIndex = 266;
@@ -755,7 +729,7 @@
             // btnSair
             // 
             this.btnSair.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSair.Location = new System.Drawing.Point(701, 408);
+            this.btnSair.Location = new System.Drawing.Point(699, 405);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(95, 40);
             this.btnSair.TabIndex = 264;
@@ -763,20 +737,46 @@
             this.btnSair.UseVisualStyleBackColor = true;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click_1);
             // 
+            // txtCodigoSeqDespesa
+            // 
+            this.txtCodigoSeqDespesa.BackColor = System.Drawing.Color.Gainsboro;
+            this.txtCodigoSeqDespesa.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCodigoSeqDespesa.Enabled = false;
+            this.txtCodigoSeqDespesa.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodigoSeqDespesa.Location = new System.Drawing.Point(700, 118);
+            this.txtCodigoSeqDespesa.Name = "txtCodigoSeqDespesa";
+            this.txtCodigoSeqDespesa.Size = new System.Drawing.Size(82, 14);
+            this.txtCodigoSeqDespesa.TabIndex = 170;
+            // 
+            // txtCodigo
+            // 
+            this.txtCodigo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCodigo.BackColor = System.Drawing.Color.Gainsboro;
+            this.txtCodigo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCodigo.Enabled = false;
+            this.txtCodigo.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodigo.Location = new System.Drawing.Point(700, 35);
+            this.txtCodigo.Name = "txtCodigo";
+            this.txtCodigo.Size = new System.Drawing.Size(126, 14);
+            this.txtCodigo.TabIndex = 71;
+            // 
             // rim_tem_despesa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(810, 484);
+            this.ClientSize = new System.Drawing.Size(829, 484);
+            this.Controls.Add(this.txtCodigoSeqRI);
+            this.Controls.Add(this.txtCodigoSeqDespesa);
+            this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnAlterar);
             this.Controls.Add(this.btnIncluir);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnSair);
-            this.Controls.Add(this.txtCodigoSeqRI);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtCodigoSeqDespesa);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.txtAcumuladoAF);
@@ -788,7 +788,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblCodRI);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.shapeContainer2);
@@ -823,7 +822,6 @@
         private System.Windows.Forms.TextBox txtDespesa;
         private System.Windows.Forms.Label lblRI;
         private System.Windows.Forms.Label lblCodRI;
-        private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.Label lblDataEmpenho;
         private System.Windows.Forms.Label lblEmpenho;
         private System.Windows.Forms.TextBox txtDataEmpenho;
@@ -852,7 +850,6 @@
         internal System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox txtAcumuladoAF;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtCodigoSeqDespesa;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblFornecedor;
         private System.Windows.Forms.ComboBox cmbFornecedor;
@@ -872,5 +869,7 @@
         private System.Windows.Forms.Button btnSair;
         private System.Windows.Forms.Panel panel1;
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape1;
+        private System.Windows.Forms.TextBox txtCodigoSeqDespesa;
+        private System.Windows.Forms.TextBox txtCodigo;
     }
 }

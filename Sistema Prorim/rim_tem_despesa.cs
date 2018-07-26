@@ -35,8 +35,7 @@ namespace Sistema_prorim
             txtCodDespesa.Text =  Sistema_prorim.Global.despesa.coddespesas;
             txtCodRim.Text = Sistema_prorim.Global.DadosRim.cetil;
             txtDespesa.Text = Sistema_prorim.Global.despesa.despesas;
-            txtCodigoSeqRI.Text = Sistema_prorim.Global.RI.codcetil;
-
+            txtCodigoSeqRI.Text = Sistema_prorim.Global.DadosRim.codigo;
                  
             // Essa variável recebe valor do total do empenho ao gravar cada um, somando-os.
             // Valor que será transferido para o valor real na requisição. Deve ser criado flag para
@@ -55,10 +54,41 @@ namespace Sistema_prorim
             }
             
             statusStrip1.Text = "você pode 'incluir', 'atualizar' ou 'excluir' despesas, empenhos e autorizações relacionados à requisição especificada.";
+
+            popularCmbFornecedorComFornecedorVinculado();
+            //populaCmbFornecedorComTodosFornecedores();
+
             mostrarResultados();
                      
         }
 
+        private void popularCmbFornecedorComFornecedorVinculado()
+        {
+
+            mDataSet = new DataSet();
+            mConn = new MySqlConnection("Persist Security Info=False;server=" + Global.Logon.ipservidor + ";database=prorim;uid=root;password=");
+            mConn.Open();
+
+            mAdapter = new MySqlDataAdapter("SELECT nome_fornecedor FROM pesquisa_fornecedor WHERE cod_rim=" + txtCodigoSeqRI.Text, mConn);
+            DataTable pesquisa_fornecedor = new DataTable();
+            mAdapter.Fill(pesquisa_fornecedor);
+            try
+            {
+                for (int i = 0; i < pesquisa_fornecedor.Rows.Count; i++)
+                {
+                    cmbFornecedor.Items.Add(pesquisa_fornecedor.Rows[i]["nome_fornecedor"]);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro: "+ex.Message, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            mConn.Close();
+
+        }
+       
         private void mostrarResultados()
         {
             //txtCodRim.Text = Global.DadosRim.cetil;                
@@ -68,7 +98,7 @@ namespace Sistema_prorim
             mConn.Open();
 
                 //cria um adapter utilizando a instrução SQL para acessar a tabela
-            mAdapter = new MySqlDataAdapter("SELECT * FROM rim_has_dotacao WHERE Cetil='" + Global.DadosRim.cetil + "' ORDER BY Cod_rim", mConn);
+                mAdapter = new MySqlDataAdapter("SELECT * FROM rim_has_dotacao WHERE Cetil='" + Global.DadosRim.cetil + "' ORDER BY Cod_rim", mConn);
 
                 //preenche o dataset através do adapter
                 mAdapter.Fill(mDataSet, "rim_has_dotacao");
@@ -102,6 +132,7 @@ namespace Sistema_prorim
                 calcularRegistros();
                 somaEmpenhos();
                 somaAF();
+                mConn.Close();//acrescentada ----------------------------------------------------------------------------------
         }
 
         private void somaAF()
@@ -194,7 +225,7 @@ namespace Sistema_prorim
                     limparCampos();
                     mConn.Close();
                     mostrarResultados();
-                    DesabilitaTextBox();
+                    //DesabilitaTextBox();
                 }
             }
            
@@ -206,7 +237,6 @@ namespace Sistema_prorim
 
             if (cmbFornecedor.Text != "")
             {
-
                 try
                 {
                     mConn = new MySqlConnection("Persist Security Info=False;server=" + Global.Logon.ipservidor + ";database=prorim;uid=root;password=");
@@ -318,7 +348,7 @@ namespace Sistema_prorim
                     // Método criado para que quando o registo é gravado, automaticamente a dataGridView efetue um "Refresh"
 
                     limparCampos();
-                    DesabilitaTextBox();
+                    //DesabilitaTextBox();
                     this.Close();
                 }
                 catch
@@ -347,11 +377,7 @@ namespace Sistema_prorim
             Global.despesa.empenhoTotal = "";                
         }
         
-        private void DesabilitaTextBox()
-        {
-
-        }
-
+ 
         private void limparCampos()
         {
             txtCodDespesa.Text = "";

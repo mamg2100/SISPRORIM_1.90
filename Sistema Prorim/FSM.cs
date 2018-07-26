@@ -64,6 +64,8 @@ namespace Sistema_Prorim
                 dataGridView1.Columns[3].HeaderText = "Data";
                 dataGridView1.Columns[4].HeaderText = "Situação Atual";
                 dataGridView1.Columns[5].HeaderText = "Solicitante";
+                dataGridView1.Columns[6].HeaderText = "Data Solução";
+                dataGridView1.Columns[6].Visible = false;
             }
             
             int registro;

@@ -194,6 +194,11 @@ não será mais necessário informar qual o cadastrante da requisção pois o si
 logado.
 
 15. Acrescentado no Banco de Dados coluna na tabela de Requisições referente à data de envio da RI para o Prefeito para
-assinatura e alterada a forma como se visualizam os trâmites das requisições.</value>
+assinatura;
+
+16. Alterada a visualização dos trâmites das requisições  com as datas e locais onde se encontram;
+
+17. Alterada o acesso e apresentação do fornecedor vinculado à requisição. Na versão atual, se existir fornecedor
+vinculado à RI que se quer alterar, a informação já é automaticamente capturaa e apresentada ao usuário;</value>
   </data>
 </root>

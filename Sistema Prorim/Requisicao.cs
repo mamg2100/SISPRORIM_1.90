@@ -8,7 +8,6 @@ using System.Text;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using Excel = Microsoft.Office.Interop.Excel;
-//using System.Data.SqlClient;
 
 namespace Sistema_Prorim
 {
@@ -21,71 +20,66 @@ namespace Sistema_Prorim
         private string stConsulta;
         public MySqlConnection Cmn = new MySqlConnection();
         private int flagTramite = 0;
-        
-        int codigoultimari = 0; // recebe o numero da ultima ri cadastrada 
+
+        private int codigoultimari = 0; // recebe o numero da ultima ri cadastrada 
         String ano = DateTime.Now.Year.ToString();
-        
-            
+
+
         public Requisicao()
         {
-            InitializeComponent();            
-
+            InitializeComponent();
         }
 
         private void Requisicao_Load(object sender, EventArgs e)
         {
             RefreshComboBoxes();
+            // desabilita o cmbCadastrante pois a partir da versão 1.90 o cadastrante da RIM é quem está logado.
             cmbcadastradoPor.Enabled = false;
+
             label18.Text = Sistema_prorim.Global.InclusaoRI.flagIncluirRim.ToString();
-            
-            
+
+            // Se for alteração flagIncluirRim=0
             if (Sistema_prorim.Global.InclusaoRI.flagIncluirRim == 0)
             {
                 btnEmpenho.Enabled = true;
                 txtCetil.Enabled = false;
                 txtdataCetil.Enabled = false;
-                
-                //Como é alteração vamos popular o cmbFornecedor somente com o fornecedor vinculado à RI caso ele
-                // já esteja vinculado. Isso só vale para alterações. Estamos fazendo isso após o refresh acima 
-                // logo no início do form load.
-
-                //popularCmbFornecedorComFornecedorVinculado();
             }
-            else {
+            else
+            {
                 btnEmpenho.Enabled = false;
-                //populaCmbFornecedorComTodosFornecedores();
             }
 
-            //Campos que não podem ser nulos no BD: cetil, data cetil, unidade, ano processo e processo contábil, codigo usuário, código da unidade.
-            //Logo tem que ter obrigatoriedade de preenchimento destes campos antes de tentar gravar/incluir uma RI.
+            //Campos que não podem ser nulos no BD: cetil, data cetil, unidade, ano processo e processo contábil, codigo usuário, 
+            //código da unidade. Logo tem que ter obrigatoriedade de preenchimento destes campos antes de tentar gravar/incluir 
+            //uma RI.
 
-            if (Sistema_prorim.Global.Logon.tipoRequisicao=="RIM")
-            {   
+            if (Sistema_prorim.Global.Logon.tipoRequisicao == "RIM")
+            {
                 label37.Visible = false;
                 txtProcessoContabil.Visible = false;
                 textBox7.Visible = false;
                 textBoxAnoProcContabil.Visible = false;
             }
-            else {
+            else
+            {
                 label37.Visible = true;
                 txtProcessoContabil.Visible = true;
                 textBox7.Visible = true;
-                textBoxAnoProcContabil.Visible = true;           
+                textBoxAnoProcContabil.Visible = true;
             }
 
-
-            //txtdescricao.Text = ano;
-            //txtAnoProcesso.Text = ano;
-            //txtAnoProcessoContabil.Text = ano;
             textBoxAnoProcesso.Text = ano;
             textBoxAnoProcContabil.Text = ano;
 
+            //Código para marcar o radioButton correspondente à RIM ou RRP.
             if (Sistema_prorim.Global.Logon.tipoRequisicao == "RIM")
             {
                 radioButtonRIM.Checked = true;
                 radioButtonRRP.Checked = false;
             }
-            else {
+            else
+            {
 
                 radioButtonRRP.Checked = true;
                 radioButtonRIM.Checked = false;
@@ -93,24 +87,21 @@ namespace Sistema_Prorim
 
             //indica que foi clicado botão RIM do form consulta que é para inclusão de RIM e não alteração, diferente se 
             //clicarmos no grid - em uma rim já existente - e teremos sim uma alteração e flagIncluirRim != 1
-            
-            if (Sistema_prorim.Global.InclusaoRI.flagIncluirRim != 1) 
+
+            if (Sistema_prorim.Global.InclusaoRI.flagIncluirRim != 1)
             {
-                //Requisicao.ActiveForm.Text = "Módulo: Alteração de Requisição";
-                // Se é inclusão o botão de excluir não deve aparecer.
-                button2.Visible = true;
-                
+                // Se é inclusão o botão de excluir não deve aparecer, mas na alteração sim...
+                btnExcluir.Visible = true;
                 btnAlterar.Visible = true;
-                //btnAlterar.Top = 525;
                 btnIncluir.Visible = false;
 
                 if (radioButtonVeiculo.Checked == false)
                 {
                     txtdescricao.Top = 104;
+                    txtdescricao.Height = 85;
                     lblDescricao.Top = 87;
                     lblDescricao.Left = 147;
-                    txtdescricao.Height = 85;
-                    
+
                     lblCodigo.Text = Sistema_prorim.Global.DadosRim.codigo;
                     txtdataCetil2.Text = Sistema_prorim.Global.DadosRim.dataCetil;
                     txtdataCetil.Text = Sistema_prorim.Global.DadosRim.dataCetil;
@@ -201,9 +192,14 @@ namespace Sistema_Prorim
                         lblDataDipe.Text = Sistema_prorim.Global.DadosRim.DataDipe;
                     }
 
-                    cmbcadastradoPor.Text = Sistema_prorim.Global.DadosRim.cadastradoPor;
+
+                    //cmbcadastradoPor.Text = Sistema_prorim.Global.DadosRim.cadastradoPor;
+
+                    cmbcadastradoPor.Text = Sistema_prorim.Global.Logon.nome_usuario;
+                    lblCodUsuario.Text = Sistema_prorim.Global.Logon.codigo_usuario;
                     txtdtCadastro2.Text = Sistema_prorim.Global.DadosRim.dtCadastro;
-                   
+
+
                     if (Sistema_prorim.Global.DadosRim.dtCadastro != "")
                     {
                         txtdtCadastro.Text = Sistema_prorim.Global.DadosRim.dtCadastro;
@@ -212,18 +208,18 @@ namespace Sistema_Prorim
                     {
                         txtdtCadastro.Text = "";
                     }
-                    
-                    txtObs.Text = Sistema_prorim.Global.DadosRim.Obs;
-                                        
-                    carregarDadosDespesa();
-               }
-            }
-            else {
 
-                button2.Visible = false;
+                    txtObs.Text = Sistema_prorim.Global.DadosRim.Obs;
+
+                    carregarDadosDespesa();
+                }
+            }
+            else
+            {
+                // Se não entrar no if acima é porque trata-se de inclusão.
+                btnExcluir.Visible = false;
                 btnAlterar.Visible = false;
                 btnIncluir.Visible = true;
-                
                 // Como é inclusão de nova RIM as variáveis devem estar "limpas".
                 LimpaVariaveis();
 
@@ -231,9 +227,9 @@ namespace Sistema_Prorim
                 {
                     txtdescricao.Top = 104;
                     lblDescricao.Top = 87;
-                    lblDescricao.Left = 147; 
+                    lblDescricao.Left = 147;
                     txtdescricao.Height = 85;
-                                        
+
                     lblCodigo.Text = Sistema_prorim.Global.DadosRim.codigo;
                     txtdataCetil2.Text = Sistema_prorim.Global.DadosRim.dataCetil;
                     txtdataCetil.Text = Sistema_prorim.Global.DadosRim.dataCetil;
@@ -326,10 +322,11 @@ namespace Sistema_Prorim
                         lblDataDipe.Text = Sistema_prorim.Global.DadosRim.DataDipe;
                     }
 
-                    cmbcadastradoPor.Text = Sistema_prorim.Global.DadosRim.cadastradoPor;
+                    cmbcadastradoPor.Text = Sistema_prorim.Global.Logon.nome_usuario;
+                    lblCodUsuario.Text = Sistema_prorim.Global.Logon.codigo_usuario;
                     txtdtCadastro2.Text = Sistema_prorim.Global.DadosRim.dtCadastro;
 
-                    if ( Sistema_prorim.Global.DadosRim.dtCadastro!="")
+                    if (Sistema_prorim.Global.DadosRim.dtCadastro != "")
                     {
                         txtdtCadastro.Text = Sistema_prorim.Global.DadosRim.dtCadastro;
                     }
@@ -337,117 +334,27 @@ namespace Sistema_Prorim
                     {
                         txtdtCadastro.Text = "";
                     }
-                    
+
                     txtObs.Text = Sistema_prorim.Global.DadosRim.Obs;
-                    
+
                     txtCetil.Focus();
                 }
-
-            // POPULANDO TODOS ComboBox -> Popular os combos foi trasferidopara refresh chamado no form load.
-                //
-                /*
-                try
-                {
-                    mDataSet = new DataSet();
-                    mConn = new MySqlConnection("Persist Security Info=False;server=" + Sistema_prorim.Global.Logon.ipservidor + ";database=prorim;uid=root;password=");
-                    mConn.Open();
-
-                    // populando cmbUnidade
-                    //------------------------------------------------------
-
-                    mAdapter = new MySqlDataAdapter("SELECT * FROM unidade ORDER BY Nome_unidade", mConn);
-                    DataTable unidade = new DataTable();
-                    mAdapter.Fill(unidade);
-                    try
-                    {
-                        for (int i = 0; i < unidade.Rows.Count; i++)
-                        {
-                            cmbEscolha.Items.Add(unidade.Rows[i]["Nome_Unidade"]);
-                        }
-                    }
-                    catch (MySqlException erro)
-                    {
-                        throw erro;
-                    }
-
-                    //------------------------------------------------------
-                    // populando cmbFornecedor // tiramos daqui pois só popula com todos os fornecedores se for inclusão.
-                    /*
-                    mAdapter = new MySqlDataAdapter("SELECT * FROM fornecedor ORDER BY Nome_fornecedor", mConn);
-                    DataTable fornecedor = new DataTable();
-                    mAdapter.Fill(fornecedor);
-                    try
-                    {
-                        for (int i = 0; i < fornecedor.Rows.Count; i++)
-                        {
-                            cmbFornecedor.Items.Add(fornecedor.Rows[i]["Nome_fornecedor"]);
-
-                        }
-                    }
-                    catch (MySqlException erro)
-                    {
-                        throw erro;
-                    }
-                    */
-                
-                    //---------------------------------------------------------
-                    // populando cmbCadastradoPor
-                    if (Sistema_prorim.Global.InclusaoRI.flagIncluirRim == 1)
-                    {
-                        lblCodUsuario.Text = Sistema_prorim.Global.Logon.codigo_usuario;
-                        cmbcadastradoPor.Text = Sistema_prorim.Global.Logon.nome_usuario;
-                    }
-                    else {
-                        cmbcadastradoPor.Text = Sistema_prorim.Global.DadosRim.cadastradoPor; 
-                        //acha o codigo do usuario que tem esse nome no Banco de Dados
-                    }
-                    
-                    /*
-                    mAdapter = new MySqlDataAdapter("SELECT nome_usuario FROM usuario WHERE Cod_usuario="+Sistema_prorim.Global.Logon.codigo_usuario, mConn);
-                    DataTable usuario = new DataTable();
-                    mAdapter.Fill(usuario);
-                    try
-                    {
-                        for (int i = 0; i < 1; i++)
-                        {
-                            cmbcadastradoPor.Items.Add(usuario.Rows[i]["Nome_usuario"]);
-                        }
-                            lblCodUsuario.Text = Sistema_prorim.Global.Logon.codigo_usuario;
-                            cmbcadastradoPor.Text = Sistema_prorim.Global.DadosRim.cadastradoPor;
-                    }
-                    catch (MySqlException erro)
-                    {
-                        throw erro;
-                    }
-                    */
-                    //---------------------------------------------------------
-                    // populando cmbPlacaConsulta
-                /*
-                mAdapter = new MySqlDataAdapter("SELECT * FROM veiculos ORDER BY Placa", mConn);
-                DataTable veiculos = new DataTable();
-                mAdapter.Fill(veiculos);
-                try
-                {
-                    for (int i = 0; i < veiculos.Rows.Count; i++)
-                    {
-                        cmbPlacaConsulta.Items.Add(veiculos.Rows[i]["Placa"]);
-                    }
-                }
-                catch (MySqlException erro)
-                {
-                    throw erro;
-                }
-                    
-                //---------------------------------------------------------
-                    
-                mConn.Close();
+                lblCodUsuario.Text = Sistema_prorim.Global.Logon.codigo_usuario;
+                cmbcadastradoPor.Text = Sistema_prorim.Global.Logon.nome_usuario;
             }
-            catch (Exception ex) {
-            MessageBox.Show("Erro ao Popular os ComboBoxes...Erro: "+ex.Message);
-            }*/
 
+            popularCmbFornecedorComFornecedorVinculado();
 
+            if (cmbFornecedor.Items.Count == 0)
+            {
+                populaCmbFornecedorComTodosFornecedores();
             }
+            else
+            {
+                //popularCmbFornecedorComFornecedorVinculado(); 
+                cmbFornecedor.SelectedIndex = 0;
+            }
+
             monthCalendar.Visible = false;
         }
 
@@ -533,7 +440,8 @@ namespace Sistema_Prorim
                     while (myReader.Read())
                     {
                         myReader.Read();
-                        cmbFornecedor.Text = myReader["nome_fornecedor"] + Environment.NewLine;
+                        cmbFornecedor.Items.Add(myReader["nome_fornecedor"] + Environment.NewLine);
+                        //txtObs.Text = myReader["nome_fornecedor"] + Environment.NewLine;
                     }
                 }
 
@@ -546,7 +454,7 @@ namespace Sistema_Prorim
             Cmn.Close();
 
             //-----------------------------------------------------------------------------------------------------------
-                    
+
         }
 
         private void carregarDadosDespesa()
@@ -574,7 +482,7 @@ namespace Sistema_Prorim
                         txtCodigoDespesa.Text = myReader["Despesa"] + Environment.NewLine;
                         txtReduzida.Text = myReader["Reduzida"] + Environment.NewLine;
                         txtPrograma.Text = myReader["Programa"] + Environment.NewLine;
-                        txtAcao.Text = myReader["Acao"] + Environment.NewLine;                                               
+                        txtAcao.Text = myReader["Acao"] + Environment.NewLine;
                     }
                 }
 
@@ -698,10 +606,11 @@ namespace Sistema_Prorim
                 Cmn.Close();
 
                 //-----------------------------------------------------------------------------------------------------------
-            
+
             }
             else
             {
+                //popula com todos os nomes existentes pois aqui é uma inclusão.
                 mAdapter = new MySqlDataAdapter("SELECT * FROM fornecedor ORDER BY Nome_fornecedor", mConn);
                 DataTable fornecedor = new DataTable();
                 mAdapter.Fill(fornecedor);
@@ -713,76 +622,39 @@ namespace Sistema_Prorim
 
                     }
                 }
-                catch (MySqlException erro)
+                catch (Exception ex)
                 {
-                    throw erro;
+                    MessageBox.Show("Não foi possível fazer conexão. Erro: " + ex.Message, "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 }
+                Cmn.Close();
             }
-
-            //---------------------------------------------------------
-            // populando cmbCadastradoPor
-
-            // populando cmbCadastradoPor
-            if (Sistema_prorim.Global.InclusaoRI.flagIncluirRim == 1)
-            {
-                lblCodUsuario.Text = Sistema_prorim.Global.Logon.codigo_usuario;
-                cmbcadastradoPor.Text = Sistema_prorim.Global.Logon.nome_usuario;
-            }
-            else
-            {
-                cmbcadastradoPor.Text = Sistema_prorim.Global.DadosRim.cadastradoPor;
-                txtdtCadastro.Enabled = false;
-                //acha o codigo do usuario que tem esse nome no Banco de Dados
-            }
-                            
-            /*
-            mAdapter = new MySqlDataAdapter("SELECT * FROM usuario ORDER BY Nome_usuario", mConn);
-            DataTable usuario = new DataTable();
-            mAdapter.Fill(usuario);
-           
-            try
-            {
-                for (int i = 0; i < 1; i++)
-                {
-                    cmbcadastradoPor.Items.Add(usuario.Rows[i]["Nome_usuario"]);
-                }
-                lblCodUsuario.Text = Sistema_prorim.Global.Logon.codigo_usuario;
-            }
-            catch (MySqlException erro)
-            {
-                throw erro;
-            }
-
-            //---------------------------------------------------------
-
-            mConn.Close();
-            */
         }
 
         private void LimpaVariaveis()
         {
-            Sistema_prorim.Global.DadosRim.codigo="";
-            Sistema_prorim.Global.DadosRim.dataCetil="";
-            Sistema_prorim.Global.DadosRim.cetil="";
-            Sistema_prorim.Global.DadosRim.escolhaUnid="";
-            Sistema_prorim.Global.DadosRim.descricao="";
-            Sistema_prorim.Global.DadosRim.Processo="";
-            Sistema_prorim.Global.DadosRim.AnoProcesso="";
-            Sistema_prorim.Global.DadosRim.DO="";
-            Sistema_prorim.Global.DadosRim.valorEstimado="";
-            Sistema_prorim.Global.DadosRim.valorReal="";
-            Sistema_prorim.Global.DadosRim.ProcessoContabil="";
-            Sistema_prorim.Global.DadosRim.AnoProcessoContabil="";
+            Sistema_prorim.Global.DadosRim.codigo = "";
+            Sistema_prorim.Global.DadosRim.dataCetil = "";
+            Sistema_prorim.Global.DadosRim.cetil = "";
+            Sistema_prorim.Global.DadosRim.escolhaUnid = "";
+            Sistema_prorim.Global.DadosRim.descricao = "";
+            Sistema_prorim.Global.DadosRim.Processo = "";
+            Sistema_prorim.Global.DadosRim.AnoProcesso = "";
+            Sistema_prorim.Global.DadosRim.DO = "";
+            Sistema_prorim.Global.DadosRim.valorEstimado = "";
+            Sistema_prorim.Global.DadosRim.valorReal = "";
+            Sistema_prorim.Global.DadosRim.ProcessoContabil = "";
+            Sistema_prorim.Global.DadosRim.AnoProcessoContabil = "";
             Sistema_prorim.Global.DadosRim.DataContabilidade = "";
-            Sistema_prorim.Global.DadosRim.DataOrdenador1="";
+            Sistema_prorim.Global.DadosRim.DataOrdenador1 = "";
             Sistema_prorim.Global.DadosRim.DataPrefeito = "";
-            Sistema_prorim.Global.DadosRim.DataCompras1="";
-            Sistema_prorim.Global.DadosRim.DataOrdenador2="";
-            Sistema_prorim.Global.DadosRim.DataCompras2="";
-            Sistema_prorim.Global.DadosRim.DataDipe="";
-            Sistema_prorim.Global.DadosRim.cadastradoPor="";
-            Sistema_prorim.Global.DadosRim.dtCadastro="";
-            Sistema_prorim.Global.DadosRim.Obs="";
+            Sistema_prorim.Global.DadosRim.DataCompras1 = "";
+            Sistema_prorim.Global.DadosRim.DataOrdenador2 = "";
+            Sistema_prorim.Global.DadosRim.DataCompras2 = "";
+            Sistema_prorim.Global.DadosRim.DataDipe = "";
+            Sistema_prorim.Global.DadosRim.cadastradoPor = "";
+            Sistema_prorim.Global.DadosRim.dtCadastro = "";
+            Sistema_prorim.Global.DadosRim.Obs = "";
         }
 
         private void btnPesquisa_Click(object sender, EventArgs e)
@@ -801,30 +673,48 @@ namespace Sistema_Prorim
             // Verifica se os campos de preenchimento obrigatório foram preenchidos antes de gravar, caso 
             // contrário haverá erro na inclusão de dados.
 
-            if (txtCetil.Text == ""){
+            if (txtCetil.Text == "")
+            {
                 txtCetil.Focus();
                 toolStripStatusLabel4.Text = "Preencha o código da RI a ser incluída.";
-            }else{
-                if (txtdataCetil2.Text == "") {
+            }
+            else
+            {
+                if (txtdataCetil2.Text == "")
+                {
                     txtdataCetil.Focus();
                     toolStripStatusLabel4.Text = "Escolha uma data válida para a RI no calendário.";
-                }else{
-                    if (cmbEscolha.Text == "") {
+                }
+                else
+                {
+                    if (cmbEscolha.Text == "")
+                    {
                         cmbEscolha.Focus();
                         toolStripStatusLabel4.Text = "Escolha uma Unidade/Setor válida(o).";
-                    }else{
-                        if (txtDO.Text==""){    
+                    }
+                    else
+                    {
+                        if (txtDO.Text == "")
+                        {
                             txtDO.Focus();
                             toolStripStatusLabel4.Text = "Escolha uma despesa válida.";
-                        }else{
-                            if (txtvalorEstimado2.Text==""){
+                        }
+                        else
+                        {
+                            if (txtvalorEstimado2.Text == "")
+                            {
                                 txtvalorEstimado2.Focus();
                                 toolStripStatusLabel4.Text = "Entre com algum valor válido da aquisição ou contratação.";
-                            }else{
-                                if (cmbcadastradoPor.Text==""){
+                            }
+                            else
+                            {
+                                if (cmbcadastradoPor.Text == "")
+                                {
                                     cmbcadastradoPor.Focus();
-                                    toolStripStatusLabel4.Text = "Informe uma pessoa responsável pela confecção da requisição.";                               
-                                }else{
+                                    toolStripStatusLabel4.Text = "Informe uma pessoa responsável pela confecção da requisição.";
+                                }
+                                else
+                                {
                                     if (txtdtCadastro2.Text == "")
                                     {
                                         txtdtCadastro.Focus();
@@ -835,15 +725,15 @@ namespace Sistema_Prorim
                                         gravar();
                                     }
                                 }
-                            }                        
-                        }                    
+                            }
+                        }
                     }
                 }
-            } 
+            }
         }
 
         private void gravar()
-        {            
+        {
 
             /* É aconselhável criar um utilizador com password. Para acrescentar a password é somente
                necessário acrescentar o seguinte código a seguir ao uid=root;password= */
@@ -859,7 +749,7 @@ namespace Sistema_Prorim
                 Sistema_prorim.Global.Logon.tipoRequisicao = "RRP";
             }
 
-                       
+
             // Início da Conexão com indicação de qual o servidor, nome de base de dados a utilizar
             mConn = new MySqlConnection("Persist Security Info=False;server=" + Sistema_prorim.Global.Logon.ipservidor + ";database=prorim;uid=root;password=");
 
@@ -867,12 +757,12 @@ namespace Sistema_Prorim
             mConn.Open();
 
             try
-            {                               
+            {
                 if (txtvalorReal2.Text == "")
                 {
                     txtvalorReal2.Text = "0.00";
                 }
-                
+
                 if (radioButtonRRP.Checked == true)
                 {
 
@@ -895,7 +785,7 @@ namespace Sistema_Prorim
                 {
 
                     txtAnoProcessoContabil.Text = "";
-                 
+
                     MySqlCommand command = new MySqlCommand("INSERT INTO rim (Nome_Unidade,Descricao,Dotacao,Tipo_RIM,Cetil,DataCetil,DataCetilSQL,ValorEstimado,ValorReal,Processo,ano_processo,ProcessoContabil,ano_processo_contabil,Contabilidade,OrdenadorAss,Prefeito,ComprasPrim,OrdenadorEmpenho,ComprasSeg,Dipe,Cadastrante,DataCadastro,Observacao,Cd_Usuario,CD_unidade)"
                     + "VALUES('" + cmbEscolha.Text + "','"
                     + txtdescricao.Text + "','" + txtDO.Text + "','" + Sistema_prorim.Global.Logon.tipoRequisicao.Trim() + "','"
@@ -922,16 +812,16 @@ namespace Sistema_Prorim
 
                 //Mensagem de Sucesso 
                 MessageBox.Show("Requisição [ " + txtCetil.Text + " ] gravada com Sucesso! " + " [ ID: " + Sistema_prorim.Global.RI.codcetil + "]", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                                
+
                 //------- Método para atualizar a tabela ref. despesas vinculadas a determinada RI / Update da tabela 'rim_has_dotacao' ----------
 
                 atualizaRim_has_dotacao();
-                
+
                 if (radioButtonVeiculo.Checked == true)
                 {
                     atualizarim_has_veiculo();
                 }
-                
+
                 //--------------------------------------------------------------------------------------------------------------------------------
 
                 limparCampos();
@@ -955,15 +845,15 @@ namespace Sistema_Prorim
                 MessageBox.Show("Requisição não foi gravada." + "\n" + "[ " + "INSERT INTO rim (Nome_Unidade,Descricao,Dotacao,Tipo_RIM,Cetil,DataCetil,DataCetilSQL,ValorEstimado,ValorReal,Processo,ano_processo,ProcessoContabil,ano_processo_contabil,Contabilidade,OrdenadorAss,ComprasPrim,OrdenadorEmpenho,ComprasSeg,Dipe,Cadastrante,DataCadastro,Observacao,Cd_Usuario,CD_unidade)"
                     + "VALUES('" + cmbEscolha.Text + "','"
                     + txtdescricao.Text + "','" + txtDO.Text + "','" + Sistema_prorim.Global.Logon.tipoRequisicao.Trim() + "','"
-                    + txtCetil.Text + "','" + txtdataCetil.Text + "','" + txtdataCetil2.Text +  "','"
+                    + txtCetil.Text + "','" + txtdataCetil.Text + "','" + txtdataCetil2.Text + "','"
                     + Convert.ToDecimal(txtvalorEstimado2.Text) + "','" + Convert.ToDecimal(txtvalorReal2.Text) + "','" + txtProcesso.Text + "','"
                     + txtAnoProcesso.Text + "','" + txtProcessoContabil.Text + "','" + txtAnoProcessoContabil.Text + "','"
                     + lblDataContabilidade.Text + "','" + lblDataOrdenador1.Text + "','" + lblDataPrefeito.Text + "','" + lblDataCompras1.Text + "','"
                     + lblDataOrdenador2.Text + "','" + lblDataCompras2.Text + "','" + lblDataDipe.Text + "','" + cmbcadastradoPor.Text + "','"
-                    + txtdtCadastro2.Text + "','" + txtObs.Text + "'," + Convert.ToInt32(lblCodUsuario.Text) + "," + Convert.ToInt32(lblCodUnidade.Text)  +")" + " ] ", "ATENÇÂO!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                             
+                    + txtdtCadastro2.Text + "','" + txtObs.Text + "'," + Convert.ToInt32(lblCodUsuario.Text) + "," + Convert.ToInt32(lblCodUnidade.Text) + ")" + " ] ", "ATENÇÂO!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
             }
-            
+
         }
 
         private void atualizarim_has_veiculo()
@@ -976,7 +866,7 @@ namespace Sistema_Prorim
                 mConn.Open();
 
                 //Query SQl
-                MySqlCommand command = new MySqlCommand("UPDATE rim_has_veiculo SET Cod_rim=" +  Sistema_prorim.Global.RI.cetil + " WHERE Cod_rim='" +
+                MySqlCommand command = new MySqlCommand("UPDATE rim_has_veiculo SET Cod_rim=" + Sistema_prorim.Global.RI.cetil + " WHERE Cod_rim='" +
                  txtCetil.Text + "'", mConn);
 
                 //Executa a Query SQL
@@ -988,14 +878,13 @@ namespace Sistema_Prorim
             {
                 MessageBox.Show("Erro! UPDATE rim_has_veiculo SET Cod_rim=" + Sistema_prorim.Global.RI.cetil + " WHERE Cod_rim='" +
                 txtCetil.Text + "'", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            } 
-         }
+            }
+        }
 
-        
+
         private void limparCampos()
         {
             lblCodigo.Text = "";
-            //cmbEscolha.Text = "";
             txtdescricao.Text = "";
             txtDO.Text = "";
             txtCetil.Text = "";
@@ -1010,9 +899,7 @@ namespace Sistema_Prorim
             lblDataOrdenador2.Text = "";
             lblDataCompras2.Text = "";
             lblDataDipe.Text = "";
-            //cmbcadastradoPor.Text = "";
             txtdtCadastro2.Text = "";
-            //cmbFornecedor.Text = "";
             txtObs.Text = "";
             lblCodigoDespesa.Text = "";
             txtReduzida.Text = "";
@@ -1020,7 +907,7 @@ namespace Sistema_Prorim
             txtAcao.Text = "";
             lblCodigoFornecedor.Text = "";
             lblCodUnidade.Text = "";
-            lblCodUsuario.Text = "";  
+            lblCodUsuario.Text = "";
         }
 
         private void atualizaRim_has_dotacao()
@@ -1033,7 +920,7 @@ namespace Sistema_Prorim
 
                 // Abre a conexão
                 mConn.Open();
-                
+
                 //Query SQl
                 MySqlCommand command = new MySqlCommand("UPDATE rim_has_dotacao SET Cod_rim=" + Sistema_prorim.Global.RI.cetil + " WHERE Cetil='" +
                  txtCetil.Text + "'", mConn);
@@ -1049,11 +936,9 @@ namespace Sistema_Prorim
             }
             catch
             {
-                MessageBox.Show("ERRO! UPDATE rim_has_dotacao SET Cod_rim=" +    Sistema_prorim.Global.RI.cetil + " WHERE Cetil='" +
+                MessageBox.Show("ERRO! UPDATE rim_has_dotacao SET Cod_rim=" + Sistema_prorim.Global.RI.cetil + " WHERE Cetil='" +
                  txtCetil.Text + "'", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            } 
-
+            }
 
         }
 
@@ -1090,7 +975,7 @@ namespace Sistema_Prorim
             {
                 MessageBox.Show("Erro: " + ex.Message);
             }
-            
+
         }
 
         private void retirarEspaços()
@@ -1106,25 +991,18 @@ namespace Sistema_Prorim
             txtvalorEstimado2.Text = txtvalorEstimado2.Text.Trim();
             txtvalorReal2.Text = txtvalorReal2.Text.Trim();
             txtProcesso.Text = txtProcesso.Text.Trim();
-            //txtAutorizacao.Text = txtAutorizacao.Text.Trim();
-            //txtDataAutorizacao.Text = txtDataAutorizacao.Text.Trim();
-            //cmbSetor.Text = cmbSetor.Text.Trim();
-            //txtdataEnvio.Text = txtdataEnvio.Text.Trim();
             cmbcadastradoPor.Text = cmbcadastradoPor.Text.Trim();
             txtdtCadastro2.Text = txtdtCadastro2.Text.Trim();
             cmbFornecedor.Text = cmbFornecedor.Text.Trim();
-            //txtnotaFiscal.Text = txtnotaFiscal.Text.Trim();
-            //txtdataNotaFiscal.Text = txtdataNotaFiscal.Text.Trim();
             txtObs.Text = txtObs.Text.Trim();
-            
+
         }
 
         private void cmbEscolha_SelectedValueChanged(object sender, EventArgs e)
         {
             try
             {
-
-                stConection = "Persist Security Info=False;server=" +  Sistema_prorim.Global.Logon.ipservidor + ";database=prorim;uid=root;password=";
+                stConection = "Persist Security Info=False;server=" + Sistema_prorim.Global.Logon.ipservidor + ";database=prorim;uid=root;password=";
                 Cmn.ConnectionString = stConection;
                 Cmn.Open();
 
@@ -1143,8 +1021,6 @@ namespace Sistema_Prorim
                         lblCodUnidade.Text = myReader["Cod_unidade"] + Environment.NewLine;
                     }
                 }
-
-
             }
             catch
             {
@@ -1191,14 +1067,14 @@ namespace Sistema_Prorim
             }
 
             Cmn.Close();
-            
+
         }
 
         private void cmbFornecedor_SelectedValueChanged(object sender, EventArgs e)
         {
             try
             {
-                stConection = "Persist Security Info=False;server=" +  Sistema_prorim.Global.Logon.ipservidor + ";database=prorim;uid=root;password=";
+                stConection = "Persist Security Info=False;server=" + Sistema_prorim.Global.Logon.ipservidor + ";database=prorim;uid=root;password=";
                 Cmn.ConnectionString = stConection;
                 Cmn.Open();
 
@@ -1221,18 +1097,18 @@ namespace Sistema_Prorim
                 if (lblCodigoFornecedor.Text != "")
                 {
                     Sistema_prorim.Global.fornecedor.codfornecedor = lblCodigoFornecedor.Text;
-                    Sistema_prorim.Global.RI.cetil = txtCetil.Text;                    
+                    Sistema_prorim.Global.RI.cetil = txtCetil.Text;
                 }
-                
+
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Não foi possível fazer conexão. Erro: "+ex.Message, "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Não foi possível fazer conexão. Erro: " + ex.Message, "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
             Cmn.Close();
-            
+
         }
 
         private void txtdataCetil_ValueChanged(object sender, EventArgs e)
@@ -1259,15 +1135,8 @@ namespace Sistema_Prorim
         {
             txtObs.Focus();
             txtdtCadastro2.Text = txtdtCadastro.Text;
-            
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        
         private void txtCetil_Enter(object sender, EventArgs e)
         {
             txtCetil.BackColor = Color.Yellow;
@@ -1296,8 +1165,8 @@ namespace Sistema_Prorim
         private void txtDO_Enter(object sender, EventArgs e)
         {
             txtDO.BackColor = Color.Yellow;
-        }       
-       
+        }
+
         private void txtProcessoContabil_Enter(object sender, EventArgs e)
         {
             txtProcessoContabil.BackColor = Color.Yellow;
@@ -1338,11 +1207,6 @@ namespace Sistema_Prorim
             cmbEscolha.BackColor = Color.White;
         }
 
-        private void txtdescricao_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void txtdescricao_Leave(object sender, EventArgs e)
         {
             txtdescricao.BackColor = Color.White;
@@ -1358,7 +1222,6 @@ namespace Sistema_Prorim
             txtDO.BackColor = Color.White;
         }
 
-        
         private void txtProcessoContabil_Leave(object sender, EventArgs e)
         {
             txtProcessoContabil.BackColor = Color.White;
@@ -1467,7 +1330,7 @@ namespace Sistema_Prorim
                 if (txtdescricao.Text == "")
                 {
                     txtdescricao.Focus();
-                                    }
+                }
                 else
                 {
                     txtProcesso.Focus();
@@ -1499,10 +1362,6 @@ namespace Sistema_Prorim
 
             }
         }
-
-       
-
-        
         private void txtProcessoContabil_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13) //Se for Enter, executa a validação
@@ -1570,57 +1429,56 @@ namespace Sistema_Prorim
                 ///-----------------------------------------------
                 //try
                 //{
-                    stConection = "Persist Security Info=False;server=" +  Sistema_prorim.Global.Logon.ipservidor + ";database=prorim;uid=root;password=";
-                    Cmn.ConnectionString = stConection;
-                    Cmn.Open();
-                    // Queremos achar o código da despesas digitada.
-                    stConsulta = "SELECT Cod_Despesa,Despesa,Reduzida,Programa,Acao FROM dotacao WHERE Despesa='" +txtDO.Text+"'";
+                stConection = "Persist Security Info=False;server=" + Sistema_prorim.Global.Logon.ipservidor + ";database=prorim;uid=root;password=";
+                Cmn.ConnectionString = stConection;
+                Cmn.Open();
+                // Queremos achar o código da despesas digitada.
+                stConsulta = "SELECT Cod_Despesa,Despesa,Reduzida,Programa,Acao FROM dotacao WHERE Despesa='" + txtDO.Text + "'";
 
-                    MySqlCommand myCmd = new MySqlCommand();
-                    myCmd.Connection = Cmn;
-                    myCmd.CommandText = stConsulta;
-                    MySqlDataReader myReader = myCmd.ExecuteReader();
+                MySqlCommand myCmd = new MySqlCommand();
+                myCmd.Connection = Cmn;
+                myCmd.CommandText = stConsulta;
+                MySqlDataReader myReader = myCmd.ExecuteReader();
 
-                    if (myReader.HasRows)
+                if (myReader.HasRows)
+                {
+                    while (myReader.Read())
                     {
-                        while (myReader.Read())
+                        myReader.Read();
+
+                        lblCodigoDespesa.Text = myReader["Cod_Despesa"] + Environment.NewLine;
+                        txtCodigoDespesa.Text = myReader["Despesa"] + Environment.NewLine; //txtDO é textBox de cima e txtCodigoDespesa textBox de dados da despesa.
+                        txtReduzida.Text = myReader["Reduzida"] + Environment.NewLine;
+                        txtPrograma.Text = myReader["Programa"] + Environment.NewLine;
+                        txtAcao.Text = myReader["Acao"] + Environment.NewLine;
+
+
+                        if (txtCetil.Text == "")
                         {
-                            myReader.Read();
-
-                            lblCodigoDespesa.Text = myReader["Cod_Despesa"] + Environment.NewLine;
-                            txtCodigoDespesa.Text = myReader["Despesa"] + Environment.NewLine; //txtDO é textBox de cima e txtCodigoDespesa textBox de dados da despesa.
-                            txtReduzida.Text = myReader["Reduzida"] + Environment.NewLine;
-                            txtPrograma.Text = myReader["Programa"] + Environment.NewLine;
-                            txtAcao.Text = myReader["Acao"] + Environment.NewLine;
-
-                                                
-                                if (txtCetil.Text == "")
-                                {
-                                    MessageBox.Show("Informe o número da requisição", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    txtCetil.Focus();
-                                }
-                                else
-                                {
-                                    Sistema_prorim.Global.despesa.coddespesas = lblCodigoDespesa.Text;
-                                    Sistema_prorim.Global.despesa.despesas = txtDO.Text;
-                                    Sistema_prorim.Global.DadosRim.cetil = txtCetil.Text;
-                                    txtvalorEstimado2.Focus();
-                                    Sistema_prorim.rim_tem_despesa despesa = new Sistema_prorim.rim_tem_despesa();
-                                    despesa.ShowDialog();
-                                }
-                         }                                    
-                           
-                    }
-                    else 
-                    {
-                        lblCodigoDespesa.Text="";
-                        txtDO.Text = "";
-                        toolStripStatusLabel4.Text = "Despesa não cadastrada. Opções: clique no botão 'DESPESA' para cadastrá-la ou escolha outra válida";
-                        MessageBox.Show("A Despesa informada não existe ou está incorreta!","Atenção",MessageBoxButtons.OK,MessageBoxIcon.Warning);
-                        txtDO.Focus();
+                            MessageBox.Show("Informe o número da requisição", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txtCetil.Focus();
+                        }
+                        else
+                        {
+                            Sistema_prorim.Global.despesa.coddespesas = lblCodigoDespesa.Text;
+                            Sistema_prorim.Global.despesa.despesas = txtDO.Text;
+                            Sistema_prorim.Global.DadosRim.cetil = txtCetil.Text;
+                            Sistema_prorim.Global.DadosRim.codigo = lblCodigo.Text;
+                            txtvalorEstimado2.Focus();
+                            Sistema_prorim.rim_tem_despesa despesa = new Sistema_prorim.rim_tem_despesa();
+                            despesa.ShowDialog();
+                        }
                     }
 
-                      
+                }
+                else
+                {
+                    lblCodigoDespesa.Text = "";
+                    txtDO.Text = "";
+                    toolStripStatusLabel4.Text = "Despesa não cadastrada. Opções: clique no botão 'DESPESA' para cadastrá-la ou escolha outra válida";
+                    MessageBox.Show("A Despesa informada não existe ou está incorreta!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtDO.Focus();
+                }
 
                 Cmn.Close();
             }
@@ -1629,8 +1487,8 @@ namespace Sistema_Prorim
                 txtDO.Focus();
             }
         }
-       
-       
+
+
         private void txtvalorReal2_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13) //Se for Enter, executa a validação
@@ -1648,7 +1506,8 @@ namespace Sistema_Prorim
                     {
                         txtProcessoContabil.Focus();
                     }
-                    else {
+                    else
+                    {
                         cmbcadastradoPor.Focus();
                     }
                 }
@@ -1679,8 +1538,6 @@ namespace Sistema_Prorim
             else
             {
                 txtvalorEstimado2.Focus();
-
-
             }
         }
 
@@ -1702,8 +1559,8 @@ namespace Sistema_Prorim
         private void txtvalorReal2_Leave(object sender, EventArgs e)
         {
             txtvalorReal2.BackColor = Color.White;
-        }        
-        
+        }
+
 
         private void label5_Click(object sender, EventArgs e)
         {
@@ -1755,7 +1612,7 @@ namespace Sistema_Prorim
             ocultarCalendario();
         }
 
-               
+
         private void monthCalendar_DateSelected(object sender, DateRangeEventArgs e)
         {
             switch (flagTramite)
@@ -1817,7 +1674,8 @@ namespace Sistema_Prorim
 
         private void Requisicao_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 27) {
+            if (e.KeyChar == 27)
+            {
                 monthCalendar.Visible = false;
             }
         }
@@ -1846,7 +1704,6 @@ namespace Sistema_Prorim
             {
                 monthCalendar.Visible = true;
                 lblDataOrdenador2.Visible = true;
-                //checkBoxContab.Enabled = true;
                 flagTramite = 5;
             }
             else
@@ -1918,7 +1775,7 @@ namespace Sistema_Prorim
         {
             if (radioButtonRIM.Checked == true)
             {
-                Sistema_prorim.Global.Logon.tipoRequisicao= "RIM";
+                Sistema_prorim.Global.Logon.tipoRequisicao = "RIM";
             }
             else
             {
@@ -1937,7 +1794,7 @@ namespace Sistema_Prorim
             retirarEspaços();
 
             //conexao
-            mConn = new MySqlConnection("Persist Security Info=False;server=" +  Sistema_prorim.Global.Logon.ipservidor + ";database=prorim;uid=root;password=");
+            mConn = new MySqlConnection("Persist Security Info=False;server=" + Sistema_prorim.Global.Logon.ipservidor + ";database=prorim;uid=root;password=");
             mConn.Open();
 
             try
@@ -1947,44 +1804,31 @@ namespace Sistema_Prorim
 
                 if (radioButtonRRP.Checked == true)
                 {
-                 /*
-                 ("INSERT INTO rim (Nome_Unidade,Descricao,Dotacao,Tipo_RIM,Cetil,DataCetil,DataCetilSQL,ValorEstimado,ValorReal,Processo,ano_processo,
-                 * ProcessoContabil,ano_processo_contabil,Contabilidade,OrdenadorAss,ComprasPrim,OrdenadorEmpenho,ComprasSeg,Dipe,Cadastrante,DataCadastro,
-                 * Observacao,Cd_Usuario,CD_unidade)" + "VALUES('" + cmbEscolha.Text + "','" + txtdescricao.Text + "','" + txtDO.Text + "','" 
-                 * + TipoRIM.Trim() + "','"
-                + txtCetil.Text + "','" + txtdataCetil.Text + "','" + Convert.ToDateTime(txtdataCetil.Text).ToString("yyyy/MM/dd") + "','"
-                + Convert.ToDecimal(txtvalorEstimado.Text) + "','" + Convert.ToDecimal(txtvalorReal.Text) + "','" + txtProcesso.Text + "','"
-                + txtAnoProcesso.Text + "','" + txtProcessoContabil.Text + "','" + txtAnoProcessoContabil.Text + "','"
-                + lblDataContabilidade.Text + "','" + lblDataOrdenador1.Text + "','" + lblDataCompras1.Text + "','"
-                + lblDataOrdenador2.Text + "','" + lblDataCompras2.Text + "','" + lblDataDipe.Text + "','" + cmbcadastradoPor.Text + "','"
-                + txtdtCadastro.Text + "','" + txtObs.Text + "'," + lblCodUsuario.Text + "," + lblCodUnidade.Text + ")", mConn);
-                    */
-
                     cmd.CommandText = "UPDATE rim SET Nome_Unidade =" +
-                        "'" + cmbEscolha.Text + "',"
-                        + "Descricao=" + "'" + txtdescricao.Text + "',"
-                        + "Dotacao=" + "'" + txtDO.Text + "',"
-                        + "Tipo_RIM=" + "'" + Sistema_prorim.Global.Logon.tipoRequisicao + "',"
-                        + "Cetil=" + "'" + txtCetil.Text + "',"
-                        + "DataCetil=" + "'" + txtdataCetil.Text + "',"
-                        + "DataCetilSQL=" + "'" + Convert.ToDateTime(txtdataCetil.Text).ToString("yyyy/MM/dd") + "',"
-                        + "ValorEstimado=" + "'" + txtvalorEstimado2.Text + "',"
-                        + "ValorReal=" + "'" + txtvalorReal2.Text + "',"
-                        + "Processo=" + "'" + txtProcesso.Text + "',"
-                        + "ano_processo=" + "'" + txtAnoProcesso.Text + "',"
-                        + "ProcessoContabil=" + "'" + txtProcessoContabil.Text + "',"
-                        + "ano_processo_contabil=" + "'" + txtAnoProcessoContabil.Text + "',"
-                        + "Contabilidade=" + "'" + lblDataContabilidade.Text + "',"
-                        + "OrdenadorAss=" + "'" + lblDataOrdenador1.Text + "',"
-                        + "Prefeito=" + "'" + lblDataPrefeito.Text + "',"
-                        + "ComprasPrim=" + "'" + lblDataCompras1.Text + "',"
-                        + "OrdenadorEmpenho=" + "'" + lblDataOrdenador2.Text + "',"
-                        + "ComprasSeg=" + "'" + lblDataCompras2.Text + "',"
-                        + "Dipe=" + "'" + lblDataDipe.Text + "',"
-                        + "Cadastrante=" + "'" + cmbcadastradoPor.Text + "',"
-                        + "DataCadastro=" + "'" + txtdtCadastro.Text + "',"
-                        + "Observacao=" + "'" + txtObs.Text
-                        + "'" + "WHERE Cod_rim=" + lblCodigo.Text;
+                    "'" + cmbEscolha.Text + "',"
+                    + "Descricao=" + "'" + txtdescricao.Text + "',"
+                    + "Dotacao=" + "'" + txtDO.Text + "',"
+                    + "Tipo_RIM=" + "'" + Sistema_prorim.Global.Logon.tipoRequisicao + "',"
+                    + "Cetil=" + "'" + txtCetil.Text + "',"
+                    + "DataCetil=" + "'" + txtdataCetil.Text + "',"
+                    + "DataCetilSQL=" + "'" + Convert.ToDateTime(txtdataCetil.Text).ToString("yyyy/MM/dd") + "',"
+                    + "ValorEstimado=" + "'" + txtvalorEstimado2.Text + "',"
+                    + "ValorReal=" + "'" + txtvalorReal2.Text + "',"
+                    + "Processo=" + "'" + txtProcesso.Text + "',"
+                    + "ano_processo=" + "'" + txtAnoProcesso.Text + "',"
+                    + "ProcessoContabil=" + "'" + txtProcessoContabil.Text + "',"
+                    + "ano_processo_contabil=" + "'" + txtAnoProcessoContabil.Text + "',"
+                    + "Contabilidade=" + "'" + lblDataContabilidade.Text + "',"
+                    + "OrdenadorAss=" + "'" + lblDataOrdenador1.Text + "',"
+                    + "Prefeito=" + "'" + lblDataPrefeito.Text + "',"
+                    + "ComprasPrim=" + "'" + lblDataCompras1.Text + "',"
+                    + "OrdenadorEmpenho=" + "'" + lblDataOrdenador2.Text + "',"
+                    + "ComprasSeg=" + "'" + lblDataCompras2.Text + "',"
+                    + "Dipe=" + "'" + lblDataDipe.Text + "',"
+                    + "Cadastrante=" + "'" + cmbcadastradoPor.Text + "',"
+                    + "DataCadastro=" + "'" + txtdtCadastro.Text + "',"
+                    + "Observacao=" + "'" + txtObs.Text
+                    + "'" + "WHERE Cod_rim=" + lblCodigo.Text;
                 }
                 else
                 {
@@ -2069,7 +1913,7 @@ namespace Sistema_Prorim
 
                 atualizaRim_has_dotacao();
 
-                this.Close();                            
+                this.Close();
             }
 
             cmbFornecedor.Items.Clear();
@@ -2091,7 +1935,7 @@ namespace Sistema_Prorim
             {
                 {
                     //conexao
-                    mConn = new MySqlConnection("Persist Security Info=False;server=" +  Sistema_prorim.Global.Logon.ipservidor + ";database=prorim;uid=root;password=");
+                    mConn = new MySqlConnection("Persist Security Info=False;server=" + Sistema_prorim.Global.Logon.ipservidor + ";database=prorim;uid=root;password=");
                     mConn.Open();
                     try
                     {
@@ -2124,7 +1968,7 @@ namespace Sistema_Prorim
                     }
 
                     MessageBox.Show("Requisição nr. '" + codigo + " 'excluída com Sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();                               
+                    this.Close();
 
                 }
             }
@@ -2134,7 +1978,7 @@ namespace Sistema_Prorim
         {
             int temp = Convert.ToInt32(lblCodigo.Text);
 
-            string message = "Confirma a exclusão da Requisição " + txtCetil.Text +"?";
+            string message = "Confirma a exclusão da Requisição " + txtCetil.Text + "?";
             string caption = "Confirmação da Ação";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             DialogResult result;
@@ -2147,8 +1991,8 @@ namespace Sistema_Prorim
             {
                 excluir(temp);
 
-            }            
-                       
+            }
+
         }
 
         private void btn_Despesa_Click(object sender, EventArgs e)
@@ -2165,7 +2009,8 @@ namespace Sistema_Prorim
 
         private void btnFornecedorVinculado_Click(object sender, EventArgs e)
         {
-            if (lblCodigoFornecedor.Text == ""){
+            if (lblCodigoFornecedor.Text == "")
+            {
 
                 MessageBox.Show("Você deve escolher um fornecedor para vincular à RI", "Atenção");
                 cmbFornecedor.Focus();
@@ -2187,7 +2032,7 @@ namespace Sistema_Prorim
             {
                 Sistema_prorim.Global.NotaFiscal.codigoRI = lblCodigo.Text;
                 Sistema_prorim.Global.NotaFiscal.fornecedor = lblCodigoFornecedor.Text;
-                Sistema_prorim. Global.NotaFiscal.nomefornecedor = cmbFornecedor.Text;
+                Sistema_prorim.Global.NotaFiscal.nomefornecedor = cmbFornecedor.Text;
                 Sistema_prorim.NotaFiscal notafiscal = new Sistema_prorim.NotaFiscal();
                 notafiscal.Show();
             }
@@ -2233,13 +2078,13 @@ namespace Sistema_Prorim
             Cmn.Close();
         }
 
-        
+
         private void button1_Click_1(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        
+
         private void checkBoxPrefeito_CheckStateChanged(object sender, EventArgs e)
         {
             if (checkBoxPrefeito.Checked == true)
@@ -2259,10 +2104,10 @@ namespace Sistema_Prorim
 
         private void btnEmpenho_Click(object sender, EventArgs e)
         {
-                   
+            /*
             try
             {
-                stConection = "Persist Security Info=False;server=" +  Sistema_prorim.Global.Logon.ipservidor + ";database=prorim;uid=root;password=";
+                stConection = "Persist Security Info=False;server=" + Sistema_prorim.Global.Logon.ipservidor + ";database=prorim;uid=root;password=";
                 Cmn.ConnectionString = stConection;
                 Cmn.Open();
 
@@ -2295,9 +2140,66 @@ namespace Sistema_Prorim
             Sistema_prorim.Global.despesa.coddespesas = lblCodDespesa.Text;
             Sistema_prorim.Global.despesa.despesas = txtDO.Text;
             Sistema_prorim.Global.NotaFiscal.codigoRI = txtCetil.Text;
-             
+            //Sistema_prorim.Global.fornecedor.codfornecedor = lblCodFornecedor.Text;
+
             Sistema_prorim.rim_tem_despesa despesa = new Sistema_prorim.rim_tem_despesa();
             despesa.ShowDialog();
+             * */
+            ///-----------------------------------------------
+            //try
+            //{
+            stConection = "Persist Security Info=False;server=" + Sistema_prorim.Global.Logon.ipservidor + ";database=prorim;uid=root;password=";
+            Cmn.ConnectionString = stConection;
+            Cmn.Open();
+            // Queremos achar o código da despesas digitada.
+            stConsulta = "SELECT Cod_Despesa,Despesa,Reduzida,Programa,Acao FROM dotacao WHERE Despesa='" + txtDO.Text + "'";
+
+            MySqlCommand myCmd = new MySqlCommand();
+            myCmd.Connection = Cmn;
+            myCmd.CommandText = stConsulta;
+            MySqlDataReader myReader = myCmd.ExecuteReader();
+
+            if (myReader.HasRows)
+            {
+                while (myReader.Read())
+                {
+                    myReader.Read();
+
+                    lblCodigoDespesa.Text = myReader["Cod_Despesa"] + Environment.NewLine;
+                    txtCodigoDespesa.Text = myReader["Despesa"] + Environment.NewLine; //txtDO é textBox de cima e txtCodigoDespesa textBox de dados da despesa.
+                    txtReduzida.Text = myReader["Reduzida"] + Environment.NewLine;
+                    txtPrograma.Text = myReader["Programa"] + Environment.NewLine;
+                    txtAcao.Text = myReader["Acao"] + Environment.NewLine;
+
+
+                    if (txtCetil.Text == "")
+                    {
+                        MessageBox.Show("Informe o número da requisição", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txtCetil.Focus();
+                    }
+                    else
+                    {
+                        Sistema_prorim.Global.despesa.coddespesas = lblCodigoDespesa.Text;
+                        Sistema_prorim.Global.despesa.despesas = txtDO.Text;
+                        Sistema_prorim.Global.DadosRim.cetil = txtCetil.Text;
+                        Sistema_prorim.Global.DadosRim.codigo = lblCodigo.Text;
+                        txtvalorEstimado2.Focus();
+                        Sistema_prorim.rim_tem_despesa despesa = new Sistema_prorim.rim_tem_despesa();
+                        despesa.ShowDialog();
+                    }
+                }
+
+            }
+            else
+            {
+                lblCodigoDespesa.Text = "";
+                txtDO.Text = "";
+                toolStripStatusLabel4.Text = "Despesa não cadastrada. Opções: clique no botão 'DESPESA' para cadastrá-la ou escolha outra válida";
+                MessageBox.Show("A Despesa informada não existe ou está incorreta!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtDO.Focus();
+            }
+
+            Cmn.Close();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -2326,10 +2228,10 @@ namespace Sistema_Prorim
                         txtReduzida.Text = myReader["Reduzida"] + Environment.NewLine;
                         txtPrograma.Text = myReader["Programa"] + Environment.NewLine;
                         txtAcao.Text = myReader["Acao"] + Environment.NewLine;
-                                                
+
                     }
                 }
-                
+
             }
             catch
             {
@@ -2357,6 +2259,6 @@ namespace Sistema_Prorim
         }
 
     }
-               
+
 }
 

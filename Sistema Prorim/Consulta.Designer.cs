@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -40,7 +40,6 @@
             this.toolStripStatusMensagem = new System.Windows.Forms.ToolStripStatusLabel();
             this.label36 = new System.Windows.Forms.Label();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.button4 = new System.Windows.Forms.Button();
             this.chkUnidade = new System.Windows.Forms.CheckBox();
             this.chkTramite = new System.Windows.Forms.CheckBox();
             this.chkDotacao = new System.Windows.Forms.CheckBox();
@@ -57,6 +56,7 @@
             this.chkDataCadastro = new System.Windows.Forms.CheckBox();
             this.chkProc = new System.Windows.Forms.CheckBox();
             this.chkVlEstimado = new System.Windows.Forms.CheckBox();
+            this.button4 = new System.Windows.Forms.Button();
             this.txtCheckCodigo = new System.Windows.Forms.TextBox();
             this.txtCheckCetil = new System.Windows.Forms.TextBox();
             this.txtCheckProcesso = new System.Windows.Forms.TextBox();
@@ -107,6 +107,7 @@
             this.lineShape3 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.lineShape2 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.btnSair = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -120,49 +121,48 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.Black;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle17;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenHorizontal;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle18;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.GridColor = System.Drawing.Color.White;
             this.dataGridView1.Location = new System.Drawing.Point(12, 338);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle20.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.Black;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle20;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1346, 369);
             this.dataGridView1.TabIndex = 117;
             this.dataGridView1.Visible = false;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
             this.dataGridView1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseDoubleClick);
             // 
             // statusStrip1
@@ -219,7 +219,6 @@
             // groupBox7
             // 
             this.groupBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.groupBox7.Controls.Add(this.button4);
             this.groupBox7.Controls.Add(this.chkUnidade);
             this.groupBox7.Controls.Add(this.chkTramite);
             this.groupBox7.Controls.Add(this.chkDotacao);
@@ -236,22 +235,11 @@
             this.groupBox7.Controls.Add(this.chkDataCadastro);
             this.groupBox7.Controls.Add(this.chkProc);
             this.groupBox7.Controls.Add(this.chkVlEstimado);
-            this.groupBox7.Location = new System.Drawing.Point(571, 35);
+            this.groupBox7.Location = new System.Drawing.Point(561, 34);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(613, 213);
+            this.groupBox7.Size = new System.Drawing.Size(575, 213);
             this.groupBox7.TabIndex = 203;
             this.groupBox7.TabStop = false;
-            // 
-            // button4
-            // 
-            this.button4.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(394, 166);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(180, 44);
-            this.button4.TabIndex = 251;
-            this.button4.Text = "&Mostrar Colunas Selecionadas";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // chkUnidade
             // 
@@ -266,7 +254,6 @@
             this.chkUnidade.TabIndex = 24;
             this.chkUnidade.Text = "Unidade";
             this.chkUnidade.UseVisualStyleBackColor = true;
-            this.chkUnidade.CheckedChanged += new System.EventHandler(this.chkUnidade_CheckedChanged);
             // 
             // chkTramite
             // 
@@ -279,7 +266,6 @@
             this.chkTramite.TabIndex = 33;
             this.chkTramite.Text = "Trâmites";
             this.chkTramite.UseVisualStyleBackColor = true;
-            this.chkTramite.CheckedChanged += new System.EventHandler(this.chkTramite_CheckedChanged);
             // 
             // chkDotacao
             // 
@@ -294,7 +280,6 @@
             this.chkDotacao.TabIndex = 26;
             this.chkDotacao.Text = "Dotação";
             this.chkDotacao.UseVisualStyleBackColor = true;
-            this.chkDotacao.CheckedChanged += new System.EventHandler(this.chkDotacao_CheckedChanged);
             // 
             // checkBox3
             // 
@@ -354,7 +339,6 @@
             this.chkValorReal.TabIndex = 29;
             this.chkValorReal.Text = "Valor Real";
             this.chkValorReal.UseVisualStyleBackColor = true;
-            this.chkValorReal.CheckedChanged += new System.EventHandler(this.chkValorReal_CheckedChanged);
             // 
             // chkCodigoSeq
             // 
@@ -367,7 +351,6 @@
             this.chkCodigoSeq.TabIndex = 23;
             this.chkCodigoSeq.Text = "Código Sequencial";
             this.chkCodigoSeq.UseVisualStyleBackColor = true;
-            this.chkCodigoSeq.CheckedChanged += new System.EventHandler(this.chkCodigoSeq_CheckedChanged);
             // 
             // chkObs
             // 
@@ -382,7 +365,6 @@
             this.chkObs.TabIndex = 32;
             this.chkObs.Text = "Anotações";
             this.chkObs.UseVisualStyleBackColor = true;
-            this.chkObs.CheckedChanged += new System.EventHandler(this.chkObs_CheckedChanged);
             // 
             // chkDescricao
             // 
@@ -397,7 +379,6 @@
             this.chkDescricao.TabIndex = 25;
             this.chkDescricao.Text = "Descrição";
             this.chkDescricao.UseVisualStyleBackColor = true;
-            this.chkDescricao.CheckedChanged += new System.EventHandler(this.chkDescricao_CheckedChanged);
             // 
             // chkProcessoContabil
             // 
@@ -412,7 +393,6 @@
             this.chkProcessoContabil.TabIndex = 31;
             this.chkProcessoContabil.Text = "Proc.Contábil/Data";
             this.chkProcessoContabil.UseVisualStyleBackColor = true;
-            this.chkProcessoContabil.CheckedChanged += new System.EventHandler(this.chkProcessoContabil_CheckedChanged);
             // 
             // chkCadastrante
             // 
@@ -427,7 +407,6 @@
             this.chkCadastrante.TabIndex = 34;
             this.chkCadastrante.Text = "Cadastrante";
             this.chkCadastrante.UseVisualStyleBackColor = true;
-            this.chkCadastrante.CheckedChanged += new System.EventHandler(this.chkCadastrante_CheckedChanged);
             // 
             // chkCetil
             // 
@@ -442,7 +421,6 @@
             this.chkCetil.TabIndex = 27;
             this.chkCetil.Text = "Cetil/Data Cetil";
             this.chkCetil.UseVisualStyleBackColor = true;
-            this.chkCetil.CheckedChanged += new System.EventHandler(this.chkCetil_CheckedChanged);
             // 
             // chkDataCadastro
             // 
@@ -458,7 +436,6 @@
             this.chkDataCadastro.Text = "Data Cadastro";
             this.chkDataCadastro.UseVisualStyleBackColor = true;
             this.chkDataCadastro.Visible = false;
-            this.chkDataCadastro.CheckedChanged += new System.EventHandler(this.chkDataCadastro_CheckedChanged);
             // 
             // chkProc
             // 
@@ -473,7 +450,6 @@
             this.chkProc.TabIndex = 30;
             this.chkProc.Text = "Processo/Data";
             this.chkProc.UseVisualStyleBackColor = true;
-            this.chkProc.CheckedChanged += new System.EventHandler(this.chkProc_CheckedChanged);
             // 
             // chkVlEstimado
             // 
@@ -488,7 +464,17 @@
             this.chkVlEstimado.TabIndex = 28;
             this.chkVlEstimado.Text = "Valor Estimado";
             this.chkVlEstimado.UseVisualStyleBackColor = true;
-            this.chkVlEstimado.CheckedChanged += new System.EventHandler(this.chkVlEstimado_CheckedChanged);
+            // 
+            // button4
+            // 
+            this.button4.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Location = new System.Drawing.Point(964, 265);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(180, 44);
+            this.button4.TabIndex = 251;
+            this.button4.Text = "Somen&te Colunas Selecionadas";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // txtCheckCodigo
             // 
@@ -634,7 +620,7 @@
             this.groupBox6.Controls.Add(this.label32);
             this.groupBox6.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.groupBox6.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox6.Location = new System.Drawing.Point(37, 209);
+            this.groupBox6.Location = new System.Drawing.Point(37, 212);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(296, 80);
             this.groupBox6.TabIndex = 200;
@@ -670,7 +656,6 @@
             this.dtpDataFinal.Name = "dtpDataFinal";
             this.dtpDataFinal.Size = new System.Drawing.Size(105, 21);
             this.dtpDataFinal.TabIndex = 12;
-            this.dtpDataFinal.ValueChanged += new System.EventHandler(this.dtpDataFinal_ValueChanged);
             // 
             // label40
             // 
@@ -682,7 +667,6 @@
             this.label40.Size = new System.Drawing.Size(199, 23);
             this.label40.TabIndex = 233;
             this.label40.Text = "Período da consulta";
-            this.label40.Click += new System.EventHandler(this.label40_Click);
             // 
             // label33
             // 
@@ -704,7 +688,6 @@
             this.dtpDataInicial.Name = "dtpDataInicial";
             this.dtpDataInicial.Size = new System.Drawing.Size(105, 21);
             this.dtpDataInicial.TabIndex = 11;
-            this.dtpDataInicial.ValueChanged += new System.EventHandler(this.dtpDataInicial_ValueChanged);
             // 
             // label32
             // 
@@ -729,7 +712,6 @@
             this.txtAnoValido.Size = new System.Drawing.Size(64, 22);
             this.txtAnoValido.TabIndex = 1;
             this.txtAnoValido.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtAnoValido.TextChanged += new System.EventHandler(this.txtAnoValido_TextChanged);
             this.txtAnoValido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAnoValido_KeyPress);
             // 
             // lblAno
@@ -798,11 +780,11 @@
             // label38
             // 
             this.label38.AutoSize = true;
-            this.label38.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label38.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label38.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label38.Location = new System.Drawing.Point(426, 9);
+            this.label38.Location = new System.Drawing.Point(426, 13);
             this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(77, 25);
+            this.label38.Size = new System.Drawing.Size(75, 25);
             this.label38.TabIndex = 166;
             this.label38.Text = "Filtros\r\n";
             // 
@@ -812,7 +794,7 @@
             this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox4.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.textBox4.Location = new System.Drawing.Point(1245, 10);
+            this.textBox4.Location = new System.Drawing.Point(1245, 12);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(95, 15);
             this.textBox4.TabIndex = 119;
@@ -909,14 +891,13 @@
             this.txtDataInicial.Size = new System.Drawing.Size(105, 15);
             this.txtDataInicial.TabIndex = 17;
             this.txtDataInicial.Visible = false;
-            this.txtDataInicial.TextChanged += new System.EventHandler(this.txtDataInicial_TextChanged);
             // 
             // btnPlanilhaDespesas
             // 
             this.btnPlanilhaDespesas.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPlanilhaDespesas.Location = new System.Drawing.Point(965, 266);
+            this.btnPlanilhaDespesas.Location = new System.Drawing.Point(774, 265);
             this.btnPlanilhaDespesas.Name = "btnPlanilhaDespesas";
-            this.btnPlanilhaDespesas.Size = new System.Drawing.Size(180, 28);
+            this.btnPlanilhaDespesas.Size = new System.Drawing.Size(180, 44);
             this.btnPlanilhaDespesas.TabIndex = 50;
             this.btnPlanilhaDespesas.Text = "&Planilha de Despesas";
             this.btnPlanilhaDespesas.UseVisualStyleBackColor = true;
@@ -937,11 +918,11 @@
             // label39
             // 
             this.label39.AutoSize = true;
-            this.label39.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label39.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label39.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label39.Location = new System.Drawing.Point(588, 9);
+            this.label39.Location = new System.Drawing.Point(563, 13);
             this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(291, 25);
+            this.label39.Size = new System.Drawing.Size(280, 25);
             this.label39.TabIndex = 235;
             this.label39.Text = "Colunas Visíveis na Tabela";
             // 
@@ -956,6 +937,8 @@
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.Gainsboro;
+            this.groupBox3.Controls.Add(this.btnSair);
+            this.groupBox3.Controls.Add(this.button4);
             this.groupBox3.Controls.Add(this.btnRIM);
             this.groupBox3.Controls.Add(this.cmbUnidade);
             this.groupBox3.Controls.Add(this.dtpDataCetil);
@@ -1010,9 +993,9 @@
             // btnRIM
             // 
             this.btnRIM.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRIM.Location = new System.Drawing.Point(1229, 213);
+            this.btnRIM.Location = new System.Drawing.Point(1189, 157);
             this.btnRIM.Name = "btnRIM";
-            this.btnRIM.Size = new System.Drawing.Size(76, 28);
+            this.btnRIM.Size = new System.Drawing.Size(137, 44);
             this.btnRIM.TabIndex = 251;
             this.btnRIM.Text = "R.I.&M";
             this.btnRIM.UseVisualStyleBackColor = true;
@@ -1044,7 +1027,7 @@
             this.chkPlanilhaDespesas.AutoSize = true;
             this.chkPlanilhaDespesas.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkPlanilhaDespesas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.chkPlanilhaDespesas.Location = new System.Drawing.Point(589, 271);
+            this.chkPlanilhaDespesas.Location = new System.Drawing.Point(565, 282);
             this.chkPlanilhaDespesas.Name = "chkPlanilhaDespesas";
             this.chkPlanilhaDespesas.Size = new System.Drawing.Size(208, 18);
             this.chkPlanilhaDespesas.TabIndex = 249;
@@ -1055,9 +1038,9 @@
             // btnRRP
             // 
             this.btnRRP.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRRP.Location = new System.Drawing.Point(1229, 266);
+            this.btnRRP.Location = new System.Drawing.Point(1189, 211);
             this.btnRRP.Name = "btnRRP";
-            this.btnRRP.Size = new System.Drawing.Size(76, 28);
+            this.btnRRP.Size = new System.Drawing.Size(137, 44);
             this.btnRRP.TabIndex = 248;
             this.btnRRP.Text = "R.R.&P";
             this.btnRRP.UseVisualStyleBackColor = true;
@@ -1084,8 +1067,8 @@
             this.lineShape3.SelectionColor = System.Drawing.Color.Black;
             this.lineShape3.X1 = 36;
             this.lineShape3.X2 = 513;
-            this.lineShape3.Y1 = 187;
-            this.lineShape3.Y2 = 185;
+            this.lineShape3.Y1 = 191;
+            this.lineShape3.Y2 = 189;
             // 
             // lineShape2
             // 
@@ -1093,8 +1076,8 @@
             this.lineShape2.BorderWidth = 2;
             this.lineShape2.Name = "lineShape2";
             this.lineShape2.SelectionColor = System.Drawing.Color.Black;
-            this.lineShape2.X1 = 1183;
-            this.lineShape2.X2 = 1183;
+            this.lineShape2.X1 = 1154;
+            this.lineShape2.X2 = 1154;
             this.lineShape2.Y1 = -8;
             this.lineShape2.Y2 = 287;
             // 
@@ -1104,15 +1087,28 @@
             this.lineShape1.BorderWidth = 2;
             this.lineShape1.Name = "lineShape1";
             this.lineShape1.SelectionColor = System.Drawing.Color.Black;
-            this.lineShape1.X1 = 535;
-            this.lineShape1.X2 = 535;
+            this.lineShape1.X1 = 533;
+            this.lineShape1.X2 = 533;
             this.lineShape1.Y1 = -8;
             this.lineShape1.Y2 = 287;
+            // 
+            // btnSair
+            // 
+            this.btnSair.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSair.Location = new System.Drawing.Point(1189, 265);
+            this.btnSair.Name = "btnSair";
+            this.btnSair.Size = new System.Drawing.Size(137, 44);
+            this.btnSair.TabIndex = 252;
+            this.btnSair.Text = "&Sair";
+            this.btnSair.UseVisualStyleBackColor = true;
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
             // Consulta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.BackgroundImage = global::Sistema_Prorim.Properties.Resources.wallp0071;
             this.ClientSize = new System.Drawing.Size(1370, 749);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.dataGridView1);
@@ -1120,7 +1116,7 @@
             this.IsMdiContainer = true;
             this.Name = "Consulta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Consulta";
+            this.Text = "Pesquisas";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Consulta_Load);
             this.Shown += new System.EventHandler(this.Consulta_Shown);
@@ -1215,5 +1211,6 @@
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape3;
         private System.Windows.Forms.ComboBox cmbUnidade;
         private System.Windows.Forms.Button btnRIM;
+        private System.Windows.Forms.Button btnSair;
     }
 }
