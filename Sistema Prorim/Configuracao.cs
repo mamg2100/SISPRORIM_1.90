@@ -27,11 +27,14 @@ namespace Sistema_prorim
             {
                 try
                 {
+                    gravar();
                     //System.IO.File.WriteAllText(@"D:\\IPSERVIDOR.txt", textBox1.Text);
+                    /*
                     System.IO.File.WriteAllText(textBox2.Text, textBox1.Text);
                     MessageBox.Show("Arquivo salvo com sucesso");
                     textBox1.Text = "";
                     this.Close();
+                    */
                 }
                 catch 
                 {
@@ -39,13 +42,19 @@ namespace Sistema_prorim
             
                 }
             }
-            else 
-            {
-                
-            }
+            
             // há o componente saveFileDialog que pode ser usado fazendo
             // System.IO.File.WriteAllText(saveFileDialog.FileName, textBox1.Text);
 
+        }
+
+        private void gravar()
+        {
+            System.IO.File.WriteAllText(@"C:\\IPSERVIDOR.txt", textBox1.Text);
+            //System.IO.File.WriteAllText(textBox2.Text, textBox1.Text);
+            MessageBox.Show("Arquivo salvo com sucesso");
+            textBox1.Text = "";
+            this.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -54,6 +63,11 @@ namespace Sistema_prorim
         }
 
         private void frmConfiguração_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
         {
 
         }

@@ -60,7 +60,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(238, 20);
             this.textBox2.TabIndex = 3;
-            this.textBox2.Text = "C:\\SISPRORIM\\DUMP";
+            this.textBox2.Text = "DUMP";
             // 
             // label3
             // 
@@ -77,9 +77,9 @@
             this.label2.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(24, 60);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(128, 14);
+            this.label2.Size = new System.Drawing.Size(149, 14);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Path/Nome Arquivo";
+            this.label2.Text = "Nome da Pasta em C:\\";
             // 
             // btnGerar
             // 

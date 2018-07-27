@@ -483,9 +483,9 @@
             this.label2.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(19, 104);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(86, 13);
+            this.label2.Size = new System.Drawing.Size(125, 13);
             this.label2.TabIndex = 22;
-            this.label2.Text = "Nº Nota Fiscal";
+            this.label2.Text = "Nº Documento Fiscal";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // txtCodNF
@@ -506,7 +506,7 @@
             this.label3.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(186, 104);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 13);
+            this.label3.Size = new System.Drawing.Size(60, 13);
             this.label3.TabIndex = 27;
             this.label3.Text = "Data N.F.";
             this.label3.Click += new System.EventHandler(this.label3_Click);
@@ -517,7 +517,7 @@
             this.label8.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(18, 25);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(54, 13);
+            this.label8.Size = new System.Drawing.Size(56, 13);
             this.label8.TabIndex = 47;
             this.label8.Text = "Cod N.F.";
             this.label8.Click += new System.EventHandler(this.label8_Click);
@@ -528,7 +528,7 @@
             this.label4.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(321, 104);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(60, 13);
+            this.label4.Size = new System.Drawing.Size(63, 13);
             this.label4.TabIndex = 28;
             this.label4.Text = "Valor N.F.";
             this.label4.Click += new System.EventHandler(this.label4_Click);
@@ -822,7 +822,7 @@
             this.label7.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(348, 332);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(125, 13);
+            this.label7.Size = new System.Drawing.Size(126, 13);
             this.label7.TabIndex = 172;
             this.label7.Text = "Valor Acumulado N.F";
             this.label7.Click += new System.EventHandler(this.label7_Click_1);

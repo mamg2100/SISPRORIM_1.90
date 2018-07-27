@@ -20,6 +20,7 @@ namespace Sistema_prorim
         public MySqlConnection Cmn = new MySqlConnection();
         public string tiporim;
         private int flagInclusao;
+        private int tempEmpenho=0;
 
 
         public rim_tem_despesa()
@@ -29,7 +30,7 @@ namespace Sistema_prorim
 
         private void rim_tem_despesa_Load(object sender, EventArgs e)
         {            
-                                   
+                                
             //Código para recuoerar o fornecedor já vinculado à RI. Escolhido na RI.
                        
             txtCodDespesa.Text =  Sistema_prorim.Global.despesa.coddespesas;
@@ -123,11 +124,11 @@ namespace Sistema_prorim
                 dataGridView1.Columns[9].HeaderText = "Valor AF";
                 dataGridView1.Columns[10].HeaderText = "Fornecedor";
                 dataGridView1.Columns[11].HeaderText = "Tipo";
-                //dataGridView1.Columns[11].Visible = false;
+                dataGridView1.Columns[11].Visible = false;
                 dataGridView1.Columns[12].HeaderText = "DT EMP SQL";
-                //dataGridView1.Columns[12].Visible = false;
+                dataGridView1.Columns[12].Visible = false;
                 dataGridView1.Columns[13].HeaderText = "Ano RI";
-                //dataGridView1.Columns[13].Visible = false;
+                dataGridView1.Columns[13].Visible = false;
                 
                 calcularRegistros();
                 somaEmpenhos();
@@ -291,22 +292,21 @@ namespace Sistema_prorim
 
                         }
                     }
-
                     mostrarResultados();
-                    //mConn.Close();
-
-                }
+                                    }
                 catch
                 {
                     MessageBox.Show("Não foi possível fazer a conexão", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                 }
             }
             else {
                 MessageBox.Show("Você deve escolher o fornecedor informado na A.F.","Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                groupBox1.Height = 212;
-                cmbFornecedor.Focus();            
+                //groupBox1.Height = 212;
+                cmbFornecedor.Focus();
+                btnOK.Visible = true;
             }
+            btnIncluir.Visible = false;
+            btnOK.Visible = true;
         }
 
         private void Gravar()
@@ -329,8 +329,8 @@ namespace Sistema_prorim
                     mConn.Open();
                       
                     //Query SQl // Codigo da RIM vai ser substituido quando for gerado o codigo na gravação da ri e será atualizado no update
-                    MySqlCommand command = new MySqlCommand("INSERT INTO rim_has_dotacao (Cod_rim,Cod_despesa,Cetil,empenho,dataempenho,valorempenho,nome_fornecedor,tipo_rim) VALUES(" 
-                    + Convert.ToInt32(txtCodRim.Text) + "," + Convert.ToInt32(txtCodDespesa.Text) + ",'" + txtCodRim.Text + "','" + txtEmpenho.Text + "','" + txtEmpenho.Text 
+                    MySqlCommand command = new MySqlCommand("INSERT INTO rim_has_dotacao (Cod_rim,Cod_despesa,Cetil,empenho,dataempenho,valorempenho,nome_fornecedor,tipo_rim) VALUES("
+                    + Convert.ToInt32(txtCodigoSeqRI.Text) + "," + Convert.ToInt32(txtCodDespesa.Text) + ",'" + txtCodRim.Text + "','" + txtEmpenho.Text + "','" + txtEmpenho.Text 
                     + "','" + txtValorEmpenho.Text + "','" + cmbFornecedor.Text + "','" + tiporim + "')", mConn);
 
                     //MySqlCommand command = new MySqlCommand("INSERT INTO rim_has_dotacao (Cod_rim,Cod_despesa,Cetil) VALUES('" + txtCodRim.Text
@@ -385,11 +385,11 @@ namespace Sistema_prorim
             txtCodRim.Text = "";
             txtCodigo.Text = "";
             txtEmpenho.Text = "";
+            txtValorEmpenho.Text = "";
             txtDataEmpenho.Text = "";
             txtAutorizacao.Text = "";
             txtDataAutorizacao.Text = "";
             txtValorAutorizacao.Text = "";
-
         }
 
        
@@ -540,6 +540,8 @@ namespace Sistema_prorim
             
             */
 
+            panel1.Enabled = true;
+
             txtCodigo.Text = dataGridView1[0, dataGridView1.CurrentCellAddress.Y].Value.ToString();
             txtCodigoSeqRI.Text = dataGridView1[1, dataGridView1.CurrentCellAddress.Y].Value.ToString();
             txtCodigoSeqDespesa.Text = dataGridView1[2, dataGridView1.CurrentCellAddress.Y].Value.ToString();
@@ -576,13 +578,22 @@ namespace Sistema_prorim
             }
 
             Cmn.Close();            
-                        
+
             txtEmpenho.Text = dataGridView1[4, dataGridView1.CurrentCellAddress.Y].Value.ToString();
             txtDataEmpenho.Text = dataGridView1[5, dataGridView1.CurrentCellAddress.Y].Value.ToString();
             txtValorEmpenho.Text = dataGridView1[6, dataGridView1.CurrentCellAddress.Y].Value.ToString();
             txtAutorizacao.Text = dataGridView1[7, dataGridView1.CurrentCellAddress.Y].Value.ToString();
             txtDataAutorizacao.Text = dataGridView1[8, dataGridView1.CurrentCellAddress.Y].Value.ToString();
             txtValorAutorizacao.Text = dataGridView1[9, dataGridView1.CurrentCellAddress.Y].Value.ToString();
+
+            //Há duas situações possíveis: se for alteração (controlada flag tempEmpenho=0) o cmb deve receber a informação
+            //no cmbFornecedor que está na coluna 10 de rim_has_dotacao. Se for inclusão (controlada flag tempEmpenho=1) segue 
+            //o codigo original
+
+            if (flagInclusao == 0) {
+                cmbFornecedor.Text = dataGridView1[10, dataGridView1.CurrentCellAddress.Y].Value.ToString();
+                cmbFornecedor.SelectedIndex = 0;
+            }
             
 
         }
@@ -648,12 +659,32 @@ namespace Sistema_prorim
 
         private void txtDataAutorizacao_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            if (e.KeyChar == 13)
+            {
+                if (txtValorEmpenho.Text == "")
+                {
+                    txtDataAutorizacao.Focus();
+                }
+                else
+                {
+                    txtValorAutorizacao.Focus();
+                }
+            }
         }
 
         private void txtDataEmpenho_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            if (e.KeyChar == 13)
+            {
+                if (txtValorEmpenho.Text == "")
+                {
+                    txtDataEmpenho.Focus();
+                }
+                else
+                {
+                    txtValorEmpenho.Focus();
+                }
+            }
         }
 
   
@@ -822,12 +853,38 @@ namespace Sistema_prorim
                   
                  */
                 if (flagInclusao == 0)
+                {
+                    if (dataGridView1.RowCount == 0)
                     {
-                        Alterar(Convert.ToInt32(txtCodigo.Text));
+                        MessageBox.Show("Não há dados a serem alterados.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         btnIncluir.Enabled = true;
                         btnAlterar.Enabled = true;
                         btnExcluir.Enabled = true;
-                        btnOK.Visible = false;
+                    }
+                    else
+                    {
+                        if (txtCodigo.Text == "")
+                        {
+                            MessageBox.Show("Não foi escolhido item a ser alterado. Escolha na planilha clicando duas vezes com o mouse na linha correspondente","Atenção",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                        }
+                        else
+                        {
+                            Alterar(Convert.ToInt32(txtCodigo.Text));
+                            btnIncluir.Enabled = true;
+                            btnAlterar.Enabled = true;
+                            btnExcluir.Enabled = true;
+                            btnOK.Visible = false;
+                        }
+                    }
+                }
+                else
+                {
+                    if (dataGridView1.RowCount == 0)
+                    {
+                        MessageBox.Show("Não há dados a serem excluídos.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        btnIncluir.Enabled = true;
+                        btnAlterar.Enabled = true;
+                        btnExcluir.Enabled = true;
                     }
                     else
                     {
@@ -837,26 +894,125 @@ namespace Sistema_prorim
                         btnExcluir.Enabled = true;
                         btnOK.Visible = false;
                     }
+                }
                 //}
             }
         }
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
-            panel1.Visible = true;
-            groupBox1.Visible = true;
-            dataGridView1.Enabled=true;
-            btnIncluir.Enabled = false;
-            btnAlterar.Enabled = false;
-            btnExcluir.Enabled = false;
-            btnOK.Visible = true;
-            flagInclusao = 0;
+            if (dataGridView1.RowCount == 0)
+            {
+                MessageBox.Show("Não há dados a serem alterados.","Atenção",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+            }
+            else
+            {
+                MessageBox.Show("Clique na planilha sobre a linha cujos dados devam ser alterados.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                panel1.Visible = true;
+                groupBox1.Visible = true;
+                dataGridView1.Enabled = true;
+                btnIncluir.Enabled = false;
+                btnAlterar.Enabled = false;
+                btnExcluir.Enabled = false;
+                btnOK.Visible = true;
+                flagInclusao = 0;
+            } 
         }
 
         private void btnSair_Click_1(object sender, EventArgs e)
         {
             this.Close();
         }
-              
+
+        private void txtEmpenho_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13) {
+                monthCalendar1.Visible = true;
+                tempEmpenho = 1;// para saber se o que for selecionado no monthCalendar1 vai para empenho 
+                //ou para autorização.
+
+                if (txtEmpenho.Text == "")
+                {
+                    txtEmpenho.Focus();
+                }
+                else {
+                    txtDataEmpenho.Focus();                 
+                }            
+            }
+        }
+
+        private void txtAutorizacao_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                monthCalendar1.Visible = true;
+                tempEmpenho = 0;// para saber se o que for selecionado no monthCalendar1 vai para empenho 
+                //ou para autorização.
+
+                if (txtValorEmpenho.Text == "")
+                {
+                    txtAutorizacao.Focus();
+                }
+                else
+                {
+                    txtDataAutorizacao.Focus();
+
+                }
+            }
+        }
+
+        private void monthCalendar1_DateSelected(object sender, DateRangeEventArgs e)
+        {
+            if (tempEmpenho==0)
+            {
+                txtDataAutorizacao.Text = monthCalendar1.SelectionRange.Start.ToString("dd/MM/yyyy");
+                monthCalendar1.Visible = false;
+                txtValorAutorizacao.Focus();
+            }
+            else 
+            {
+                txtDataEmpenho.Text = monthCalendar1.SelectionRange.Start.ToString("dd/MM/yyyy");
+                monthCalendar1.Visible = false;
+                txtValorEmpenho.Focus();
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            btnOK.Visible = false;
+            btnIncluir.Visible = true;
+            btnIncluir.Enabled = true;
+            btnAlterar.Visible = true;
+            btnAlterar.Enabled = true;
+            btnExcluir.Visible = true;
+            btnExcluir.Enabled = true;
+        }
+
+        private void cmbFornecedor_SelectedValueChanged(object sender, EventArgs e)
+        {
+            btnOK.Visible = true;
+        }
+
+        private void rim_tem_despesa_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 27) {
+
+                monthCalendar1.Visible = false;
+            }
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+            tempEmpenho = 1;
+            monthCalendar1.Visible = true;
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+            tempEmpenho = 0;
+            monthCalendar1.Visible = true;
+        }    
+        
+     
     }
 }

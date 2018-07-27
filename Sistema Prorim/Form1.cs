@@ -145,11 +145,9 @@ namespace Sistema_prorim
             frmConfiguração config = new frmConfiguração();
             config.ShowDialog();
         }
-
        
         private void Principal_Shown(object sender, EventArgs e)
-        {
-            
+        {            
             button1.Visible = true;
             button2.Visible = true; 
             button3.Visible = true; 
@@ -166,9 +164,11 @@ namespace Sistema_prorim
 
             if (Global.Logon.usuario != "")
             {
-                toolStripStatusLabel4.Text = "Usuário Logado: " + (Global.Logon.usuario).ToUpper() + " | " + DateTime.Now.ToString("dd/MM/yy") +
+                toolStripStatusLabel4.Text = " " + (Global.Logon.usuario).ToUpper() + " | " + DateTime.Now.ToString("dd/MM/yy") +
                 " | " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Name.ToString() + " | vrs "
-                + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() + " | Servidor: " + Global.Logon.ipservidor;
+                + "1.90.0.0" + " | Servidor: " + Global.Logon.ipservidor;
+
+                //System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString()
                 
                 if (Global.Logon.tipousuario.Trim() == "Master")
                 {
@@ -454,7 +454,7 @@ namespace Sistema_prorim
 
         private void button10_MouseEnter(object sender, EventArgs e)
         {
-            button10.Text = "Notas Fiscais";
+            button10.Text = "Documentos Fiscais";
         }
 
         private void button10_MouseLeave(object sender, EventArgs e)
@@ -546,6 +546,12 @@ namespace Sistema_prorim
         {
             FSM sugestao = new FSM();
             sugestao.Show();
+        }
+
+        private void sobreToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            About ab = new About();
+            ab.Show();
         }          
                  
     }

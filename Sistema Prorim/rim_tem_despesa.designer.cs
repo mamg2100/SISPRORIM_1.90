@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(rim_tem_despesa));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -82,6 +83,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtCodigoSeqRI = new System.Windows.Forms.TextBox();
             this.shapeContainer2 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
+            this.lineShape2 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.lineShape4 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.btnOK = new System.Windows.Forms.Button();
@@ -89,6 +91,9 @@
             this.btnSair = new System.Windows.Forms.Button();
             this.txtCodigoSeqDespesa = new System.Windows.Forms.TextBox();
             this.txtCodigo = new System.Windows.Forms.TextBox();
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.button1 = new System.Windows.Forms.Button();
+            this.lineShape5 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -105,7 +110,7 @@
             this.groupBox1.Controls.Add(this.lblCodDespesa);
             this.groupBox1.Controls.Add(this.lblDepesa);
             this.groupBox1.Controls.Add(this.shapeContainer1);
-            this.groupBox1.Location = new System.Drawing.Point(21, 261);
+            this.groupBox1.Location = new System.Drawing.Point(56, 261);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(628, 171);
             this.groupBox1.TabIndex = 74;
@@ -131,9 +136,10 @@
             this.panel1.Controls.Add(this.lblAF);
             this.panel1.Controls.Add(this.txtAutorizacao);
             this.panel1.Controls.Add(this.txtDataAutorizacao);
-            this.panel1.Location = new System.Drawing.Point(162, 15);
+            this.panel1.Enabled = false;
+            this.panel1.Location = new System.Drawing.Point(142, 15);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(432, 137);
+            this.panel1.Size = new System.Drawing.Size(480, 150);
             this.panel1.TabIndex = 171;
             // 
             // label10
@@ -143,11 +149,12 @@
             this.label10.ForeColor = System.Drawing.Color.Red;
             this.label10.Image = global::Sistema_Prorim.Properties.Resources.Calendario23;
             this.label10.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label10.Location = new System.Drawing.Point(217, 66);
+            this.label10.Location = new System.Drawing.Point(239, 66);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(23, 16);
             this.label10.TabIndex = 156;
             this.label10.Text = "   ";
+            this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // label8
             // 
@@ -156,18 +163,19 @@
             this.label8.ForeColor = System.Drawing.Color.Red;
             this.label8.Image = global::Sistema_Prorim.Properties.Resources.Calendario23;
             this.label8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label8.Location = new System.Drawing.Point(218, 112);
+            this.label8.Location = new System.Drawing.Point(240, 112);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(23, 16);
             this.label8.TabIndex = 168;
             this.label8.Text = "   ";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // textBox6
             // 
             this.textBox6.BackColor = System.Drawing.Color.Yellow;
             this.textBox6.Enabled = false;
             this.textBox6.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(246, 112);
+            this.textBox6.Location = new System.Drawing.Point(268, 112);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(26, 21);
             this.textBox6.TabIndex = 152;
@@ -178,7 +186,7 @@
             this.textBox1.BackColor = System.Drawing.Color.Yellow;
             this.textBox1.Enabled = false;
             this.textBox1.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(246, 65);
+            this.textBox1.Location = new System.Drawing.Point(268, 65);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(26, 21);
             this.textBox1.TabIndex = 145;
@@ -186,18 +194,18 @@
             // 
             // cmbFornecedor
             // 
-            this.cmbFornecedor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFornecedor.FormattingEnabled = true;
-            this.cmbFornecedor.Location = new System.Drawing.Point(3, 19);
+            this.cmbFornecedor.Location = new System.Drawing.Point(25, 19);
             this.cmbFornecedor.Name = "cmbFornecedor";
             this.cmbFornecedor.Size = new System.Drawing.Size(421, 21);
             this.cmbFornecedor.TabIndex = 153;
+            this.cmbFornecedor.SelectedValueChanged += new System.EventHandler(this.cmbFornecedor_SelectedValueChanged);
             // 
             // lblFornecedor
             // 
             this.lblFornecedor.AutoSize = true;
             this.lblFornecedor.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFornecedor.Location = new System.Drawing.Point(5, 3);
+            this.lblFornecedor.Location = new System.Drawing.Point(27, 3);
             this.lblFornecedor.Name = "lblFornecedor";
             this.lblFornecedor.Size = new System.Drawing.Size(71, 13);
             this.lblFornecedor.TabIndex = 154;
@@ -207,12 +215,13 @@
             // 
             this.txtEmpenho.BackColor = System.Drawing.Color.White;
             this.txtEmpenho.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmpenho.Location = new System.Drawing.Point(3, 65);
+            this.txtEmpenho.Location = new System.Drawing.Point(25, 65);
             this.txtEmpenho.Name = "txtEmpenho";
             this.txtEmpenho.Size = new System.Drawing.Size(100, 21);
             this.txtEmpenho.TabIndex = 4;
             this.txtEmpenho.TextChanged += new System.EventHandler(this.txtEmpenho_TextChanged);
             this.txtEmpenho.Enter += new System.EventHandler(this.txtEmpenho_Enter);
+            this.txtEmpenho.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEmpenho_KeyPress);
             this.txtEmpenho.Leave += new System.EventHandler(this.txtEmpenho_Leave);
             // 
             // txtDataEmpenho
@@ -220,7 +229,7 @@
             this.txtDataEmpenho.BackColor = System.Drawing.Color.White;
             this.txtDataEmpenho.Enabled = false;
             this.txtDataEmpenho.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDataEmpenho.Location = new System.Drawing.Point(110, 65);
+            this.txtDataEmpenho.Location = new System.Drawing.Point(132, 65);
             this.txtDataEmpenho.Name = "txtDataEmpenho";
             this.txtDataEmpenho.Size = new System.Drawing.Size(105, 21);
             this.txtDataEmpenho.TabIndex = 5;
@@ -232,7 +241,7 @@
             // 
             this.lblEmpenho.AutoSize = true;
             this.lblEmpenho.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmpenho.Location = new System.Drawing.Point(4, 51);
+            this.lblEmpenho.Location = new System.Drawing.Point(26, 51);
             this.lblEmpenho.Name = "lblEmpenho";
             this.lblEmpenho.Size = new System.Drawing.Size(78, 13);
             this.lblEmpenho.TabIndex = 75;
@@ -243,7 +252,7 @@
             this.lblValorAF.AutoSize = true;
             this.lblValorAF.Enabled = false;
             this.lblValorAF.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblValorAF.Location = new System.Drawing.Point(246, 98);
+            this.lblValorAF.Location = new System.Drawing.Point(268, 98);
             this.lblValorAF.Name = "lblValorAF";
             this.lblValorAF.Size = new System.Drawing.Size(59, 13);
             this.lblValorAF.TabIndex = 151;
@@ -254,7 +263,7 @@
             // 
             this.lblDataEmpenho.AutoSize = true;
             this.lblDataEmpenho.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDataEmpenho.Location = new System.Drawing.Point(110, 51);
+            this.lblDataEmpenho.Location = new System.Drawing.Point(132, 51);
             this.lblDataEmpenho.Name = "lblDataEmpenho";
             this.lblDataEmpenho.Size = new System.Drawing.Size(91, 13);
             this.lblDataEmpenho.TabIndex = 76;
@@ -263,9 +272,8 @@
             // txtValorAutorizacao
             // 
             this.txtValorAutorizacao.BackColor = System.Drawing.Color.White;
-            this.txtValorAutorizacao.Enabled = false;
             this.txtValorAutorizacao.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtValorAutorizacao.Location = new System.Drawing.Point(274, 112);
+            this.txtValorAutorizacao.Location = new System.Drawing.Point(296, 112);
             this.txtValorAutorizacao.Name = "txtValorAutorizacao";
             this.txtValorAutorizacao.Size = new System.Drawing.Size(151, 21);
             this.txtValorAutorizacao.TabIndex = 9;
@@ -277,9 +285,8 @@
             // txtValorEmpenho
             // 
             this.txtValorEmpenho.BackColor = System.Drawing.Color.White;
-            this.txtValorEmpenho.Enabled = false;
             this.txtValorEmpenho.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtValorEmpenho.Location = new System.Drawing.Point(274, 65);
+            this.txtValorEmpenho.Location = new System.Drawing.Point(296, 65);
             this.txtValorEmpenho.Name = "txtValorEmpenho";
             this.txtValorEmpenho.Size = new System.Drawing.Size(151, 21);
             this.txtValorEmpenho.TabIndex = 6;
@@ -292,7 +299,7 @@
             // 
             this.lblDataAF.AutoSize = true;
             this.lblDataAF.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDataAF.Location = new System.Drawing.Point(110, 98);
+            this.lblDataAF.Location = new System.Drawing.Point(132, 98);
             this.lblDataAF.Name = "lblDataAF";
             this.lblDataAF.Size = new System.Drawing.Size(56, 13);
             this.lblDataAF.TabIndex = 149;
@@ -303,7 +310,7 @@
             this.lblValorEmpenho.AutoSize = true;
             this.lblValorEmpenho.Enabled = false;
             this.lblValorEmpenho.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblValorEmpenho.Location = new System.Drawing.Point(246, 51);
+            this.lblValorEmpenho.Location = new System.Drawing.Point(268, 51);
             this.lblValorEmpenho.Name = "lblValorEmpenho";
             this.lblValorEmpenho.Size = new System.Drawing.Size(94, 13);
             this.lblValorEmpenho.TabIndex = 78;
@@ -313,7 +320,7 @@
             // 
             this.lblAF.AutoSize = true;
             this.lblAF.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAF.Location = new System.Drawing.Point(4, 98);
+            this.lblAF.Location = new System.Drawing.Point(26, 98);
             this.lblAF.Name = "lblAF";
             this.lblAF.Size = new System.Drawing.Size(43, 13);
             this.lblAF.TabIndex = 148;
@@ -323,11 +330,12 @@
             // 
             this.txtAutorizacao.BackColor = System.Drawing.Color.White;
             this.txtAutorizacao.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAutorizacao.Location = new System.Drawing.Point(3, 112);
+            this.txtAutorizacao.Location = new System.Drawing.Point(25, 112);
             this.txtAutorizacao.Name = "txtAutorizacao";
             this.txtAutorizacao.Size = new System.Drawing.Size(100, 21);
             this.txtAutorizacao.TabIndex = 7;
             this.txtAutorizacao.Enter += new System.EventHandler(this.txtAutorizacao_Enter);
+            this.txtAutorizacao.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAutorizacao_KeyPress);
             this.txtAutorizacao.Leave += new System.EventHandler(this.txtAutorizacao_Leave);
             // 
             // txtDataAutorizacao
@@ -335,7 +343,7 @@
             this.txtDataAutorizacao.BackColor = System.Drawing.Color.White;
             this.txtDataAutorizacao.Enabled = false;
             this.txtDataAutorizacao.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDataAutorizacao.Location = new System.Drawing.Point(110, 112);
+            this.txtDataAutorizacao.Location = new System.Drawing.Point(132, 112);
             this.txtDataAutorizacao.Name = "txtDataAutorizacao";
             this.txtDataAutorizacao.Size = new System.Drawing.Size(105, 21);
             this.txtDataAutorizacao.TabIndex = 8;
@@ -349,7 +357,7 @@
             this.txtDespesa.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtDespesa.Enabled = false;
             this.txtDespesa.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDespesa.Location = new System.Drawing.Point(33, 80);
+            this.txtDespesa.Location = new System.Drawing.Point(13, 80);
             this.txtDespesa.Multiline = true;
             this.txtDespesa.Name = "txtDespesa";
             this.txtDespesa.Size = new System.Drawing.Size(100, 21);
@@ -359,7 +367,7 @@
             // 
             this.lblRI.AutoSize = true;
             this.lblRI.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRI.Location = new System.Drawing.Point(33, 110);
+            this.lblRI.Location = new System.Drawing.Point(13, 110);
             this.lblRI.Name = "lblRI";
             this.lblRI.Size = new System.Drawing.Size(33, 13);
             this.lblRI.TabIndex = 69;
@@ -371,7 +379,7 @@
             this.txtCodRim.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCodRim.Enabled = false;
             this.txtCodRim.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodRim.Location = new System.Drawing.Point(33, 125);
+            this.txtCodRim.Location = new System.Drawing.Point(13, 125);
             this.txtCodRim.Multiline = true;
             this.txtCodRim.Name = "txtCodRim";
             this.txtCodRim.Size = new System.Drawing.Size(100, 21);
@@ -383,7 +391,7 @@
             this.txtCodDespesa.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCodDespesa.Enabled = false;
             this.txtCodDespesa.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodDespesa.Location = new System.Drawing.Point(33, 33);
+            this.txtCodDespesa.Location = new System.Drawing.Point(13, 33);
             this.txtCodDespesa.Multiline = true;
             this.txtCodDespesa.Name = "txtCodDespesa";
             this.txtCodDespesa.Size = new System.Drawing.Size(100, 21);
@@ -393,7 +401,7 @@
             // 
             this.lblCodDespesa.AutoSize = true;
             this.lblCodDespesa.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodDespesa.Location = new System.Drawing.Point(33, 18);
+            this.lblCodDespesa.Location = new System.Drawing.Point(13, 18);
             this.lblCodDespesa.Name = "lblCodDespesa";
             this.lblCodDespesa.Size = new System.Drawing.Size(83, 13);
             this.lblCodDespesa.TabIndex = 47;
@@ -403,7 +411,7 @@
             // 
             this.lblDepesa.AutoSize = true;
             this.lblDepesa.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDepesa.Location = new System.Drawing.Point(33, 65);
+            this.lblDepesa.Location = new System.Drawing.Point(13, 65);
             this.lblDepesa.Name = "lblDepesa";
             this.lblDepesa.Size = new System.Drawing.Size(56, 13);
             this.lblDepesa.TabIndex = 34;
@@ -433,11 +441,12 @@
             // 
             this.lblCodRI.AutoSize = true;
             this.lblCodRI.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodRI.Location = new System.Drawing.Point(688, 19);
+            this.lblCodRI.Location = new System.Drawing.Point(512, 43);
             this.lblCodRI.Name = "lblCodRI";
             this.lblCodRI.Size = new System.Drawing.Size(62, 13);
             this.lblCodRI.TabIndex = 72;
             this.lblCodRI.Text = "txtCodigo";
+            this.lblCodRI.Visible = false;
             // 
             // dataGridView1
             // 
@@ -445,14 +454,16 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenHorizontal;
             this.dataGridView1.Enabled = false;
-            this.dataGridView1.Location = new System.Drawing.Point(11, 7);
+            this.dataGridView1.Location = new System.Drawing.Point(3, 7);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(671, 167);
+            this.dataGridView1.Size = new System.Drawing.Size(926, 167);
             this.dataGridView1.TabIndex = 73;
             this.dataGridView1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseDoubleClick);
             // 
@@ -464,7 +475,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label9.Location = new System.Drawing.Point(14, 177);
+            this.label9.Location = new System.Drawing.Point(36, 177);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(0, 13);
             this.label9.TabIndex = 75;
@@ -474,7 +485,7 @@
             // 
             this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(139, 209);
+            this.textBox2.Location = new System.Drawing.Point(161, 209);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(24, 21);
             this.textBox2.TabIndex = 147;
@@ -485,7 +496,7 @@
             this.label1.AutoSize = true;
             this.label1.Enabled = false;
             this.label1.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(37, 213);
+            this.label1.Location = new System.Drawing.Point(59, 213);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 13);
             this.label1.TabIndex = 146;
@@ -495,7 +506,7 @@
             // 
             this.txtAcumulado.Enabled = false;
             this.txtAcumulado.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAcumulado.Location = new System.Drawing.Point(165, 209);
+            this.txtAcumulado.Location = new System.Drawing.Point(187, 209);
             this.txtAcumulado.Name = "txtAcumulado";
             this.txtAcumulado.Size = new System.Drawing.Size(165, 21);
             this.txtAcumulado.TabIndex = 145;
@@ -505,7 +516,7 @@
             this.lblMsg.AutoSize = true;
             this.lblMsg.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMsg.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblMsg.Location = new System.Drawing.Point(12, 353);
+            this.lblMsg.Location = new System.Drawing.Point(34, 353);
             this.lblMsg.Name = "lblMsg";
             this.lblMsg.Size = new System.Drawing.Size(0, 13);
             this.lblMsg.TabIndex = 148;
@@ -521,10 +532,10 @@
             this.toolStripStatusMensagem,
             this.toolStripStatusLabel4,
             this.tssMensagem});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 462);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 488);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 16, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(829, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(932, 22);
             this.statusStrip1.TabIndex = 166;
             this.statusStrip1.Text = "statusStrip1";
             this.statusStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.tssMensagem_ItemClicked);
@@ -577,7 +588,7 @@
             this.btnAlterar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnAlterar.Font = new System.Drawing.Font("Verdana", 9F);
             this.btnAlterar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnAlterar.Location = new System.Drawing.Point(699, 309);
+            this.btnAlterar.Location = new System.Drawing.Point(778, 240);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(95, 40);
             this.btnAlterar.TabIndex = 267;
@@ -592,7 +603,7 @@
             this.btnExcluir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnExcluir.Font = new System.Drawing.Font("Verdana", 9F);
             this.btnExcluir.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnExcluir.Location = new System.Drawing.Point(699, 261);
+            this.btnExcluir.Location = new System.Drawing.Point(778, 196);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(95, 40);
             this.btnExcluir.TabIndex = 265;
@@ -605,7 +616,7 @@
             // 
             this.textBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.textBox3.Enabled = false;
-            this.textBox3.Location = new System.Drawing.Point(466, 209);
+            this.textBox3.Location = new System.Drawing.Point(488, 209);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(24, 21);
             this.textBox3.TabIndex = 169;
@@ -615,7 +626,7 @@
             // 
             this.txtAcumuladoAF.Enabled = false;
             this.txtAcumuladoAF.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAcumuladoAF.Location = new System.Drawing.Point(493, 209);
+            this.txtAcumuladoAF.Location = new System.Drawing.Point(515, 209);
             this.txtAcumuladoAF.Name = "txtAcumuladoAF";
             this.txtAcumuladoAF.Size = new System.Drawing.Size(165, 21);
             this.txtAcumuladoAF.TabIndex = 167;
@@ -625,7 +636,7 @@
             this.label5.AutoSize = true;
             this.label5.Enabled = false;
             this.label5.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(340, 213);
+            this.label5.Location = new System.Drawing.Point(362, 213);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(126, 13);
             this.label5.TabIndex = 168;
@@ -638,11 +649,12 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(688, 101);
+            this.label2.Location = new System.Drawing.Point(512, 125);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(118, 13);
             this.label2.TabIndex = 171;
             this.label2.Text = "CodigoSeqDespesa";
+            this.label2.Visible = false;
             // 
             // label3
             // 
@@ -651,11 +663,12 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(688, 60);
+            this.label3.Location = new System.Drawing.Point(512, 84);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(94, 13);
             this.label3.TabIndex = 172;
             this.label3.Text = "Codigo Seq. RI";
+            this.label3.Visible = false;
             // 
             // txtCodigoSeqRI
             // 
@@ -663,11 +676,11 @@
             this.txtCodigoSeqRI.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCodigoSeqRI.Enabled = false;
             this.txtCodigoSeqRI.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodigoSeqRI.Location = new System.Drawing.Point(700, 77);
+            this.txtCodigoSeqRI.Location = new System.Drawing.Point(524, 101);
             this.txtCodigoSeqRI.Name = "txtCodigoSeqRI";
             this.txtCodigoSeqRI.Size = new System.Drawing.Size(58, 14);
             this.txtCodigoSeqRI.TabIndex = 173;
-            this.txtCodigoSeqRI.Text = "7160";
+            this.txtCodigoSeqRI.Visible = false;
             // 
             // shapeContainer2
             // 
@@ -675,36 +688,47 @@
             this.shapeContainer2.Margin = new System.Windows.Forms.Padding(0);
             this.shapeContainer2.Name = "shapeContainer2";
             this.shapeContainer2.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
+            this.lineShape5,
+            this.lineShape2,
             this.lineShape1,
             this.lineShape4});
-            this.shapeContainer2.Size = new System.Drawing.Size(829, 484);
+            this.shapeContainer2.Size = new System.Drawing.Size(932, 510);
             this.shapeContainer2.TabIndex = 174;
             this.shapeContainer2.TabStop = false;
+            // 
+            // lineShape2
+            // 
+            this.lineShape2.BorderColor = System.Drawing.SystemColors.AppWorkspace;
+            this.lineShape2.Name = "lineShape2";
+            this.lineShape2.X1 = 724;
+            this.lineShape2.X2 = 724;
+            this.lineShape2.Y1 = 186;
+            this.lineShape2.Y2 = 473;
             // 
             // lineShape1
             // 
             this.lineShape1.BorderColor = System.Drawing.SystemColors.AppWorkspace;
             this.lineShape1.Name = "lineShape1";
-            this.lineShape1.X1 = 11;
-            this.lineShape1.X2 = 659;
-            this.lineShape1.Y1 = 447;
-            this.lineShape1.Y2 = 447;
+            this.lineShape1.X1 = 47;
+            this.lineShape1.X2 = 695;
+            this.lineShape1.Y1 = 455;
+            this.lineShape1.Y2 = 455;
             // 
             // lineShape4
             // 
             this.lineShape4.BorderColor = System.Drawing.SystemColors.AppWorkspace;
             this.lineShape4.Name = "lineShape4";
-            this.lineShape4.X1 = 11;
-            this.lineShape4.X2 = 660;
-            this.lineShape4.Y1 = 250;
-            this.lineShape4.Y2 = 250;
+            this.lineShape4.X1 = 43;
+            this.lineShape4.X2 = 692;
+            this.lineShape4.Y1 = 249;
+            this.lineShape4.Y2 = 249;
             // 
             // btnOK
             // 
             this.btnOK.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnOK.Font = new System.Drawing.Font("Verdana", 9F);
             this.btnOK.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnOK.Location = new System.Drawing.Point(699, 358);
+            this.btnOK.Location = new System.Drawing.Point(778, 328);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(95, 40);
             this.btnOK.TabIndex = 268;
@@ -718,7 +742,7 @@
             this.btnIncluir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnIncluir.Font = new System.Drawing.Font("Verdana", 9F);
             this.btnIncluir.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnIncluir.Location = new System.Drawing.Point(699, 358);
+            this.btnIncluir.Location = new System.Drawing.Point(778, 284);
             this.btnIncluir.Name = "btnIncluir";
             this.btnIncluir.Size = new System.Drawing.Size(95, 40);
             this.btnIncluir.TabIndex = 266;
@@ -729,7 +753,7 @@
             // btnSair
             // 
             this.btnSair.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSair.Location = new System.Drawing.Point(699, 405);
+            this.btnSair.Location = new System.Drawing.Point(778, 434);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(95, 40);
             this.btnSair.TabIndex = 264;
@@ -743,10 +767,11 @@
             this.txtCodigoSeqDespesa.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCodigoSeqDespesa.Enabled = false;
             this.txtCodigoSeqDespesa.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodigoSeqDespesa.Location = new System.Drawing.Point(700, 118);
+            this.txtCodigoSeqDespesa.Location = new System.Drawing.Point(524, 142);
             this.txtCodigoSeqDespesa.Name = "txtCodigoSeqDespesa";
             this.txtCodigoSeqDespesa.Size = new System.Drawing.Size(82, 14);
             this.txtCodigoSeqDespesa.TabIndex = 170;
+            this.txtCodigoSeqDespesa.Visible = false;
             // 
             // txtCodigo
             // 
@@ -757,20 +782,54 @@
             this.txtCodigo.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCodigo.Enabled = false;
             this.txtCodigo.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodigo.Location = new System.Drawing.Point(700, 35);
+            this.txtCodigo.Location = new System.Drawing.Point(519, 58);
+            this.txtCodigo.Multiline = true;
             this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(126, 14);
+            this.txtCodigo.Size = new System.Drawing.Size(128, 14);
             this.txtCodigo.TabIndex = 71;
+            this.txtCodigo.Visible = false;
+            // 
+            // monthCalendar1
+            // 
+            this.monthCalendar1.Location = new System.Drawing.Point(193, 156);
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.TabIndex = 269;
+            this.monthCalendar1.Visible = false;
+            this.monthCalendar1.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateSelected);
+            // 
+            // button1
+            // 
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button1.Font = new System.Drawing.Font("Verdana", 9F);
+            this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button1.Location = new System.Drawing.Point(778, 372);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(95, 40);
+            this.button1.TabIndex = 270;
+            this.button1.Text = "&Cancelar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // lineShape5
+            // 
+            this.lineShape5.BorderColor = System.Drawing.SystemColors.AppWorkspace;
+            this.lineShape5.Name = "lineShape5";
+            this.lineShape5.X1 = 19;
+            this.lineShape5.X2 = 18;
+            this.lineShape5.Y1 = 186;
+            this.lineShape5.Y2 = 473;
             // 
             // rim_tem_despesa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(829, 484);
+            this.ClientSize = new System.Drawing.Size(932, 510);
+            this.Controls.Add(this.txtCodigo);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.txtCodigoSeqRI);
             this.Controls.Add(this.txtCodigoSeqDespesa);
-            this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnAlterar);
             this.Controls.Add(this.btnIncluir);
@@ -798,6 +857,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Vinculação de Despesa ";
             this.Load += new System.EventHandler(this.rim_tem_despesa_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rim_tem_despesa_KeyPress);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -871,5 +931,9 @@
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape1;
         private System.Windows.Forms.TextBox txtCodigoSeqDespesa;
         private System.Windows.Forms.TextBox txtCodigo;
+        private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.Button button1;
+        private Microsoft.VisualBasic.PowerPacks.LineShape lineShape2;
+        private Microsoft.VisualBasic.PowerPacks.LineShape lineShape5;
     }
 }

@@ -17,6 +17,7 @@ namespace Sistema_prorim
         private string database;
         private string uid;
         private string password;
+        private string path;
 
         public Backup()
         {
@@ -24,13 +25,12 @@ namespace Sistema_prorim
         }
 
         private void btnGerar_Click(object sender, EventArgs e)
-        {
-             // Criando conexão
+        {            
+            path = "c:\\"+ textBox2.Text+"\\";
         }
 
         private void Backup_Load(object sender, EventArgs e)
-        {
-            
+        {            
             try
             {
                 DateTime Time = DateTime.Now;
@@ -43,8 +43,8 @@ namespace Sistema_prorim
                 int millisecond = Time.Millisecond;
 
                 //Save file to C:\ with the current date as a filename
-                string path;
-                path = "c:\\DUMP_RIM\\prorim_rim2.sql";
+                //string path;
+                //path = "c:\\DUMP_RIM\\";
                 //    + year + "-" + month + "-" + day + 
                 // "-" + hour + "-" + minute + "-" + second + "-" + millisecond + ".sql";
 
@@ -70,9 +70,9 @@ namespace Sistema_prorim
                 file.Close();
                 process.Close();
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Error , unable to backup!");
+                MessageBox.Show("Error: " + ex.Message);
             }
         }
     }

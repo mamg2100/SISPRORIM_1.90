@@ -1240,6 +1240,7 @@ namespace Sistema_Prorim
         private void txtObs_Leave(object sender, EventArgs e)
         {
             txtObs.BackColor = Color.White;
+            txtObs.Text = txtObs.Text.ToUpper();
         }
 
         private void cmbFornecedor_Leave(object sender, EventArgs e)
@@ -1334,6 +1335,7 @@ namespace Sistema_Prorim
                 else
                 {
                     txtProcesso.Focus();
+                    txtdescricao.Text = txtdescricao.Text.ToUpper();
                 }
             }
             else
@@ -1463,7 +1465,7 @@ namespace Sistema_Prorim
                             Sistema_prorim.Global.despesa.coddespesas = lblCodigoDespesa.Text;
                             Sistema_prorim.Global.despesa.despesas = txtDO.Text;
                             Sistema_prorim.Global.DadosRim.cetil = txtCetil.Text;
-                            Sistema_prorim.Global.DadosRim.codigo = lblCodigo.Text;
+                            Sistema_prorim.Global.DadosRim.codigo = lblCodigo.Text;                            
                             txtvalorEstimado2.Focus();
                             Sistema_prorim.rim_tem_despesa despesa = new Sistema_prorim.rim_tem_despesa();
                             despesa.ShowDialog();
@@ -1990,7 +1992,6 @@ namespace Sistema_Prorim
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
                 excluir(temp);
-
             }
 
         }
@@ -2256,6 +2257,16 @@ namespace Sistema_Prorim
             txtPrograma.Text="";
             txtReduzida.Text="";
              */
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            populaCmbFornecedorComTodosFornecedores();
+        }
+
+        private void txtdescricao_MouseLeave(object sender, EventArgs e)
+        {
+            txtdescricao.Text = txtdescricao.Text.ToUpper();
         }
 
     }

@@ -146,6 +146,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox9.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -463,6 +464,7 @@
             this.txtdescricao.Enter += new System.EventHandler(this.txtdescricao_Enter);
             this.txtdescricao.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtdescricao_KeyPress);
             this.txtdescricao.Leave += new System.EventHandler(this.txtdescricao_Leave);
+            this.txtdescricao.MouseLeave += new System.EventHandler(this.txtdescricao_MouseLeave);
             // 
             // label30
             // 
@@ -880,7 +882,7 @@
             this.cmbFornecedor.FormattingEnabled = true;
             this.cmbFornecedor.Location = new System.Drawing.Point(151, 565);
             this.cmbFornecedor.Name = "cmbFornecedor";
-            this.cmbFornecedor.Size = new System.Drawing.Size(253, 21);
+            this.cmbFornecedor.Size = new System.Drawing.Size(232, 21);
             this.cmbFornecedor.TabIndex = 22;
             this.cmbFornecedor.SelectedValueChanged += new System.EventHandler(this.cmbFornecedor_SelectedValueChanged);
             this.cmbFornecedor.Enter += new System.EventHandler(this.cmbFornecedor_Enter);
@@ -1091,7 +1093,7 @@
             // 
             this.checkBoxOrdenador1.AutoSize = true;
             this.checkBoxOrdenador1.ForeColor = System.Drawing.Color.Black;
-            this.checkBoxOrdenador1.Location = new System.Drawing.Point(55, 110);
+            this.checkBoxOrdenador1.Location = new System.Drawing.Point(55, 128);
             this.checkBoxOrdenador1.Name = "checkBoxOrdenador1";
             this.checkBoxOrdenador1.Size = new System.Drawing.Size(15, 14);
             this.checkBoxOrdenador1.TabIndex = 14;
@@ -1102,7 +1104,7 @@
             // 
             this.checkBoxContab.AutoSize = true;
             this.checkBoxContab.ForeColor = System.Drawing.Color.Black;
-            this.checkBoxContab.Location = new System.Drawing.Point(1129, 77);
+            this.checkBoxContab.Location = new System.Drawing.Point(1131, 77);
             this.checkBoxContab.Name = "checkBoxContab";
             this.checkBoxContab.Size = new System.Drawing.Size(15, 14);
             this.checkBoxContab.TabIndex = 13;
@@ -1113,7 +1115,7 @@
             // 
             this.checkBoxCompras1.AutoSize = true;
             this.checkBoxCompras1.ForeColor = System.Drawing.Color.Black;
-            this.checkBoxCompras1.Location = new System.Drawing.Point(55, 266);
+            this.checkBoxCompras1.Location = new System.Drawing.Point(55, 280);
             this.checkBoxCompras1.Name = "checkBoxCompras1";
             this.checkBoxCompras1.Size = new System.Drawing.Size(15, 14);
             this.checkBoxCompras1.TabIndex = 15;
@@ -1124,7 +1126,7 @@
             // 
             this.checkBoxOrdenador2.AutoSize = true;
             this.checkBoxOrdenador2.ForeColor = System.Drawing.Color.Black;
-            this.checkBoxOrdenador2.Location = new System.Drawing.Point(242, 340);
+            this.checkBoxOrdenador2.Location = new System.Drawing.Point(240, 355);
             this.checkBoxOrdenador2.Name = "checkBoxOrdenador2";
             this.checkBoxOrdenador2.Size = new System.Drawing.Size(15, 14);
             this.checkBoxOrdenador2.TabIndex = 16;
@@ -1135,7 +1137,7 @@
             // 
             this.checkBoxCompras2.AutoSize = true;
             this.checkBoxCompras2.ForeColor = System.Drawing.Color.Black;
-            this.checkBoxCompras2.Location = new System.Drawing.Point(55, 416);
+            this.checkBoxCompras2.Location = new System.Drawing.Point(55, 433);
             this.checkBoxCompras2.Name = "checkBoxCompras2";
             this.checkBoxCompras2.Size = new System.Drawing.Size(15, 14);
             this.checkBoxCompras2.TabIndex = 17;
@@ -1146,7 +1148,7 @@
             // 
             this.checkBoxDIPE.AutoSize = true;
             this.checkBoxDIPE.ForeColor = System.Drawing.Color.Black;
-            this.checkBoxDIPE.Location = new System.Drawing.Point(241, 493);
+            this.checkBoxDIPE.Location = new System.Drawing.Point(240, 509);
             this.checkBoxDIPE.Name = "checkBoxDIPE";
             this.checkBoxDIPE.Size = new System.Drawing.Size(15, 14);
             this.checkBoxDIPE.TabIndex = 18;
@@ -1158,8 +1160,8 @@
             this.lblDataContabilidade.AutoSize = true;
             this.lblDataContabilidade.BackColor = System.Drawing.Color.Transparent;
             this.lblDataContabilidade.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDataContabilidade.ForeColor = System.Drawing.Color.Black;
-            this.lblDataContabilidade.Location = new System.Drawing.Point(917, 78);
+            this.lblDataContabilidade.ForeColor = System.Drawing.Color.Transparent;
+            this.lblDataContabilidade.Location = new System.Drawing.Point(915, 78);
             this.lblDataContabilidade.Name = "lblDataContabilidade";
             this.lblDataContabilidade.Size = new System.Drawing.Size(0, 14);
             this.lblDataContabilidade.TabIndex = 2;
@@ -1169,8 +1171,8 @@
             this.lblDataDipe.AutoSize = true;
             this.lblDataDipe.BackColor = System.Drawing.Color.Transparent;
             this.lblDataDipe.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDataDipe.ForeColor = System.Drawing.Color.Black;
-            this.lblDataDipe.Location = new System.Drawing.Point(32, 492);
+            this.lblDataDipe.ForeColor = System.Drawing.Color.Transparent;
+            this.lblDataDipe.Location = new System.Drawing.Point(28, 510);
             this.lblDataDipe.Name = "lblDataDipe";
             this.lblDataDipe.Size = new System.Drawing.Size(0, 14);
             this.lblDataDipe.TabIndex = 5;
@@ -1180,8 +1182,8 @@
             this.lblDataCompras2.AutoSize = true;
             this.lblDataCompras2.BackColor = System.Drawing.Color.Transparent;
             this.lblDataCompras2.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDataCompras2.ForeColor = System.Drawing.Color.Black;
-            this.lblDataCompras2.Location = new System.Drawing.Point(206, 416);
+            this.lblDataCompras2.ForeColor = System.Drawing.Color.Transparent;
+            this.lblDataCompras2.Location = new System.Drawing.Point(206, 433);
             this.lblDataCompras2.Name = "lblDataCompras2";
             this.lblDataCompras2.Size = new System.Drawing.Size(0, 14);
             this.lblDataCompras2.TabIndex = 6;
@@ -1191,7 +1193,7 @@
             this.lblDataOrdenador1.AutoSize = true;
             this.lblDataOrdenador1.BackColor = System.Drawing.Color.Transparent;
             this.lblDataOrdenador1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDataOrdenador1.ForeColor = System.Drawing.Color.Black;
+            this.lblDataOrdenador1.ForeColor = System.Drawing.Color.Transparent;
             this.lblDataOrdenador1.Location = new System.Drawing.Point(1097, 154);
             this.lblDataOrdenador1.Name = "lblDataOrdenador1";
             this.lblDataOrdenador1.Size = new System.Drawing.Size(0, 14);
@@ -1202,7 +1204,7 @@
             this.lblDataCompras1.AutoSize = true;
             this.lblDataCompras1.BackColor = System.Drawing.Color.Transparent;
             this.lblDataCompras1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDataCompras1.ForeColor = System.Drawing.Color.Black;
+            this.lblDataCompras1.ForeColor = System.Drawing.Color.Transparent;
             this.lblDataCompras1.Location = new System.Drawing.Point(1096, 307);
             this.lblDataCompras1.Name = "lblDataCompras1";
             this.lblDataCompras1.Size = new System.Drawing.Size(0, 14);
@@ -1213,7 +1215,7 @@
             this.lblDataOrdenador2.AutoSize = true;
             this.lblDataOrdenador2.BackColor = System.Drawing.Color.Transparent;
             this.lblDataOrdenador2.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDataOrdenador2.ForeColor = System.Drawing.Color.Black;
+            this.lblDataOrdenador2.ForeColor = System.Drawing.Color.Transparent;
             this.lblDataOrdenador2.Location = new System.Drawing.Point(919, 383);
             this.lblDataOrdenador2.Name = "lblDataOrdenador2";
             this.lblDataOrdenador2.Size = new System.Drawing.Size(0, 14);
@@ -1257,7 +1259,7 @@
             this.panel2.Controls.Add(this.checkBoxCompras2);
             this.panel2.Controls.Add(this.checkBoxDIPE);
             this.panel2.Controls.Add(this.lblDataDipe);
-            this.panel2.Location = new System.Drawing.Point(890, 43);
+            this.panel2.Location = new System.Drawing.Point(890, 26);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(324, 582);
             this.panel2.TabIndex = 258;
@@ -1267,8 +1269,8 @@
             this.lblDataPrefeito.AutoSize = true;
             this.lblDataPrefeito.BackColor = System.Drawing.Color.Transparent;
             this.lblDataPrefeito.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDataPrefeito.ForeColor = System.Drawing.Color.Black;
-            this.lblDataPrefeito.Location = new System.Drawing.Point(27, 188);
+            this.lblDataPrefeito.ForeColor = System.Drawing.Color.Transparent;
+            this.lblDataPrefeito.Location = new System.Drawing.Point(28, 204);
             this.lblDataPrefeito.Name = "lblDataPrefeito";
             this.lblDataPrefeito.Size = new System.Drawing.Size(0, 14);
             this.lblDataPrefeito.TabIndex = 20;
@@ -1300,7 +1302,7 @@
             this.lblCodigoDespesa.AutoSize = true;
             this.lblCodigoDespesa.BackColor = System.Drawing.Color.Transparent;
             this.lblCodigoDespesa.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodigoDespesa.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblCodigoDespesa.ForeColor = System.Drawing.Color.Transparent;
             this.lblCodigoDespesa.Location = new System.Drawing.Point(293, 192);
             this.lblCodigoDespesa.Name = "lblCodigoDespesa";
             this.lblCodigoDespesa.Size = new System.Drawing.Size(0, 16);
@@ -1521,6 +1523,16 @@
             this.textBox1.TabIndex = 274;
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(387, 563);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(25, 25);
+            this.button2.TabIndex = 275;
+            this.button2.Text = "+";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
             // Requisicao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1528,6 +1540,7 @@
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label11);
@@ -1770,6 +1783,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button button2;
 
     }
 }

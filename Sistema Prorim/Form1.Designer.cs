@@ -121,7 +121,7 @@
             this.menuStrip1.Size = new System.Drawing.Size(1354, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
-           // 
+            // 
             // requisiçõesToolStripMenuItem
             // 
             this.requisiçõesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -134,7 +134,7 @@
             this.requisiçõesToolStripMenuItem.Size = new System.Drawing.Size(86, 20);
             this.requisiçõesToolStripMenuItem.Tag = "Cadastro de Requisições";
             this.requisiçõesToolStripMenuItem.Text = "&Requisições";
-             // 
+            // 
             // rIMToolStripMenuItem
             // 
             this.rIMToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("rIMToolStripMenuItem.Image")));
@@ -317,11 +317,11 @@
             // 
             // sobreToolStripMenuItem
             // 
-            this.sobreToolStripMenuItem.Enabled = false;
             this.sobreToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 8.25F);
             this.sobreToolStripMenuItem.Name = "sobreToolStripMenuItem";
             this.sobreToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.sobreToolStripMenuItem.Text = "&Sobre";
+            this.sobreToolStripMenuItem.Click += new System.EventHandler(this.sobreToolStripMenuItem_Click);
             // 
             // toolStrip1
             // 
@@ -780,7 +780,7 @@
             this.button10.Size = new System.Drawing.Size(270, 170);
             this.button10.TabIndex = 26;
             this.button10.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.toolTip1.SetToolTip(this.button10, "Consulta de Notas Fiscais");
+            this.toolTip1.SetToolTip(this.button10, "Consulta de Documentos Fiscais");
             this.button10.UseVisualStyleBackColor = false;
             this.button10.Visible = false;
             this.button10.Click += new System.EventHandler(this.button10_Click);
